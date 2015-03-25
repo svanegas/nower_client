@@ -71,3 +71,8 @@ label.control-label span { cursor: pointer; }
         top: 0;
         right: -15px;
 }
+
+.row{
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
