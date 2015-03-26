@@ -29,6 +29,9 @@ app.controller('JsonCtrl', ['$scope','$http', function($scope, $http) {
       $http(req).success(function(response) {
         console.log("ya");
         console.log(JSON.stringify(response));
+        mojarra = JSON.stringify(response);
+        trucha = JSON.parse(mojarra);
+        console.log(trucha.store.token);
       }).error(function() {
         console.log("otra cosa");
       });
