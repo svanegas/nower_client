@@ -1,6 +1,6 @@
-var app = angular.module('redeem_promotion', ['ngMap']);
+var app = angular.module('redeem_promotion', []);
 
-app.controller('JsonCtrl', ['$scope','$http', function($scope, $http) {
+app.controller('JsonCtrl', ['$scope','$http','$window', function($scope, $http, $window) {
   $scope.redeem_promotion = function(promotion) {
         console.log(JSON.stringify(promotion));
 
@@ -14,10 +14,10 @@ app.controller('JsonCtrl', ['$scope','$http', function($scope, $http) {
           "redemption": jsonCode
       }
     console.log(JSON.stringify(code));          
-        sendData(code, $http);
+        sendData(code, $http, $window);
   } 
     
-    function sendData(data, $http) {
+    function sendData(data, $http, $window) {
       var req = {
         method: 'POST',
         url: 'http://nowerserver.herokuapp.com/redemptions/redeem',
@@ -27,6 +27,7 @@ app.controller('JsonCtrl', ['$scope','$http', function($scope, $http) {
         data: data
       }
       $http(req).success(function(response) {
+        $window.location='./detail_promotion.html';
         console.log("ya");
         console.log(JSON.stringify(response));
       }).error(function() {
