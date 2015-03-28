@@ -11,7 +11,7 @@ $(function(){
 });
 
 $('#datePicker').datepicker({
-    format: 'mm/dd/yyyy'
+    format: 'dd/mm/yyyy'
   }).on('changeDate', function(e) {
     // Revalidate the date field
     $('#eventForm').formValidation('revalidateField', 'date');
@@ -38,7 +38,7 @@ $('#eventForm').formValidation({
           message: 'The date is required'
         },
         date: {
-          format: 'MM/DD/YYYY',
+          format: 'DD/MM/YYYY',
           message: 'The date is not a valid'
         }
       }
