@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Nower</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link href="../css/detail_promo.css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- script bootstrap -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+
+    <!-- script bootstrap -->        
+    <script src="http://code.angularjs.org/1.2.25/angular.js"></script>
+    <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../js/controllers/script_redeem_promotion.js"></script>
+  </head>
+
+  <body>
+
+    <!-- Barra de navegación -->
+    <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+      </div>
+            <!-- Barra de navegación -->
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="../views/post_promotion.html">Nueva promoción</a></li>
+          <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
+          <li><a href="#">Acerca de nosotros</a></li>
+          <li>&nbsp;</li>
+        </ul>
+        <form class="navbar-form">
+          <div class="form-group" style="display:inline;">
+            <div class="input-group">
+              <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+              </div>
+              <input type="text" class="form-control" placeholder="What are searching for?">
+              <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-md-15 text-center">
+      <h2>Detalle del Bono de Descuento</h2>
+      <hr>
+    </div>
+
+    <div class="container" id"main">
+      <form role="form" action="redeem_promotion.html">
+        <div class="box">
+
+          <div class="col-md-6">
+
+            <div class="row">
+              <div class="form-group">
+                <label for="user_text">USUARIO:</label>
+                <label for="user"></label>
+              </div>
+            </div>
+             
+            <div class="row">
+               <div class="form-group">
+                <label for="title_text">TÍTULO:</label>
+                <label for="title"></label>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="form-group">
+                <label for="description_comment">DESCRIPCIÓN:</label>
+                <label for="destription">to update</label>
+               </div>
+            </div>
+
+            <div class="row">
+               <div class="form-group">
+                <label for="date_text">FECHA DE EXPIRACIÓN:</label>
+                <label for="date">to update</label>
+               </div>
+            </div>
+
+            <div class="row">
+              <div class="form-group">
+                <label for="people_text">PERSONAS LÍMITE:</label>
+                <label for="people">to update</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <img class="img-responsive" src="../rs/whopper.jpg" alt="">
+          </div>
+          <div class="clearfix"></div>
+   
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-4 col-xs-offset-5">
+            <button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </body>
+</html>
