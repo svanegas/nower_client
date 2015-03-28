@@ -40,7 +40,28 @@ app.controller('JsonCtrl', ['$scope','$http', function($scope, $http) {
         console.log("otra cosa");
       });
     }
-    
+  
+    function getData($http) {
+      console.log("holi");
+      var req = {
+        method: 'GET',
+        url: 'http://nowerserver.herokuapp.com/stores/branches/42',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        data: data
+      }
+      $http(req).success(function(response) {
+        console.log("ya");
+        console.log(JSON.stringify(response));        
+        rawJSON = JSON.parse(JSON.stringify(response));
+        console.log(rawJSON);
+      }).error(function() {
+        console.log("otra cosa");
+      });
+    }  
+  
+  
 }]);
 
 
@@ -54,6 +75,7 @@ app.controller('EventArgumentsCtrl', ['$scope', function($scope) {
 		$scope.placeMarker = function(e) {
             if($scope.justOne) {
 				console.log(JSON.stringify(e));
+                console.log(e.latLng);
 				var marker = new google.maps.Marker({position: e.latLng, map: map, draggable:true});		 				
 				updateCoordinates(e.latLng.k, e.latLng.D);
 				map.panTo(e.latLng);			  				
@@ -70,3 +92,6 @@ app.controller('EventArgumentsCtrl', ['$scope', function($scope) {
 		document.getElementById('longitude').value = lng;
 	}
 }]);
+
+
+
