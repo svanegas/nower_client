@@ -4,7 +4,7 @@ angular.module('App.services', [])
 //el marcador del mapa.
 .service('SharedVars', function () {
   var storeId;
-    return {
+  return {
     getStoreId: function () {
       console.log("Llego a get");
       return storeId;
