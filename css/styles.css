@@ -44,12 +44,12 @@ body{
 
 #map-canvas {
 	width:50%;
-    height:calc(100% - 0);
-    position:absolute;
-    right:16px;
-    top:50px;
-    bottom:0;
-    overflow:hidden;
+  height:calc(100% - 0);
+  position:absolute;
+  right:16px;
+  top:50px;
+  bottom:0;
+  overflow:hidden;
 }
 
 
@@ -57,8 +57,8 @@ body{
 label.control-label span { cursor: pointer; }
 
 #eventForm .form-control-feedback {
-        top: 0;
-        right: -15px;
+  top: 0;
+  right: -15px;
 }
 
 .row{

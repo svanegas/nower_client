@@ -2,23 +2,22 @@
 
 app.controller('ListCtrl', ['$scope','$http', function($scope, $http) {
     
-    function getData($http) {
-      var req = {
-        method: 'GET',
-        url: 'http://nowerserver.herokuapp.com/stores/branches/42',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: data
-      }
-      $http(req).success(function(response) {
-        console.log("ya");
-        console.log(JSON.stringify(response));        
-        rawJSON = JSON.parse(JSON.stringify(response));
-        console.log(rawJSON);
-      }).error(function() {
-        console.log("otra cosa");
-      });
-    }    
-    
+  function getData($http) {
+    var req = {
+      method: 'GET',
+      url: 'http://nowerserver.herokuapp.com/stores/branches/42',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+    $http(req).success(function(response) {
+      console.log("ya");
+      console.log(JSON.stringify(response));        
+      rawJSON = JSON.parse(JSON.stringify(response));
+      console.log(rawJSON);
+    }).error(function() {
+      console.log("otra cosa");
+    });
+  }       
 }]);

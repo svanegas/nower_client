@@ -6,115 +6,90 @@
 		<title>Nower</title>
 		<meta name="generator" content="Bootply"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!-- css -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">		
-		<link href="../css/styles.css" rel="stylesheet">
+    <!-- css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">		
+    <link href="../css/create_branch.css" rel="stylesheet">
 
-        <!-- script references -->        
-        <script src="../js/lib/jqueryV1.11.2.js"></script>
-        <!-- script bootstrap -->        
-        <script src="../js/lib/bootstrap3.3.4.js"></script>        
-        <script src="../js/lib/bootstrap3.2.0.js"></script>
-        <script src="../js/lib/bootstrap.min.js"></script>
-        <!-- script google -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
-        <!-- script angular -->                
-        <script src="../js/lib/angularjs1.2.25.js"></script>        
-        <script src="../js/lib/ngMap.js"></script>
-        <script src="../js/controllers/script_create_branch.js"></script>
-        <!-- scripts para alertas -->        
-        <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> 
+    <!-- script references -->        
+    <script src="../js/lib/jqueryV1.11.2.js"></script>
+    <!-- script bootstrap -->        
+    <script src="../js/lib/bootstrap3.3.4.js"></script>        
+    <script src="../js/lib/bootstrap3.2.0.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <!-- script google -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
+    <!-- script angular -->                
+    <script src="../js/lib/angularjs1.2.25.js"></script>        
+    <script src="../js/lib/ngMap.js"></script>
+    <script src="../js/controllers/script_create_branch.js"></script>
+    <!-- scripts para alertas -->        
+    <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> 
 	</head>
 	<body>
-        <!-- Barra de navegación -->
-        <div class="navbar navbar-custom navbar-fixed-top">
-         <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
-              <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </a>
-            </div>
-                <!-- Barra de navegación -->
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                      <li class="active"><a href="../views/post_promotion.html">Nueva promoción</a></li>
-                      <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
-                      <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
-                      <li>&nbsp;</li>
-                    </ul>
-                  <form class="navbar-form">
-                    <div class="form-group" style="display:inline;">
-                      <div class="input-group">
-                        <div class="input-group-btn">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                              <span class="glyphicon glyphicon-chevron-down"></span>
-                            </button>
-                        </div>
-                        <input type="text" class="form-control" placeholder="What are searching for?">
-                        <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
-                      </div>
-                    </div>
-                   </form>
-                  </div>
-                </div>
-
-
-<!-- <div class="container-fluid" id="main">
-  <div class="row">
-  	<div class="col-xs-8" id="left">
-		 -->
-<div class="container-fluid" id="main" ng-controller="EventArgumentsCtrl">
-  <div class="row">
-  	<div class="col-xs-6" id="left">
-      <hr>
-
-	 <h2>Crear nueva sucursal</h2>
-        <!-- ng-controller="JsonCtrl"  -->
-		<form role="form" ng-submit="createBranch(branch)" ng-controller="JsonCtrl" >
-		  <div class="form-group">
-			<label>Nombre:</label>
-			<input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
-		  </div>
-		  <div class="form-group">
-			<label>Dirección:</label>
-			<input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
-		  </div>
-		  <div class="form-group">
-			<label>Teléfono:</label>
-			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
-		  </div>
-		  <div class="form-group">
-			<label>Latitud:</label>
-			<input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
-		  </div>
-		  <div class="form-group">
-			<label>Longitud:</label>
-			<input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
-		  </div>						
-		  <!--button type="submit" class="btn btn-primary">Crear Sucursal</button-->
-		  <button type="submit" class="btn btn-primary">Crear Sucursal</button>
-		</form>
-        
-      <hr>
-
+    <!-- Barra de navegación -->
+    <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+      </div>
+            <!-- Barra de navegación -->
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="../views/post_promotion.html">Nueva promoción</a></li>
+          <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
+          <li><a href="../views/redeem_promotion.html">Redimir código</a></li>          
+        </ul>
+      </div>
     </div>
-    <div class="col-xm-4" >
-	<!-- Map -->
-		<div>
-			<div  class="ng-scope">				
-				<map center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
-			</div>
-		</div>		
-	</div>
-    
-  </div>
-</div>
-<!-- end template -->
 
-		
+    <div class="container-fluid" id="main" ng-controller="EventArgumentsCtrl">
+      	<div class="col-xs-5" id="left">
+          <h2>Crear nueva sucursal</h2>
+          <hr>
+      		<form role="form" ng-submit="createBranch(branch)" ng-controller="JsonCtrl" >
+      		  <div class="form-group">
+      			<label>Nombre:</label>
+      			<input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
+      		  </div>
+      		  <div class="form-group">
+      			<label>Dirección:</label>
+      			<input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
+      		  </div>
+      		  <div class="form-group">
+      			<label>Teléfono:</label>
+      			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
+      		  </div>
+      		  <div class="form-group">
+      			<label>Latitud:</label>
+      			<input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
+      		  </div>
+      		  <div class="form-group">
+      			<label>Longitud:</label>
+      			<input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
+      		  </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-5 col-xs-offset-4">				
+        		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
+                </div>
+              </div>
+            </div>
+      		</form>
+        </div>
+        <div class="col-xm-4" >
+          <!--Mapa-->
+    		  <div>
+            <div  class="ng-scope">				
+              <map center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
+            </div>
+    		  </div>		
+        </div>
+    </div>
 	</body>
 </html>
