@@ -1,4 +1,4 @@
-angular.module('App.services', [])
+angular.module('servicio', [])
 
 //Este servicio almacena los valores de latitud y longitud registradas por
 //el marcador del mapa.
@@ -6,12 +6,14 @@ angular.module('App.services', [])
   var storeId;
   return {
     getStoreId: function () {
-      console.log("Llego a get");
+      console.log("Llego a get");    
       return storeId;
     },
     setStoreId: function(value) {
       console.log("Llego a set");
       storeId = value;
+      alert(storeId);
+      //console.log(storeId);
     }
   };  
 });

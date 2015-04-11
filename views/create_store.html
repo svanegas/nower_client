@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="create_store">
+<html lang="en" ng-app="App">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
@@ -24,14 +24,20 @@
         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
         <!-- script angular -->                
         <script src="../js/lib/angularjs1.2.25.js"></script>        
-        <script src="../js/lib/ngMap.js"></script>
-        <script src="../js/controllers/script_create_store.js"></script>
-        <script src="../js/controllers/script_calendar.js"></script>
+        <script src="../js/lib/ngMap.js"></script>                
         <!-- script Datepicker js-->        
         <script src="../js/lib/bootstrap-datepicker1.3.0.js"></script>
         <!-- scripts para alertas -->        
         <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> 
+        <!-- Controllers -->
+        <script src="../js/controllers/app.js"></script>      
+        <script src="../js/controllers/login.js"></script>           
+        <script src="../js/controllers/post_promotion.js"></script>            
+        <script src="../js/controllers/create_branch.js"></script>
+        <script src="../js/controllers/create_store.js"></script>    
+        <script src="../js/controllers/redeem_promotion.js"></script>        
+        <script src="../js/controllers/script_data.js"></script> 
         
   </head>
   <body>
@@ -58,7 +64,7 @@
       <div class="col-xs-5" id="left">
         <h2>Crear Nueva Tienda</h2>  
         <hr>
-        <form role="form" ng-submit="createStore(store)" ng-controller="JsonCtrl"> 
+        <form role="form" ng-submit="createStore(store)" ng-controller="SendStoreCtrl"> 
 
           <div class="form-group">    
             <label for="text">Nombre:</label>

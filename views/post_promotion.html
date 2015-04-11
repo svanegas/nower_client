@@ -1,38 +1,45 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myapp">
+<html lang="en" ng-app="App">
   <head>  
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Nower</title>
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <!-- css -->
-        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">    
+    <!-- css -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">    
     <link href="../css/post_promotion.css" rel="stylesheet">
-        <!-- Include Bootstrap Datepicker  css-->
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-        <!-- script references -->        
-        <script src="../js/lib/jqueryV1.11.2.js"></script>
-        <!-- script bootstrap -->        
-        <script src="../js/lib/bootstrap3.3.4.js"></script>        
-        <script src="../js/lib/bootstrap3.2.0.js"></script>
-        <script src="../js/lib/bootstrap.min.js"></script>
-        <!-- script google -->
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
-        <!-- script angular -->                
-        <script src="../js/lib/angularjs1.2.25.js"></script>        
-        <script src="../js/lib/ngMap.js"></script>
-        <script src="../js/controllers/script_data.js"></script>      
-        <script src="../js/controllers/script_post_promotion.js"></script> 
-        <script src="../js/controllers/script_calendar.js"></script>        
-        <!-- script Datepicker js-->        
-        <script src="../js/lib/bootstrap-datepicker1.3.0.js"></script>
-        <!-- scripts para alertas -->        
-        <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Include Bootstrap Datepicker  css-->
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
+    <!-- script references -->        
+    <script src="../js/lib/jqueryV1.11.2.js"></script>
+    <!-- script bootstrap -->        
+    <script src="../js/lib/bootstrap3.3.4.js"></script>        
+    <script src="../js/lib/bootstrap3.2.0.js"></script>
+    <script src="../js/lib/bootstrap.min.js"></script>
+    <!-- script google -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
+    <!-- script angular -->                
+    <script src="../js/lib/angularjs1.2.25.js"></script>        
+    <script src="../js/lib/ngMap.js"></script>            
+    <!-- script Datepicker js-->        
+    <script src="../js/lib/bootstrap-datepicker1.3.0.js"></script>
+    <!-- scripts para alertas -->        
+    <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Controllers -->
+    <script src="../js/controllers/app.js"></script>      
+    <script src="../js/controllers/login.js"></script>           
+    <script src="../js/controllers/post_promotion.js"></script>            
+    <script src="../js/controllers/create_branch.js"></script>
+    <script src="../js/controllers/create_store.js"></script>    
+    <script src="../js/controllers/redeem_promotion.js"></script>        
+    <script src="../js/controllers/script_data.js"></script>      
+    
+       
       
   </head>
     
@@ -57,125 +64,127 @@
     </div>
 
     <div class="container-fluid" id="main" ng-controller="EventArgumentsCtrl">
-        <div class="col-xs-5" id="left" ng-controller="JsonCtrl">
-          <!-- formulario -->
-          <form role="form" ng-submit="createPromo(promo)"  >                                    
-            <h2>Publicar nueva promoción</h2>
-            <hr>
-            <div class="form-group">
-              <label for="text">Título:</label>
-              <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title">
-            </div>
-  
-            <div class="form-group">
-              <label for="comment">Description:</label>
-              <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.description">
-              </textarea>
-            </div>
-          
-            <div class="form-group">
-              <label for="comment">Términos y condiciones:</label>
-              <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms">
-              </textarea>
-            </div>            
-   
-            <div class="form-group">
-                <label for="text">Personas límite:</label>
-                <input type="text" class="form-control" id="title" ng-model="promo.people_limit">
-              </div>
+      <div class="col-xs-5" id="left" ng-controller="SendPromotionCtrl">
+       <!-- formulario -->
+       <form role="form" ng-submit="createPromo(promo)"  >                                    
+         <h2>Publicar nueva promoción</h2>
+         <hr>
+         <div class="form-group">
+           <label for="text">Título:</label>
+           <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title">
+         </div>
 
-            <!-- Lista de Sucursales -->
+         <div class="form-group">
+           <label for="comment">Description:</label>
+           <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.description">
+           </textarea>
+         </div>
 
-            <div class="form-group">
-              <table border="0" class="table table-condensed">
-                <tr>
-                  <td colspan="12" align="left">Mueve al lado derecho las sucursales donde deseas iniciar una promoción</td>
-                </tr>
-                <tr>
-                  <td colspan="2" align="left">Sucursales disponibles</td>
-                  <td colspan="2" align="center">Seleccionadas</td>
-                </tr>
-                <tr>
-                  <td rowspan="4" align="center"><label>
-                    <select name="selectLeft" size="10" id="selectLeft">
-                    </select>
-                  </label></td>
-                  <td>
-                    <table border="0" class="table table-condensed">
-                      <td align="left">&nbsp;</td>
-                      <tr>
-                        <td align="center"><label>
-                          <input name="btnRight" type="button" id="btnRight" value="&gt;&gt;" ng-click="moveToRightOrLeft(1)">
-                        </label></td>
-                      </tr>
+         <div class="form-group">
+           <label for="comment">Términos y condiciones:</label>
+           <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms">
+           </textarea>
+         </div>            
 
-                      <tr>
-                        <td align="center"><label>
-                          <input name="btnLeft" type="button" id="btnLeft" value="&lt;&lt;" ng-click="moveToRightOrLeft(2)">
-                        </label></td>
-                      </tr>
+         <div class="form-group">
+             <label for="text">Personas límite:</label>
+             <input type="text" class="form-control" id="title" ng-model="promo.people_limit">
+           </div>
 
-                      <tr>
-           
-                        <td align="center"><label>
-                          <input name="btnAllRight" type="button" id="btnAllRight" value="&gt;&gt;&gt;" ng-click="move(1)">
-                        </label></td>
-                      </tr>
+         <!-- Lista de Sucursales -->
 
-                      <tr>
-                        <td align="center"><label>
-                          <input name="btnAllLeft" type="button" id="btnAllLeft" value="&lt;&lt;&lt;" ng-click="move(2)">
-                        </label></td>
-                      </tr>
-                    </table>
-                  </td>
+         <div class="form-group">
+           <table border="0" class="table table-condensed">
+             <tr>
+               <td colspan="12" align="left">Mueve al lado derecho las sucursales donde deseas iniciar una promoción</td>
+             </tr>
+             <tr>
+               <td colspan="2" align="left">Sucursales disponibles</td>
+               <td colspan="2" align="center">Seleccionadas</td>
+             </tr>
+             <tr>
+               <td rowspan="4" align="center"><label>
+                 <select name="selectLeft" size="10" id="selectLeft">
+                 </select>
+               </label></td>
+               <td>
+                 <table border="0" class="table table-condensed">
+                   <td align="left">&nbsp;</td>
+                   <tr>
+                     <td align="center"><label>
+                       <input name="btnRight" type="button" id="btnRight" value="&gt;&gt;" ng-click="moveToRightOrLeft(1)">
+                     </label></td>
+                   </tr>
 
-                  <td rowspan="4" align="center"><label>
-                    <select name="selectRight" size="10" id="selectRight">
-                    </select>
-                  </label></td>
-                </tr>
-              </table>
+                   <tr>
+                     <td align="center"><label>
+                       <input name="btnLeft" type="button" id="btnLeft" value="&lt;&lt;" ng-click="moveToRightOrLeft(2)">
+                     </label></td>
+                   </tr>
 
-              
-            </div>              
-              
-            <!-- Calendario -->
-            <div class="form-group">
-              <div class="col-md-12">
-                <div class="row">
-                  <label class="col-xs-1 control-label">Date</label>
-                  <div class="col-xs-5 date">
-                    <div class="input-group input-append date" id="datePicker">
-                      <input type="text" class="form-control" name="date" ng-model="promo.date"/>
-                      <span class="input-group-addon add-on">
-                        <span class="glyphicon glyphicon-calendar">
-                        </span>
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                   <tr>
 
-            <div class="form-group">
-              <div class="row">
-                <div class="col-xs-5 col-xs-offset-3">
-                  <button type="submit" class="btn btn-primary btn-lg">Publicar promoción</button>
-                </div>
-              </div>
-            </div>  
+                     <td align="center"><label>
+                       <input name="btnAllRight" type="button" id="btnAllRight" value="&gt;&gt;&gt;" ng-click="move(1)">
+                     </label></td>
+                   </tr>
 
-            <!-- alerta -->
-            <div class="form-group">
-              <div class="row">
-                <div ng-controller="AlertDemoCtrl">
-                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-                </div>
-              </div>        
-            </div>  
-          </form>
-      </div>
+                   <tr>
+                     <td align="center"><label>
+                       <input name="btnAllLeft" type="button" id="btnAllLeft" value="&lt;&lt;&lt;" ng-click="move(2)">
+                     </label></td>
+                   </tr>
+                 </table>
+               </td>
+
+               <td rowspan="4" align="center"><label>
+                 <select name="selectRight" size="10" id="selectRight">
+                 </select>
+               </label></td>
+             </tr>
+           </table>
+
+
+         </div>              
+
+         <!-- Calendario -->
+         <div class="form-group">
+           <div class="col-md-12">
+             <div class="row">
+               <label class="col-xs-1 control-label">Date</label>
+               <div class="col-xs-5 date">
+                 <div class="input-group input-append date" id="datePicker">
+                   <input type="text" class="form-control" name="date" ng-model="promo.date"/>
+                   <span class="input-group-addon add-on">
+                     <span class="glyphicon glyphicon-calendar">
+                     </span>
+                   </span>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+
+         <div class="form-group">
+           <div class="row">
+             <div class="col-xs-5 col-xs-offset-3">
+               <button type="submit" class="btn btn-primary btn-lg">Publicar promoción</button>
+             </div>
+           </div>
+         </div>  
+
+         <!-- alerta -->
+         <!--
+         <div class="form-group">
+           <div class="row">
+             <div ng-controller="AlertDemoCtrl">
+               <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+             </div>
+           </div>        
+         </div> 
+         -->
+       </form>
+    </div>
     </div>
     <!-- Mapa -->
     <div class="col-xm-4" >
