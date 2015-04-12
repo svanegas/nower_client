@@ -1,8 +1,56 @@
-//var app = angular.module('myapp', ['ngMap','App.services','ui.bootstrap']);
+//var app = angular.module('index', ['ngMap','App.services','ui.bootstrap']);
 
-angular.module("post_promotion",['ngMap','LocalStorageModule'])
+angular.module("test",['LocalStorageModule'])
 
-  //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
+//.controller('SendLoginCtrl', ['$scope','$http','$window','SharedVars', function($scope, $http, $window, SharedVars) {
+.controller('SendLoginCtrl', ['$scope','$http','$window','localStorageService', function($scope, $http, $window, localStorageService) {//  
+  
+  //$cookieStore.put("ID", "hola");  
+  localStorageService.set("ID", 42);
+  alert(localStorageService.get("ID"));
+  
+	$scope.loginStore = function(store) {
+    console.log(JSON.stringify(store));		
+		var email = store.email;
+		var password = store.password;                          
+		var jsonStore = {      		
+      "email": email,
+      "password": password,
+    }
+    var store = {
+      "store": jsonStore
+    }
+		console.log(jsonStore);                
+    sendData(store, $http, $window);
+	} 
+    
+  function sendData(data, $http, $window) {
+    var req = {
+      method: 'POST',
+      url: 'http://nowerserver.herokuapp.com/stores/login',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+    $http(req).success(function(response) {
+      console.log("ya");
+      console.log(JSON.stringify(response));
+      rawJSON = JSON.parse(JSON.stringify(response));
+      $scope.store_id = rawJSON.store.store_id;
+      console.log(rawJSON.store.token);        
+      console.log(rawJSON.store.store_id);        
+      //SharedVars.setStoreId(rawJSON.store.store_id);
+      $window.location='./views/post_promotion.html'; 
+    }).error(function() {
+      console.log("otra cosa");
+    });
+  }   
+}])
+
+
+
+ //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
   	$scope.createPromo = function(promo) { 
       console.log("***************************");
@@ -73,8 +121,21 @@ angular.module("post_promotion",['ngMap','LocalStorageModule'])
 
   //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('EventArgumentsCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
-         
-       
+    
+    
+    $scope.value = localStorageService.get("ID");
+    alert($scope.value);
+    
+    
+    //$scope.storeId = getStoreId();        
+    //console.log("-----------------------------------");
+    //console.log(SharedVars.getStoreId());
+    //console.log("-----------------------------------");  
+    
+    
+    
+    
+    //getData($http, SharedVars);       
     getData($http);       
     
     
@@ -114,12 +175,11 @@ angular.module("post_promotion",['ngMap','LocalStorageModule'])
     
     //function getData($http, SharedVars) {
     function getData($http) {
-      //Llamamos al ID almacenado
-      $scope.value = localStorageService.get("Id"); 
+      //console.log("holi");
       var req = {
         method: 'GET',
         //url: 'http://nowerserver.herokuapp.com/stores/branches/'+SharedVars.getStoreId(),
-        url: 'http://nowerserver.herokuapp.com/stores/branches/'+$scope.value,
+        url: 'http://nowerserver.herokuapp.com/stores/branches/42',
         headers: {
           'Content-Type': 'application/json'
         }
@@ -230,6 +290,9 @@ angular.module("post_promotion",['ngMap','LocalStorageModule'])
       $scope.alerts.splice(index, 1);
     };
   });
+
+
+
 
 
 
