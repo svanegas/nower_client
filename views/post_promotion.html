@@ -25,8 +25,7 @@
     <!-- script angular -->                
     <script src="../js/lib/angularjs1.2.25.js"></script>        
     <script src="../js/lib/ngMap.js"></script>      
-    <script src="../js/lib/angular-local-storage.js"></script>      
-
+    <script src="../js/lib/angular-local-storage.js"></script>             
     
     <!-- script Datepicker js-->        
     <script src="../js/lib/bootstrap-datepicker1.3.0.js"></script>
@@ -39,7 +38,9 @@
     <script src="../js/controllers/post_promotion.js"></script>     
     <script src="../js/controllers/create_branch.js"></script>
     <script src="../js/controllers/create_store.js"></script>    
-    <script src="../js/controllers/redeem_promotion.js"></script>        
+    <script src="../js/controllers/redeem_promotion.js"></script>  
+    <script src="../js/controllers/detail_promotion.js"></script> 
+    <script src="../js/controllers/script_calendar.js"></script>        
     <script src="../js/controllers/script_data.js"></script>      
     <!-- <script src="../js/controllers/test.js"></script>       -->
         
@@ -47,7 +48,7 @@
       
   </head>
     
-  <body>
+  <body>   
     <!-- Barra de navegación -->
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
@@ -74,8 +75,20 @@
          <h2>Publicar nueva promoción</h2>
          <hr>
          <div class="form-group">
-           <label for="text">Título:</label>
-           <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title">
+           
+           
+         <!-- alerta -->         
+         <div class="form-group">           
+           <div class="row">
+             <div ng-controller="AlertDemoCtrl">
+               <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+             </div>
+           </div>        
+         </div> 
+           
+           
+         <label for="text">Título:</label>
+           <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title" clear-input>
          </div>
 
          <div class="form-group">
@@ -175,18 +188,7 @@
                <button type="submit" class="btn btn-primary btn-lg">Publicar promoción</button>
              </div>
            </div>
-         </div>  
-
-         <!-- alerta -->
-         <!--
-         <div class="form-group">
-           <div class="row">
-             <div ng-controller="AlertDemoCtrl">
-               <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-             </div>
-           </div>        
-         </div> 
-         -->
+         </div>           
        </form>
     </div>
     </div>

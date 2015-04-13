@@ -38,6 +38,7 @@ angular.module("login",['LocalStorageModule'])
       console.log(rawJSON.store.store_id);              
       //Almacenamos el ID del cliente
       localStorageService.set("Id", rawJSON.store.store_id); 
+      console.log(rawJSON.store.store_id);
       $window.location='./views/post_promotion.html'; 
     }).error(function() {
       console.log("otra cosa");
