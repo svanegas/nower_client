@@ -1,6 +1,7 @@
 //var app = angular.module('myapp', ['ngMap','App.services','ui.bootstrap']);
 
-angular.module("post_promotion",['ngMap','LocalStorageModule'])
+angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
+//angular.module("post_promotion",['ngMap','LocalStorageModule'])
 
   //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
@@ -46,18 +47,45 @@ angular.module("post_promotion",['ngMap','LocalStorageModule'])
         data: data
       }
       $http(req).success(function(response) {
-        console.log("ya");
-        console.log(JSON.stringify(response));
-        state = response.success;
-        if(state){
-          $scope.alerts = [{ type: 'success', msg: '¡Anuncio publicado! :)' }];          
-        }else{
-        $scope.alerts = [{ type: 'danger', msg: 'No se pudo publicar la promoción :( ' + state.errors}];            
-        }
+        evaluteResponse(response);
       }).error(function() {
         console.log("otra cosa");
       });
     } 
+    
+    function evaluteResponse(response){              
+        console.log(JSON.stringify(response));
+        state = response.success;
+        if(state){
+          $scope.alerts = [{ type: 'success', msg: '¡Promoción publicada! :)' }];             
+        }else{                  
+          var errorName = [];
+          var errorMsgs = [];          
+          var cont = 0;                    
+          jQuery.each(response.errors, function(attr, errors) {                        
+            errorName.push(attr);            
+            cont += 1;
+            jQuery.each(errors, function() {                               
+              errorMsgs.push(this);
+            });                                                                     
+          });
+          showErrorAlert(errorName, errorMsgs, cont);                                           
+        }
+         window.scrollTo(0,0);            
+    }
+    
+    
+    function showErrorAlert(errorName, errorMsgs, cont){
+      if(cont > 1){
+        $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}]; 
+        for(i = 1; i < errorMsgs.length; i++){
+            $scope.alerts.push({type: 'danger', msg: "Error: " + errorName[i] + " " + errorMsgs[i]});
+        }            
+      } else {            
+            $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}]; 
+      }        
+      
+    }
     
     function setJson(){    
       $scope.arrayIds = [];
@@ -76,10 +104,6 @@ angular.module("post_promotion",['ngMap','LocalStorageModule'])
          
        
     getData($http);       
-    
-    
-    
-    
     
     $scope.$on('mapInitialized', function(evt, evtMap) {			  
       console.log("Entró al inicializador del mapa");

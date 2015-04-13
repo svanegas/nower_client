@@ -1,14 +1,14 @@
-angular.module("create_branch",['ngMap'])
+angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
 
 
-.controller('SendBranchCtrl', ['$scope','$http', function($scope, $http) {
+.controller('SendBranchCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
 	$scope.createBranch = function(branch) {
     console.log(JSON.stringify(branch));
-		var store_id = "42";
-    var name = branch.name;
+		var store_id = localStorageService.get("Id"); ;
+        var name = branch.name;
 		var address = branch.address;
 		var phone = branch.phone;
-    var lat = document.getElementById('latitude').value;
+        var lat = document.getElementById('latitude').value;
 		var lng = document.getElementById('longitude').value;
 		var jsonBranch = {
   		"store_id": store_id,
@@ -21,8 +21,8 @@ angular.module("create_branch",['ngMap'])
     var branch = {
       "branch": jsonBranch
     }
-		console.log(JSON.stringify(branch));	        
-    sendData(branch, $http);
+      console.log(JSON.stringify(branch));	        
+      sendData(branch, $http);
 	} 
     
   function sendData(data, $http) {
@@ -37,11 +37,13 @@ angular.module("create_branch",['ngMap'])
     $http(req).success(function(response) {
       console.log("ya");
       console.log(JSON.stringify(response));
+      
     }).error(function() {
       console.log("otra cosa");
     });
   }
     
+  /**
   function getData($http) {
     console.log("holi");
     var req = {
@@ -61,7 +63,7 @@ angular.module("create_branch",['ngMap'])
       console.log("otra cosa");
     });
   }  
-  
+  **/
   
 }])
 

@@ -1,8 +1,8 @@
 //var app = angular.module('redeem_promotion', []);
 
-angular.module("redeem_promotion",[])
+angular.module("redeem_promotion",['ui.bootstrap','LocalStorageModule'])
 
-.controller('SendRedeemPromotionCtrl', ['$scope','$http','$window', function($scope, $http, $window) {
+.controller('SendRedeemPromotionCtrl', ['$scope','$http','$window','localStorageService', function($scope, $http, $window, localStorageService) {
   $scope.redeem_promotion = function(promotion) {
     console.log(JSON.stringify(promotion));
     var code = promotion.code;   
@@ -25,14 +25,52 @@ angular.module("redeem_promotion",[])
       },
       data: data
     }
-    $http(req).success(function(response) {
-      $window.location='./detail_promotion.html';
-      console.log("ya");
+    $http(req).success(function(response) {            
       console.log(JSON.stringify(response));
+      evaluteResponse(response);
     }).error(function() {
       console.log("otra cosa");
     });
   }  
+  
+    function evaluteResponse(response){              
+        console.log(JSON.stringify(response));
+        state = response.success;
+        if(state){                        
+          localStorageService.set("user", response.user.name); 
+          localStorageService.set("title", response.promo.title); 
+          localStorageService.set("description", response.promo.description);       
+          localStorageService.set("expiration_date", response.promo.expiration_date); 
+          localStorageService.set("people_limit", response.promo.people_limit);             
+          $window.location='./detail_promotion.html';                     
+          //console.log(localStorageService.get("user"));
+          //console.log(localStorageService.get("title"));
+          //console.log(localStorageService.get("description"));
+          //console.log(localStorageService.get("expiration_date"));
+          //console.log(localStorageService.get("people_limit"));
+        }else{     
+          $scope.alerts = [{ type: 'danger', msg: "Error: " + response.errors}];  
+        }
+        
+         window.scrollTo(0,0);            
+    }
+    
+    
+    function showErrorAlert(errorName, errorMsgs, cont){
+      if(cont > 1){
+        $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}]; 
+        for(i = 1; i < errorMsgs.length; i++){
+            $scope.alerts.push({type: 'danger', msg: "Error: " + errorName[i] + " " + errorMsgs[i]});
+        }            
+      } else {            
+            $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}]; 
+      }        
+      
+    }  
+  
+  
+  
+  
 }]);
 
 
