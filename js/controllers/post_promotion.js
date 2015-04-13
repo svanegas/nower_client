@@ -5,7 +5,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
   //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
-  	$scope.createPromo = function(promo) { 
+  	$scope.createPromo = function(promo) {
       console.log("***************************");
       setJson();
       console.log("***************************");
@@ -26,17 +26,17 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     		"terms": terms,
     		"expiration_date": expiration_date,
     		"people_limit": people_limit,
-    		"branches": branches          
+    		"branches": branches
       }
     	var promo = {
       	"promo": jsonPromo
     	}
   		console.log(JSON.stringify(jsonPromo));
-  		//console.log($scope.listRight.options[0].value);        
+  		//console.log($scope.listRight.options[0].value);
   		//$http.post(url, branch);
       sendData(promo, $http);
-  	} 
-      
+  	}
+
     function sendData(data, $http) {
       var req = {
         method: 'POST',
@@ -51,69 +51,71 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       }).error(function() {
         console.log("otra cosa");
       });
-    } 
-    
-    function evaluteResponse(response){              
+    }
+
+    function evaluteResponse(response){
         console.log(JSON.stringify(response));
         state = response.success;
         if(state){
-          $scope.alerts = [{ type: 'success', msg: '¡Promoción publicada! :)' }];             
-        }else{                  
+          $scope.alerts = [{ type: 'success', msg: '¡Promoción publicada! :)' }];
+        }else{
           var errorName = [];
-          var errorMsgs = [];          
-          var cont = 0;                    
-          jQuery.each(response.errors, function(attr, errors) {                        
-            errorName.push(attr);            
+          var errorMsgs = [];
+          var cont = 0;
+          jQuery.each(response.errors, function(attr, errors) {
+            errorName.push(attr);
             cont += 1;
-            jQuery.each(errors, function() {                               
+            jQuery.each(errors, function() {
               errorMsgs.push(this);
-            });                                                                     
+            });
           });
-          showErrorAlert(errorName, errorMsgs, cont);                                           
+          showErrorAlert(errorName, errorMsgs, cont);
         }
-         window.scrollTo(0,0);            
+         window.scrollTo(0,0);
+         document.forms["promotion_form"].reset();
+         $scope.move(2);
     }
-    
-    
+
+
     function showErrorAlert(errorName, errorMsgs, cont){
       if(cont > 1){
-        $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}]; 
+        $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}];
         for(i = 1; i < errorMsgs.length; i++){
             $scope.alerts.push({type: 'danger', msg: "Error: " + errorName[i] + " " + errorMsgs[i]});
-        }            
-      } else {            
-            $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}]; 
-      }        
-      
+        }
+      } else {
+            $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}];
+      }
+
     }
-    
-    function setJson(){    
+
+    function setJson(){
       $scope.arrayIds = [];
       for(i = 0; i < $scope.listRight.options.length; i++){
         id = {}
         id ["id"] = $scope.listRight.options[i].value;
         //id ["email"] = email;
-        $scope.arrayIds.push(id); 
+        $scope.arrayIds.push(id);
       }
       console.log(JSON.stringify($scope.arrayIds));
-    } 
+    }
   }])
 
   //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('EventArgumentsCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
-         
-       
-    getData($http);       
-    
-    $scope.$on('mapInitialized', function(evt, evtMap) {			  
+
+
+    getData($http);
+
+    $scope.$on('mapInitialized', function(evt, evtMap) {
       console.log("Entró al inicializador del mapa");
-      $scope.map = evtMap;      
+      $scope.map = evtMap;
     });
-    
+
     //Esta función pone los marcadores en el mapa
     function createMarkers(){
       //console.log("Entró a crear marker");
-      //console.log($scope.rawJSON.branches[0].name);      
+      //console.log($scope.rawJSON.branches[0].name);
       /**
       var jsonLatLng = {
           "k": k,
@@ -127,19 +129,19 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         var myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
         var marker = new google.maps.Marker({position: myLatlng, map: $scope.map});
         //console.log("creó marker: " + i );
-      }                    
+      }
     }
     //no hace nada pero la tengo ahí por si la necesito
   	function updateCoordinates(lat, lng) {
   		document.getElementById('latitude').value = lat;
   		document.getElementById('longitude').value = lng;
-  	}            
+  	}
     //Esta función trae el JSON del servicio
-    
+
     //function getData($http, SharedVars) {
     function getData($http) {
       //Llamamos al ID almacenado
-      $scope.value = localStorageService.get("Id"); 
+      $scope.value = localStorageService.get("Id");
       var req = {
         method: 'GET',
         //url: 'http://nowerserver.herokuapp.com/stores/branches/'+SharedVars.getStoreId(),
@@ -150,25 +152,25 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       }
       $http(req).success(function(response) {
         console.log("ya");
-        console.log(JSON.stringify(response));        
+        console.log(JSON.stringify(response));
         $scope.rawJSON = JSON.parse(JSON.stringify(response));
-        createArray();        
+        createArray();
       }).error(function() {
         console.log("otra cosa");
         $scope.alerts = [{ type: 'danger', msg: 'No cargó las sucursales' }];
       });
-    } 
-    
+    }
+
     //Crea un array con los branches
     function createArray(){
       var listLeft = document.getElementById('selectLeft');
-      //var listRight = document.getElementById('selectRight'); 
-      $scope.listRight = document.getElementById('selectRight'); 
-      $scope.branches = [];               
-      for(i = 0; i < $scope.rawJSON.branches.length; i++){  
+      //var listRight = document.getElementById('selectRight');
+      $scope.listRight = document.getElementById('selectRight');
+      $scope.branches = [];
+      for(i = 0; i < $scope.rawJSON.branches.length; i++){
         $scope.branches.push($scope.rawJSON.branches[i]);
         create(listLeft, $scope.rawJSON.branches[i].id, $scope.rawJSON.branches[i].name);
-      }    
+      }
       createMarkers();
     }
     //Mete las branches a la lista tipo interactiva
@@ -216,12 +218,12 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       //var listRight=document.getElementById('selectRight');
       $scope.listRight = document.getElementById('selectRight');
       if(side == 1) {
-        console.log("intento mover para un lado");        
-        while(listLeft.options.length > 0) {          
+        console.log("intento mover para un lado");
+        while(listLeft.options.length > 0) {
           move($scope.listRight, listLeft.options[0].value, listLeft.options[0].text);
           listLeft.remove(listLeft.options[0]);
         }
-      } else {        
+      } else {
         while($scope.listRight.options.length > 0){
           move(listLeft, $scope.listRight.options[0].value, $scope.listRight.options[0].text);
           $scope.listRight.remove($scope.listRight.options[0]);
@@ -236,7 +238,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       newOption.text = optionDisplayText;
       listBoxTo.add(newOption, null);
       return true;
-    }  
+    }
   }])
 
   .controller('AlertDemoCtrl', function ($scope) {
@@ -254,8 +256,3 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       $scope.alerts.splice(index, 1);
     };
   });
-
-
-
-
-
