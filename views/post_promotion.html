@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="App">
-  <head>  
+  <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <title>Nower</title>
@@ -9,46 +9,46 @@
     <!-- css -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link href="../css/post_promotion.css" rel="stylesheet">
     <!-- Include Bootstrap Datepicker  css-->
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker3.min.css" />
-    <!-- script references -->        
+    <!-- script references -->
     <script src="../js/lib/jqueryV1.11.2.js"></script>
-    <!-- script bootstrap -->        
-    <script src="../js/lib/bootstrap3.3.4.js"></script>        
+    <!-- script bootstrap -->
+    <script src="../js/lib/bootstrap3.3.4.js"></script>
     <script src="../js/lib/bootstrap3.2.0.js"></script>
     <script src="../js/lib/bootstrap.min.js"></script>
     <!-- script google -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
-    <!-- script angular -->                
-    <script src="../js/lib/angularjs1.2.25.js"></script>        
-    <script src="../js/lib/ngMap.js"></script>      
-    <script src="../js/lib/angular-local-storage.js"></script>             
-    
-    <!-- script Datepicker js-->        
+    <!-- script angular -->
+    <script src="../js/lib/angularjs1.2.25.js"></script>
+    <script src="../js/lib/ngMap.js"></script>
+    <script src="../js/lib/angular-local-storage.js"></script>
+
+    <!-- script Datepicker js-->
     <script src="../js/lib/bootstrap-datepicker1.3.0.js"></script>
-    <!-- scripts para alertas -->        
+    <!-- scripts para alertas -->
     <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Controllers -->
-    <script src="../js/controllers/app.js"></script>      
-    <script src="../js/controllers/login.js"></script>           
-    <script src="../js/controllers/post_promotion.js"></script>     
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/login.js"></script>
+    <script src="../js/controllers/post_promotion.js"></script>
     <script src="../js/controllers/create_branch.js"></script>
-    <script src="../js/controllers/create_store.js"></script>    
-    <script src="../js/controllers/redeem_promotion.js"></script>  
-    <script src="../js/controllers/detail_promotion.js"></script> 
-    <script src="../js/controllers/script_calendar.js"></script>        
-    <script src="../js/controllers/script_data.js"></script>      
+    <script src="../js/controllers/create_store.js"></script>
+    <script src="../js/controllers/redeem_promotion.js"></script>
+    <script src="../js/controllers/detail_promotion.js"></script>
+    <script src="../js/controllers/script_calendar.js"></script>
+    <script src="../js/controllers/script_data.js"></script>
     <!-- <script src="../js/controllers/test.js"></script>       -->
-        
-       
-      
+
+
+
   </head>
-    
-  <body>   
+
+  <body>
     <!-- Barra de navegación -->
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
@@ -71,22 +71,22 @@
     <div class="container-fluid" id="main" ng-controller="EventArgumentsCtrl">
       <div class="col-xs-5" id="left" ng-controller="SendPromotionCtrl">
        <!-- formulario -->
-       <form role="form" ng-submit="createPromo(promo)"  >                                    
+       <form name="promotion_form" role="form" ng-submit="createPromo(promo)"  >                                    
          <h2>Publicar nueva promoción</h2>
          <hr>
          <div class="form-group">
-           
-           
-         <!-- alerta -->         
-         <div class="form-group">           
+
+
+         <!-- alerta -->
+         <div class="form-group">
            <div class="row">
              <div ng-controller="AlertDemoCtrl">
                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
              </div>
-           </div>        
-         </div> 
-           
-           
+           </div>
+         </div>
+
+
          <label for="text">Título:</label>
            <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title" clear-input>
          </div>
@@ -101,7 +101,7 @@
            <label for="comment">Términos y condiciones:</label>
            <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms">
            </textarea>
-         </div>            
+         </div>
 
          <div class="form-group">
              <label for="text">Personas límite:</label>
@@ -162,7 +162,7 @@
            </table>
 
 
-         </div>              
+         </div>
 
          <!-- Calendario -->
          <div class="form-group">
@@ -188,17 +188,17 @@
                <button type="submit" class="btn btn-primary btn-lg">Publicar promoción</button>
              </div>
            </div>
-         </div>           
+         </div>
        </form>
     </div>
     </div>
     <!-- Mapa -->
     <div class="col-xm-4" >
       <div>
-        <div  class="ng-scope">       
+        <div  class="ng-scope">
           <map center="current-location" id="map-canvas" zoom="15"></map>
         </div>
-      </div>    
+      </div>
     </div>
   </body>
 </html>
