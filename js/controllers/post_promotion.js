@@ -219,7 +219,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       //var listRight=document.getElementById('selectRight');
       $scope.listRight = document.getElementById('selectRight');
       if(side == 1) {
-        console.log("intento mover para un lado");
+        console.log("intento mover para la izquierda");
         while(listLeft.options.length > 0) {
           move($scope.listRight, listLeft.options[0].value, listLeft.options[0].text);
           listLeft.remove(listLeft.options[0]);
@@ -233,7 +233,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
     //No se que hace pero hace algo
     function move(listBoxTo,optionValue,optionDisplayText){
-      console.log("intento mover para un lado");
+      console.log("intento mover para la derecha");
       var newOption = document.createElement("option");
       newOption.value = optionValue;
       newOption.text = optionDisplayText;
