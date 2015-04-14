@@ -13,6 +13,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   		var title = promo.title;
   		var description = promo.description;
       var terms = promo.terms;
+      promo.date = document.getElementById('dateTime').value;
       var expiration_date = promo.date;
       var people_limit = promo.people_limit;
       var branches = $scope.arrayIds;
