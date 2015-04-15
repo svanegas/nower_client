@@ -55,12 +55,19 @@
     </div>
 
     <div class="container-fluid" id="main">
-      <div class="col-xs-5" id="left">
+      <div class="col-xs-5" id="left" ng-controller="SendStoreCtrl">
+        <form role="form" ng-submit="createStore(store)" name="store_form"> 
         <h2>Crear Nueva Tienda</h2>  
-        <hr>
-        <form role="form" ng-submit="createStore(store)" ng-controller="SendStoreCtrl"> 
+        <hr>        
 
-          <div class="form-group">    
+          
+          <div class="form-group">
+            <!-- alert -->
+            <div class="form-group">                             
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>                             
+            </div>
+
+      
             <label for="text">Nombre:</label>
             <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="store.name">
           </div>

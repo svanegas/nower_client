@@ -59,6 +59,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         state = response.success;
         if(state){
           $scope.alerts = [{ type: 'success', msg: '¡Promoción publicada! :)' }];
+          document.forms["promotion_form"].reset();
+          $scope.move(2);
         }else{
           var errorName = [];
           var errorMsgs = [];
@@ -73,8 +75,6 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
           showErrorAlert(errorName, errorMsgs, cont);
         }
          window.scrollTo(0,0);
-         document.forms["promotion_form"].reset();
-         $scope.move(2);
     }
 
 
