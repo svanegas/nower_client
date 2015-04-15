@@ -36,19 +36,30 @@
     <script src="../js/lib/angularjs1.2.25.js"></script>
     <script src="../js/lib/angular-local-storage.js"></script>
     <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
-      
     <!-- scripts para alertas -->        
     <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
     
     <!-- Controllers -->
     <script src="../js/controllers/app.js"></script>      
-    <script src="../js/controllers/login.js"></script>           
+    <script src="../js/controllers/login.js"></script>
     <script src="../js/controllers/post_promotion.js"></script>            
     <script src="../js/controllers/create_branch.js"></script>
     <script src="../js/controllers/create_store.js"></script>    
     <script src="../js/controllers/redeem_promotion.js"></script>   
     <script src="../js/controllers/detail_promotion.js"></script> 
-    <script src="../js/controllers/script_data.js"></script>        
+    <script src="../js/controllers/script_data.js"></script>
+    <script>
+      function logout(){
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("storeId");
+        window.location.assign("../index.html");
+      }
+      window.onload = function what(){
+        if(sessionStorage.getItem("token") == null){
+          window.location.assign("../index.html")
+        }
+      };
+    </script>
 	</head>
 	<body>
 
@@ -63,7 +74,8 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="../views/post_promotion.html">Nueva promoción</a></li>
-          <li><a href="../views/create_branch.html">Nueva sucursal</a></li>         
+          <li><a href="../views/create_branch.html">Nueva sucursal</a></li> 
+          <li onclick="logout()"><a>Cerrar Sesion</a></li> 
         </ul>
       </div>
     </div>

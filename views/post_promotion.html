@@ -53,6 +53,18 @@
     <script src="../js/controllers/detail_promotion.js"></script>
     <script src="../js/controllers/script_calendar.js"></script>
     <script src="../js/controllers/script_data.js"></script>
+    <script>
+      function logout(){
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("storeId");
+        window.location.assign("../index.html");
+      }
+      window.onload = function what(){
+        if(sessionStorage.getItem("token") == null){
+          window.location.assign("../index.html")
+        }
+      };
+    </script>
   </head>
 
   <body>
@@ -69,6 +81,7 @@
         <ul class="nav navbar-nav">
           <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
           <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
+          <li onclick="logout()"><a>Cerrar Sesion</a></li> 
           <li>&nbsp;</li>
         </ul>
       </div>

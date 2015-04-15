@@ -48,7 +48,19 @@
     <!-- <script src="js/controllers/test.js"></script>        -->
     <!-- <script src="js/controllers/script_data.js"></script>   -->
 <!--    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/ui-bootstrap.css"> -->
-   
+    <script>
+      window.onload = function what(){
+        if(sessionStorage.getItem("token") != null){
+          $('#list1 #' + 'menuItem').show();
+          $('#list1 #' + 'logginItem').hide();
+          $('#list1 #' + 'registerItem').hide();
+        }else {
+          $('#list1 #' + 'menuItem').hide();
+          $('#list1 #' + 'logginItem').show();
+          $('#list1 #' + 'registerItem').show();
+        }
+      };
+    </script>
 	</head>
     
 	<body>
@@ -62,9 +74,10 @@
         </a>
       </div>
       <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li class="active"><a data-toggle="modal" data-target="#myModal">Iniciar sesión</a></li>
-          <li><a href="views/create_store.html">Registrarse</a></li>              
+        <ul id="list1" class="nav navbar-nav">
+          <li id="menuItem"><a href="views/create_branch.html"><span>Menu</span></a></li> 
+          <li id="logginItem" class="active"><a data-toggle="modal" data-target="#myModal"><span>Iniciar Sesion</span></a></li>
+          <li id="registerItem"><a href="views/create_store.html"><span>Registrarse</span></a></li>              
         </ul>
       </div>
     </div>     
