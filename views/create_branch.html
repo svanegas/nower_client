@@ -43,7 +43,19 @@
     <script src="../js/controllers/create_store.js"></script>    
     <script src="../js/controllers/redeem_promotion.js"></script>        
     <script src="../js/controllers/script_data.js"></script> 
-    <script src="../js/controllers/detail_promotion.js"></script>    
+    <script src="../js/controllers/detail_promotion.js"></script>
+    <script>
+      function logout(){
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("storeId");
+        window.location.assign("../index.html");
+      }
+      window.onload = function what(){
+        if(sessionStorage.getItem("token") == null){
+          window.location.assign("../index.html");
+        }
+      };
+    </script>
 	</head>
 
 	<body>
@@ -60,7 +72,8 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="../views/post_promotion.html">Nueva promoción</a></li>
-          <li><a href="../views/redeem_promotion.html">Redimir código</a></li>          
+          <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
+          <li onclick="logout()"><a>Cerrar Sesion</a></li> 
         </ul>
       </div>
     </div>
