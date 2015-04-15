@@ -11,10 +11,12 @@ angular.module("detail_promotion",['LocalStorageModule'])
     document.getElementById('expiration_date').innerHTML = localStorageService.get("expiration_date");
     document.getElementById('people_limit').innerHTML = localStorageService.get("people_limit");  
   
-          console.log(localStorageService.get("user"));
-          console.log(localStorageService.get("title"));
-          console.log(localStorageService.get("description"));
-          console.log(localStorageService.get("expiration_date"));
-          console.log(localStorageService.get("people_limit"));
+    console.log(localStorageService.get("user"));
+    console.log(localStorageService.get("title"));
+    console.log(localStorageService.get("description"));
+    console.log(localStorageService.get("expiration_date"));
+    console.log(localStorageService.get("people_limit"));
+    
+    $scope.alerts = [{ type: 'success', msg: '¡Promoción redimida correctamente! ✓' }];
   
   }]);

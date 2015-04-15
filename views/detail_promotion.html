@@ -70,44 +70,53 @@
       <hr>
     </div>
 
-    <div class="container" id="main">
+    <div class="container" id="main" >
       <form role="form" ng-controller="GetDataJson" action="redeem_promotion.html">
+        <!-- alert -->
+        <div class="form-group">                     
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>                     
+        </div>   
         <div class="box">
 
           <div class="col-md-6">
 
-            <div class="row">
+            <div style="margin: 0px;" class="row">
               <div class="form-group">
-                <label for="user_text">USUARIO:</label>
-                <label id="user"></label>
+                <label for="user_text">USUARIO</label>
+                <br />
+                <label><font id="user" size="5"></font></label>
               </div>
             </div>
              
-            <div class="row">
+            <div style="margin: 0px;" class="row">
                <div class="form-group">
-                <label for="title_text">TÍTULO:</label>
-                <label id="title"></label>
+                <label for="title_text">TÍTULO</label>
+                 <br />
+                <label><font id="title" size="5"></font></label>
                </div>
             </div>
 
-            <div class="row">
+            <div style="margin: 0px;" class="row">
                <div class="form-group">
-                <label for="description_comment">DESCRIPCIÓN:</label>
-                <label id="description"></label>
+                <label for="description_comment">DESCRIPCIÓN</label>
+                 <br />
+                <label><font id="description" size="5"></font></label>                 
                </div>
             </div>
 
-            <div class="row">
+            <div style="margin: 0px;" class="row">
                <div class="form-group">
-                <label for="date_text">FECHA DE EXPIRACIÓN:</label>
-                <label id="expiration_date"></label>
+                <label for="date_text">FECHA DE EXPIRACIÓN</label>
+                 <br />
+                <label><font id="expiration_date" size="5"></font></label>
                </div>
             </div>
 
-            <div class="row">
+            <div style="margin: 0px;" class="row">
               <div class="form-group">
-                <label for="people_text">PERSONAS LÍMITE:</label>
-                <label id="people_limit"></label>
+                <label for="people_text">LÍMITE DE PERSONAS</label>
+                <br />
+                <label><font id="people_limit" size="5"></font></label>                
               </div>
             </div>
           </div>
@@ -124,7 +133,11 @@
             <button type="submit" class="btn btn-primary btn-lg">Redimir otro código</button>
           </div>
         </div>
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </form>
     </div>
   </body>
