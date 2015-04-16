@@ -182,6 +182,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       listBoxTo.add(newOption, null);
       return true;
     }
+
+ 
     //Mueve el elemento seleccionado a la derecha o izquierda
     $scope.moveToRightOrLeft = function (side){
       var listLeft=document.getElementById('selectLeft');
