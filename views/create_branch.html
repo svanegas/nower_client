@@ -7,13 +7,16 @@
 		<meta name="generator" content="Bootply"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- css -->
+    <!-- Bootstrap Core CSS -->
     <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />	
-    <link href="../css/create_branch.css" rel="stylesheet">
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
 
-    <!-- alerts css-->
+    <!-- Custom CSS -->
+    <link href="../css/create_branch.css" rel="stylesheet">
+    <link href="../css/map_style.css" rel="stylesheet">
+
+    <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> 
 
     <!-- script references --> 
@@ -79,55 +82,55 @@
     </div>
 
     <div class="container-fluid" id="main" ng-controller="BranchMapCtrl">
-    	<div class="col-xs-5" id="left">
-        <h2>Crear nueva sucursal</h2>
-        <hr>            
-    		<form role="form" ng-submit="createBranch(branch)" ng-controller="SendBranchCtrl" id="createBranchForm" >
-              <!-- alert -->
-              <div class="form-group">
-                <div class="row">
-                 <div ng-controller="AlertDemoCtrl">
-                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-                 </div>
-                </div>
-              </div>
-    		  <div class="form-group">
-    			<label>Nombre:</label>
-    			<input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
-    		  </div>
-    		  <div class="form-group">
-    			<label>Dirección:</label>
-    			<input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
-    		  </div>
-    		  <div class="form-group">
-    			<label>Teléfono:</label>
-    			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
-    		  </div>
-    		  <div class="form-group">
-    			<label>Latitud:</label>
-    			<input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
-    		  </div>
-    		  <div class="form-group">
-    			<label>Longitud:</label>
-    			<input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
-    		  </div>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-xs-5 col-xs-offset-4">				
-      		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
-              </div>
-            </div>
-          </div>
-          <br></br>
-    		</form>
-      </div>
-      <div class="col-xm-4" >
+      <div class="row">
         <!--Map-->
-  		  <div>
-          <div  class="ng-scope">				
-            <map center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
+        <div class="col-xs-12 col-sm-12 col-md-7">
+          <div  class="ng-scope">       
+            <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
           </div>
-  		  </div>		
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5" id="left">
+          <h2>Crear nueva sucursal</h2>
+          <hr>            
+      		<form role="form" ng-submit="createBranch(branch)" ng-controller="SendBranchCtrl" id="createBranchForm" >
+                <!-- alert -->
+                <div class="form-group">
+                  <div class="row">
+                   <div ng-controller="AlertDemoCtrl">
+                      <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                   </div>
+                  </div>
+                </div>
+      		  <div class="form-group">
+      			<label>Nombre:</label>
+      			<input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
+      		  </div>
+      		  <div class="form-group">
+      			<label>Dirección:</label>
+      			<input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
+      		  </div>
+      		  <div class="form-group">
+      			<label>Teléfono:</label>
+      			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
+      		  </div>
+      		  <div class="form-group">
+      			<label>Latitud:</label>
+      			<input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
+      		  </div>
+      		  <div class="form-group">
+      			<label>Longitud:</label>
+      			<input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
+      		  </div>
+            <div class="form-group">
+              <!--div class="row"-->
+                <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">				
+        		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
+                </div>
+              <!--/div-->
+            </div>
+            <br></br>
+      		</form>
+        </div>
       </div>
     </div>
 	</body>

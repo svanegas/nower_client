@@ -7,15 +7,18 @@
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
 
-    <!-- css -->
+    <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <link href="../css/post_promotion.css" rel="stylesheet">
 
-    <!-- Include Bootstrap Datetimepicker css-->
+    <!-- Custom CSS -->
+    <link href="../css/post_promotion.css" rel="stylesheet">
+    <link href="../css/map_style.css" rel="stylesheet">
+
+    <!-- Include Bootstrap Datetimepicker CSS-->
     <link rel="stylesheet" href="../lib/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
-    <!-- alerts css-->
+    <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- script references -->
@@ -89,119 +92,119 @@
 
     <div class="container-fluid" id="main" ng-controller="EventArgumentsCtrl">
       <div class="row">
-          <!--Map-->
-          <div class="col-xs-12 col-sm-12 col-md-7">
-            <div  class="ng-scope">
-              <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15"></map>
+        <!--Map-->
+        <div class="col-xs-12 col-sm-12 col-md-7">
+          <div  class="ng-scope">
+            <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15"></map>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-5" id="left" ng-controller="SendPromotionCtrl">
+          <!--form-->
+          <form name="promotion_form" role="form" ng-submit="createPromo(promo)">                                    
+           <h2>Publicar nueva promoción</h2>
+           <hr>
+
+            <div class="form-group">
+              <!-- alert -->
+              <div class="form-group">
+                <!--div class="row"-->
+                 <div ng-controller="AlertDemoCtrl">
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                 </div>
+                <!--/div-->
+              </div>
+              <label for="text">Título:</label>
+              <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title" clear-input>
             </div>
-          </div>
-          <div class="col-xs-12 col-sm-12 col-md-5" id="left" ng-controller="SendPromotionCtrl">
-            <!--form-->
-            <form name="promotion_form" role="form" ng-submit="createPromo(promo)">                                    
-             <h2>Publicar nueva promoción</h2>
-             <hr>
 
+            <div class="form-group">
+              <label for="comment">Description:</label>
+              <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.description"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="comment">Términos y condiciones:</label>
+              <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="text">Personas límite:</label>
+              <input type="text" class="form-control" id="title" ng-model="promo.people_limit">
+            </div>
+
+            <!-- Branch list -->
+            <div class="form-group">
+              <label for="comment">Seleccione las sucursales para esta promoción</label>
+              <table border="0" width="100%">
+                <tr>
+                  <td colspan="3" align="center">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td colspan="1" align="center">Sucursales disponibles</td>
+                  <td colspan="1">&nbsp;</td>
+                  <td colspan="1" align="center">Sucursales seleccionadas</td>
+                </tr>
+                <tr>
+                  <td width="40%" rowspan="4" align="center">
+                    <select name="selectLeft" style="width: 100%;" size="10" id="selectLeft">
+                    </select>
+                  </td>
+                  <td width="20%" align="center">
+                    <table border="0">
+                      <tr>
+                        <td align="center"><label style="width: 100%;">
+                          <input name="btnRight" class="btn" style="width: 100%;" type="button" id="btnRight" value="&gt;" ng-click="moveToRightOrLeft(1)">
+                        </label></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><label style="width: 100%;">
+                          <input name="btnLeft" class="btn" style="width: 100%;" type="button" id="btnLeft" value="&lt;" ng-click="moveToRightOrLeft(2)">
+                        </label></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><label style="width: 100%;">
+                          <input name="btnAllRight" class="btn btn-primary" style="width: 100%;" type="button" id="btnAllRight" value="&gt;&gt;" ng-click="move(1)">
+                         </label></td>
+                      </tr>
+                      <tr>
+                        <td align="center"><label style="width: 100%;">
+                          <input name="btnAllLeft" class="btn btn-primary" style="width: 100%;" type="button" id="btnAllLeft" value="&lt;&lt;" ng-click="move(2)">
+                         </label></td>
+                      </tr>
+                    </table>
+                  </td>
+                  <td width="40%" rowspan="4" align="center">
+                    <select name="selectRight" style="width: 100%;" size="10" id="selectRight"></select>
+                  </td>
+                </tr>
+              </table>
+            </div>
+
+            <!-- Calendar -->
+            <div class="row">
               <div class="form-group">
-                <!-- alert -->
-                <div class="form-group">
-                  <!--div class="row"-->
-                   <div ng-controller="AlertDemoCtrl">
-                      <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-                   </div>
-                  <!--/div-->
-                </div>
-                <label for="text">Título:</label>
-                <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title" clear-input>
-              </div>
-
-              <div class="form-group">
-                <label for="comment">Description:</label>
-                <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.description"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="comment">Términos y condiciones:</label>
-                <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms"></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="text">Personas límite:</label>
-                <input type="text" class="form-control" id="title" ng-model="promo.people_limit">
-              </div>
-
-              <!-- Branch list -->
-              <div class="form-group">
-                <label for="comment">Seleccione las sucursales para esta promoción</label>
-                <table border="0" width="100%">
-                  <tr>
-                    <td colspan="3" align="center">&nbsp;</td>
-                  </tr>
-                  <tr>
-                    <td colspan="1" align="center">Sucursales disponibles</td>
-                    <td colspan="1">&nbsp;</td>
-                    <td colspan="1" align="center">Sucursales seleccionadas</td>
-                  </tr>
-                  <tr>
-                    <td width="40%" rowspan="4" align="center">
-                      <select name="selectLeft" style="width: 100%;" size="10" id="selectLeft">
-                      </select>
-                    </td>
-                    <td width="20%" align="center">
-                      <table border="0">
-                        <tr>
-                          <td align="center"><label style="width: 100%;">
-                            <input name="btnRight" class="btn" style="width: 100%;" type="button" id="btnRight" value="&gt;" ng-click="moveToRightOrLeft(1)">
-                          </label></td>
-                        </tr>
-                        <tr>
-                          <td align="center"><label style="width: 100%;">
-                            <input name="btnLeft" class="btn" style="width: 100%;" type="button" id="btnLeft" value="&lt;" ng-click="moveToRightOrLeft(2)">
-                          </label></td>
-                        </tr>
-                        <tr>
-                          <td align="center"><label style="width: 100%;">
-                            <input name="btnAllRight" class="btn btn-primary" style="width: 100%;" type="button" id="btnAllRight" value="&gt;&gt;" ng-click="move(1)">
-                           </label></td>
-                        </tr>
-                        <tr>
-                          <td align="center"><label style="width: 100%;">
-                            <input name="btnAllLeft" class="btn btn-primary" style="width: 100%;" type="button" id="btnAllLeft" value="&lt;&lt;" ng-click="move(2)">
-                           </label></td>
-                        </tr>
-                      </table>
-                    </td>
-                    <td width="40%" rowspan="4" align="center">
-                      <select name="selectRight" style="width: 100%;" size="10" id="selectRight"></select>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <!-- Calendar -->
-              <div class="row">
-                <div class="form-group">
-                  <label style="text-align: right; clear: both; float:left; margin-left:15px;">Fecha de expiración</label>
-                  <div class="col-xs-6 col-sm-6 col-md-6 date">
-                    <div class="input-group input-append date" id="datePicker">
-                      <input type="text" class="form-control" id="dateTime" ng-model="promo.date"/>
-                      <span class="input-group-addon add-on">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                      </span>
-                    </div>
+                <label style="text-align: right; clear: both; float:left; margin-left:15px;">Fecha de expiración</label>
+                <div class="col-xs-6 col-sm-6 col-md-6 date">
+                  <div class="input-group input-append date" id="datePicker">
+                    <input type="text" class="form-control" id="dateTime" ng-model="promo.date"/>
+                    <span class="input-group-addon add-on">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
                   </div>
                 </div>
-                <br></br>
-                <br></br>
-                <div class="form-group">
-                  <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
-                    <button type="submit" class="btn btn-primary btn-lg" >Publicar promoción</button>
-                  </div>
-                </div>
-                <br></br>
-                <br></br>
               </div>
-            </form>
-          </div>
+              <br></br>
+              <br></br>
+              <div class="form-group">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                  <button type="submit" class="btn btn-primary btn-lg" >Publicar promoción</button>
+                </div>
+              </div>
+              <br></br>
+              <br></br>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </body>
