@@ -43,13 +43,6 @@ body{
   height:100%;
 }
 
-#map-canvas {
-  width:100%;
-  height:500px;
-  top:50px;
-}
-
-
 .date-form { margin: 10px; }
 label.control-label span { cursor: pointer; }
 
