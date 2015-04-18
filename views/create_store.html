@@ -7,42 +7,44 @@
     <meta name="generator" content="Bootply"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!-- css -->
+    <!-- Bootstrap Core CSS -->
     <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
-    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />  
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+
+    <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
 
-    <!-- alerts css-->
+    <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- script references -->  
-    <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>      
+    <!-- references scripts -->
+    <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>    
 
-    <!-- script bootstrap -->
-    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script> 
-    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>   
-    <script src="../js/lib/bootstrap3.3.4.js"></script>        
+    <!-- bootstrap scripts -->
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> 
+    <script src="../js/lib/bootstrap3.3.4.js"></script>    
     <!--script src="../js/lib/bootstrap3.2.0.js"></script-->
 
-    <!-- script google -->
+    <!-- map scripts -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
 
-    <!-- script angular -->                
-    <script src="../js/lib/angularjs1.2.25.js"></script>        
-    <script src="../js/lib/ngMap.js"></script>      
+    <!-- angular scripts -->
+    <script src="../js/lib/angularjs1.2.25.js"></script>    
+    <script src="../js/lib/ngMap.js"></script>
     <script src="../js/lib/angular-local-storage.js"></script>
 
-    <!-- scripts para alertas -->        
+    <!-- alert scripts -->
     <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
-       
+
     <!-- Controllers -->
-    <script src="../js/controllers/app.js"></script>      
-    <script src="../js/controllers/login.js"></script>           
-    <script src="../js/controllers/post_promotion.js"></script>            
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/login.js"></script>
+    <script src="../js/controllers/post_promotion.js"></script>     
     <script src="../js/controllers/create_branch.js"></script>
-    <script src="../js/controllers/create_store.js"></script>    
-    <script src="../js/controllers/redeem_promotion.js"></script>    
+    <script src="../js/controllers/create_store.js"></script>   
+    <script src="../js/controllers/redeem_promotion.js"></script>
     <script src="../js/controllers/detail_promotion.js"></script>
     <script src="../js/controllers/script_data.js"></script>
     <script>
@@ -60,7 +62,7 @@
   </head>
 
   <body>
-    <!-- Barra de navegación -->
+    <!-- Navigation bar -->
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
       </div>
@@ -68,38 +70,35 @@
 
     <div class="container-fluid" id="main">
       <div class="col-xs-5" id="left" ng-controller="SendStoreCtrl">
-        <form role="form" ng-submit="createStore(store)" name="store_form"> 
-        <h2>Crear Nueva Tienda</h2>  
-        <hr>        
-
-          
+        <form role="form" ng-submit="createStore(store)" name="store_form">
+        <h2>Crear Nueva Tienda</h2>
+        <hr>
           <div class="form-group">
             <!-- alert -->
-            <div class="form-group">                             
-                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>                             
+            <div class="form-group">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
             </div>
 
-      
             <label for="text">Nombre:</label>
             <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="store.name">
           </div>
 
-          <div class="form-group">            
+          <div class="form-group">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Ingresa el correo eléctronico" ng-model="store.email">       
+            <input type="email" class="form-control" id="email" placeholder="Ingresa el correo eléctronico" ng-model="store.email">
           </div>
 
-          <div class="form-group">            
+          <div class="form-group">
             <label for="pwd">Contraseña:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Ingresa la contraseña" ng-model="store.password">              
+            <input type="password" class="form-control" id="pwd" placeholder="Ingresa la contraseña" ng-model="store.password">
           </div>
 
-          <div class="form-group">               
+          <div class="form-group">
             <label for="pwd">Confirmar contraseña:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Confirme la contraseña" ng-model="store.password_confirmation">             
+            <input type="password" class="form-control" id="pwd" placeholder="Confirme la contraseña" ng-model="store.password_confirmation">
           </div>
 
-          <div class="form-group">       
+          <div class="form-group">
             <label for="text">Teléfono:</label>
             <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="store.phone">             
           </div>

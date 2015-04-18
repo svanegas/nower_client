@@ -50,7 +50,7 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
       sessionStorage.setItem("storeId", response.store.store_id);
       $window.location='./views/post_promotion.html'; 
     }else{    
-      $scope.alerts = [{ type: 'danger', msg: "Error: " + response.errors}];                             
+      $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];                             
     }
     window.scrollTo(0,0);
   }
