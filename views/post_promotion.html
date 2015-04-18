@@ -15,35 +15,34 @@
     <link href="../css/post_promotion.css" rel="stylesheet">
     <link href="../css/map_style.css" rel="stylesheet">
 
-    <!-- Include Bootstrap Datetimepicker CSS-->
+    <!-- Bootstrap date_timepicker CSS-->
     <link rel="stylesheet" href="../lib/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
 
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- script references -->
+    <!-- references scripts -->
     <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- script bootstrap -->
+    <!-- bootstrap scripts -->
     <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <!--script src="../js/lib/bootstrap3.2.0.js"></script-->
 
-    <!-- Include Datetimepicker js -->
+    <!-- date_timepicker scripts -->
     <script type="text/javascript" src="../lib/bower_components/moment/min/moment.min.js"></script>
     <script type="text/javascript" src="../lib/bower_components/moment/min/moment-with-locales.js"></script>
     <script type="text/javascript" src="../lib/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 
-    <!-- script maps -->
+    <!-- map scripts -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
     
-
-    <!-- script angular -->
+    <!-- angular scripts -->
     <script src="../js/lib/angularjs1.2.25.js"></script>
     <script src="../js/lib/ngMap.js"></script>
     <script src="../js/lib/angular-local-storage.js"></script>
 
-    <!-- script para alertas -->
+    <!-- alert scripts -->
     <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
     
     <!-- Controllers -->
@@ -71,7 +70,7 @@
   </head>
 
   <body>
-    <!-- Barra de navegación -->
+    <!-- Navigation bar -->
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
         <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -107,11 +106,9 @@
             <div class="form-group">
               <!-- alert -->
               <div class="form-group">
-                <!--div class="row"-->
-                 <div ng-controller="AlertDemoCtrl">
-                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-                 </div>
-                <!--/div-->
+                <div ng-controller="AlertDemoCtrl">
+                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
               </div>
               <label for="text">Título:</label>
               <input type="text" class="form-control" id="title" placeholder="Ingresa el título" ng-model="promo.title" clear-input>
