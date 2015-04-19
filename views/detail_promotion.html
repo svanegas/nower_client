@@ -13,7 +13,12 @@
     <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
 
     <!-- Custom CSS -->
+    <link href="../css/styles.css" rel="stylesheet">
     <link href="../css/detail_promo.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -84,78 +89,82 @@
       </div>
     </div>
 
-    <div class="text-center">
+    <!--div class="text-center">
       <h2>Detalle del Bono de Descuento</h2>
       <hr>
-    </div>
+    </div-->
 
     <div class="container" id="main">
-      <form role="form" ng-controller="GetDataJson" action="redeem_promotion.html">
-        <!-- alert -->
-        <div class="form-group">                  
-            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>                   
-        </div>
+      <form class="form" role="form" ng-controller="GetDataJson" action="redeem_promotion.html">
+        
         <div class="box">
-          <div class="col-md-6">
-
-            <div style="margin: 0px;" class="row">
-              <div class="form-group">
-                <label for="user_text">USUARIO</label>
-                <br />
-                <label><font id="user" size="5"></font></label>
+          <div class="row">
+            <div class="text-center">
+              <hr>
+              <h2><strong>Detalles del bono redimido</strong></h2>
+              <hr>
+            </div>
+            <!-- alert -->
+            <div class="form-group" id="alert">                  
+                <alert class="text-center" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+              <img class="img-responsive img-border-left" src="../rs/whopper.jpg" alt="">
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6">
+              <div style="margin-top: 20px;">
+                <div class="form-group">
+                  <p for="user_text">USUARIO:&nbsp;&nbsp;
+                    <!--label-->
+                      <strong><font id="user" size="5"></font></strong>
+                    <!--/label-->
+                  </p>
+                </div>
+              </div>
+              <div style="margin-top: 20px;">
+                <div class="form-group">
+                  <p for="title_text">TÍTULO:&nbsp;&nbsp;
+                    <!--label-->
+                      <strong><font id="title" size="5"></font></strong>
+                    <!--/label-->
+                  </p>
+                </div>
+              </div>
+              <div style="margin-top: 20px;">
+                 <div class="form-group">
+                  <p for="description_comment">DESCRIPCIÓN:
+                    <strong><p><font id="description" size="5"></font></p></strong>
+                  </p>
+                 </div>
+              </div>
+              <div style="margin-top: 20px;">
+                <div class="form-group">
+                  <p for="date_text">FECHA DE EXPIRACIÓN:&nbsp;&nbsp;
+                    <!--label-->
+                      <strong><font id="expiration_date" size="5"></font></strong>
+                    <!--/label-->
+                  </p>
+                </div>
+              </div>
+              <div style="margin-top: 20px;">
+                <div class="form-group">
+                  <p for="people_text">LÍMITE DE PERSONAS:&nbsp;&nbsp;
+                    <!--label-->
+                      <strong><font id="people_limit" size="3"></font></strong>
+                    <!--/label-->
+                  </p>
+                </div>
               </div>
             </div>
-             
-            <div style="margin: 0px;" class="row">
-               <div class="form-group">
-                <label for="title_text">TÍTULO</label>
-                 <br />
-                <label><font id="title" size="5"></font></label>
-               </div>
-            </div>
-
-            <div style="margin: 0px;" class="row">
-               <div class="form-group">
-                <label for="description_comment">DESCRIPCIÓN</label>
-                 <br />
-                <label><font id="description" size="5"></font></label>                 
-               </div>
-            </div>
-
-            <div style="margin: 0px;" class="row">
-               <div class="form-group">
-                <label for="date_text">FECHA DE EXPIRACIÓN</label>
-                 <br />
-                <label><font id="expiration_date" size="5"></font></label>
-               </div>
-            </div>
-
-            <div style="margin: 0px;" class="row">
-              <div class="form-group">
-                <label for="people_text">LÍMITE DE PERSONAS</label>
-                <br />
-                <label><font id="people_limit" size="5"></font></label>                
+            <div class="form-group">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-push-3 col-sm-push-4 col-md-push-5">
+                <br></br>
+                <br></br>
+                <button type="submit" class="btn btn-primary btn-lg">Redimir otro código</button>
               </div>
             </div>
           </div>
-
-          <div class="col-sm-6">
-            <img class="img-responsive" src="../rs/whopper.jpg" alt="">
-          </div>
-          <div class="clearfix"></div>
-   
         </div>
-
-        <div class="form-group">
-          <div class="col-xs-4 col-xs-offset-5">
-            <button type="submit" class="btn btn-primary btn-lg">Redimir otro código</button>
-          </div>
-        </div>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </form>
     </div>
   </body>
