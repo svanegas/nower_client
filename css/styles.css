@@ -3,6 +3,7 @@
 }*/
 
 body{
+  
   padding-top:50px; /*padding for navbar*/
 }
 
@@ -48,4 +49,14 @@ label.control-label span { cursor: pointer; }
 #eventForm .form-control-feedback {
   top: 0;
   right: -15px;
+}
+
+
+hr {
+  max-width: 700px;
+  border-color: #999999;
+}
+
+#main>.container{
+  height:100%;
 }
