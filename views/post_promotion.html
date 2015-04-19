@@ -72,19 +72,16 @@
   <body>
     <!-- Navigation bar -->
     <div class="navbar navbar-custom navbar-fixed-top">
-      <div class="navbar-header"><a class="navbar-brand" href="../index.html">Nower</a>
-        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="../index.html">Nower</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
           <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
-          <li onclick="logout()"><a>Cerrar Sesion</a></li> 
-          <li>&nbsp;</li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li style="margin-right:20px;" onclick="logout()"><a>Cerrar Sesion</a></li>
         </ul>
       </div>
     </div>
@@ -123,10 +120,10 @@
               <label for="comment">Términos y condiciones:</label>
               <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms"></textarea>
             </div>
-
+            
             <div class="form-group">
               <label for="text">Personas límite:</label>
-              <input type="text" class="form-control" id="title" ng-model="promo.people_limit">
+              <input type="text" pattern="\d+" class="form-control" id="title" ng-model="promo.people_limit">
             </div>
 
             <!-- Branch list -->
