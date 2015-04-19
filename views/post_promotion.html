@@ -14,6 +14,7 @@
     <!-- Custom CSS -->
     <link href="../css/post_promotion.css" rel="stylesheet">
     <link href="../css/map_style.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
 
     <!-- Bootstrap date_timepicker CSS-->
     <link rel="stylesheet" href="../lib/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
@@ -74,6 +75,11 @@
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand" href="../index.html">Nower</a>
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -81,7 +87,9 @@
           <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li style="margin-right:20px;" onclick="logout()"><a>Cerrar Sesion</a></li>
+          <li style="margin-right:20px;" onclick="logout()">
+            <a><span class="glyphicon glyphicon-off"></span>&nbsp;Cerrar Sesion</a>
+          </li>
         </ul>
       </div>
     </div>
