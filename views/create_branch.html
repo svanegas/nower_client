@@ -15,7 +15,7 @@
     <!-- Custom CSS -->
     <link href="../css/create_branch.css" rel="stylesheet">
     <link href="../css/map_style.css" rel="stylesheet">
-
+    <link href="../css/styles.css" rel="stylesheet">
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"> 
 
@@ -66,6 +66,11 @@
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand" href="../index.html">Nower</a>
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -73,7 +78,9 @@
           <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li style="margin-right:20px;" onclick="logout()"><a>Cerrar Sesion</a></li>
+          <li style="margin-right:20px;" onclick="logout()">
+            <a><span class="glyphicon glyphicon-off"></span>&nbsp;Cerrar Sesion</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -90,40 +97,54 @@
           <h2>Crear nueva sucursal</h2>
           <hr>            
       		<form role="form" ng-submit="createBranch(branch)" ng-controller="SendBranchCtrl" id="createBranchForm" >
-                <!-- alert -->
-                <div class="form-group">
-                  <div class="row">
-                   <div ng-controller="AlertDemoCtrl">
-                      <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-                   </div>
-                  </div>
-                </div>
-      		  <div class="form-group">
-      			<label>Nombre:</label>
-      			<input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
+            <!-- alert -->
+            <div class="form-group">
+              <div class="row">
+               <div ng-controller="AlertDemoCtrl">
+                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+               </div>
+              </div>
+            </div>
+            <label>Nombre:</label>
+      		  <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+              </span>
+              <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
       		  </div>
-      		  <div class="form-group">
-      			<label>Dirección:</label>
-      			<input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
+            <label>Dirección:</label>
+      		  <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-home"></i>
+              </span>
+              <input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
       		  </div>
-      		  <div class="form-group">
-      			<label>Teléfono:</label>
+            <label>Teléfono:</label>
+      		  <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-earphone"></i>
+              </span>
       			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
       		  </div>
-      		  <div class="form-group">
-      			<label>Latitud:</label>
-      			<input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
+            <label>Latitud:</label>
+      		  <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-globe"></i>
+              </span>
+              <input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
       		  </div>
-      		  <div class="form-group">
-      			<label>Longitud:</label>
-      			<input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
+            <label>Longitud:</label>
+      		  <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-globe"></i>
+              </span>
+              <input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
       		  </div>
+            <br />
             <div class="form-group">
-              <!--div class="row"-->
-                <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">				
-        		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
-                </div>
-              <!--/div-->
+              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">				
+      		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
+              </div>
             </div>
             <br></br>
       		</form>

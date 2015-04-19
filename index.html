@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="App">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="UTF-8">
-		<title>Nower</title>
-		<meta name="generator" content="Bootply"/>
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Nower</title>
+    <meta name="generator" content="Bootply"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
@@ -16,7 +16,7 @@
 
     <!-- La siguiente libreria debe ser utilizada para las imagenes del inicio -->
     <!--link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/-->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">		-->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">   -->
 
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -61,9 +61,9 @@
         }
       };
     </script>
-	</head>
+  </head>
     
-	<body>
+  <body>
     <!-- Navigation bar -->
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header"><a class="navbar-brand" href="#">Nower</a>
@@ -75,9 +75,21 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul id="list1" class="nav navbar-nav">
-          <li id="menuItem"><a href="views/create_branch.html"><span>Menu</span></a></li> 
-          <li id="logginItem" class="active"><a data-toggle="modal" data-target="#myModal"><span>Iniciar Sesion</span></a></li>
-          <li id="registerItem"><a href="views/create_store.html"><span>Registrarse</span></a></li>              
+          <li id="menuItem">
+            <a href="views/create_branch.html">
+              <span class="glyphicon glyphicon-menu-down">&nbsp;Menu</span>
+            </a>
+          </li> 
+          <li id="logginItem">
+            <a data-toggle="modal" data-target="#myModal">
+              <span>Iniciar Sesion</span>
+            </a>
+          </li>
+          <li id="registerItem">
+            <a href="views/create_store.html">
+              <span>Registrarse</span>
+            </a>
+          </li>              
         </ul>
       </div>
     </div>     
@@ -180,5 +192,5 @@
         </div>
       </div>
     </div>
-	</body>
+  </body>
 </html>
