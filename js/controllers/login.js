@@ -58,6 +58,7 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
   function evaluateSession(){
     if(sessionStorage.getItem("token") != null)$window.location='./views/post_promotion.html'; 
   }
+  
 }]);
 
 
