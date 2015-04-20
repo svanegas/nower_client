@@ -14,6 +14,7 @@
 
     <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
+    <link href="../css/create_store.css" rel="stylesheet">
 
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -65,65 +66,81 @@
     </div>
 
     <div class="container-fluid" id="main">
-      <div class="col-xs-5" id="left" ng-controller="SendStoreCtrl">
-        <form role="form" ng-submit="createStore(store)" name="store_form">
-        <h2>Crear Nueva Tienda</h2>
-        <hr>
-          <div class="form-group">
-            <!-- alert -->
-            <div class="form-group">
-                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-            </div>
+      <div class="box">
+        <div class="row">
+          <div ng-controller="SendStoreCtrl">
+            <form role="form" ng-submit="createStore(store)" name="store_form">
+              <div class="col-xs-11 col-sm-6 col-md-4 col-sm-push-3 col-md-push-4">
+                <hr>
+                <h2><strong>Crear Nueva Tienda</strong></h2>
+                <hr>
+                <!-- alert -->
+                <div class="input-group">
+                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+                <label style="margin-top:40px;" for="text">Nombre:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                  </span>
+                  <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="store.name">
+                </div>
 
-            <label for="text">Nombre:</label>
-            <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="store.name">
-          </div>
+                <label style="margin-top:20px;" for="email">Email:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-envelope"></i>
+                  </span>
+                  <input type="email" class="form-control" id="email" placeholder="Ingresa el correo eléctronico" ng-model="store.email">
+                </div>
 
-          <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" placeholder="Ingresa el correo eléctronico" ng-model="store.email">
-          </div>
+                <label style="margin-top:20px;" for="pwd">Contraseña:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                  </span>
+                  <input type="password" class="form-control" id="pwd" placeholder="Ingresa la contraseña" ng-model="store.password">
+                </div>
 
-          <div class="form-group">
-            <label for="pwd">Contraseña:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Ingresa la contraseña" ng-model="store.password">
-          </div>
+                <label style="margin-top:20px;" for="pwd">Confirmar contraseña:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                  </span>
+                  <input type="password" class="form-control" id="pwd" placeholder="Confirme la contraseña" ng-model="store.password_confirmation">
+                </div>
 
-          <div class="form-group">
-            <label for="pwd">Confirmar contraseña:</label>
-            <input type="password" class="form-control" id="pwd" placeholder="Confirme la contraseña" ng-model="store.password_confirmation">
-          </div>
-
-          <div class="form-group">
-            <label for="text">Teléfono:</label>
-            <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="store.phone">             
-          </div>
-            
-          <!-- Dropbown -->
-          <div class="form-group">  
-            <label  for="text" style="text-align: right; clear: both; float:left; margin-right:15px;">Categoría</label>
-            <div class="col-xs-6 selectContainer">
-              <select name="categories" class="form-control" ng-model="store.category">
-                <option value="" disabled selected>Selecciona una opción</option>
-                <option value="food">Comida</option>
-                <option value="clothes">Ropa</option>
-                <option value="entertainment">Entretenimiento</option>
-                <option value="other">Otra</option>
-              </select>
-            </div> 
-          </div>              
-
-          <div class="form-group">
-            <div class="row">
-              <div class="col-xs-5 col-xs-offset-3">
-                <button type="submit" class="btn btn-primary btn-lg">Crear Tienda</button>
+                <label style="margin-top:20px;" for="text">Teléfono:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-earphone"></i>
+                  </span>
+                  <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="store.phone">
+                </div>
+                  
+                <!-- Dropbown -->
+                <div class="input-group">  
+                  <label  for="text" style="text-align: right; clear: both; float:left; margin-right:15px; margin-top:35px;">Categoría</label>
+                  <div class="col-xs-7 col-sm-7 col-md-7 col selectContainer">
+                    <select style="margin-top:30px;"name="categories" class="form-control" ng-model="store.category">
+                      <option value="" disabled selected>Selecciona una opción</option>
+                      <option value="food">Comida</option>
+                      <option value="clothes">Ropa</option>
+                      <option value="entertainment">Entretenimiento</option>
+                      <option value="other">Otra</option>
+                    </select>
+                  </div> 
+                </div>
+              </div>             
+              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-4 col-sm-offset-5 col-md-offset-5">
+                <div class="input-group">
+                  <button style="margin-top:50px;" type="submit" class="btn btn-primary btn-lg">Crear Tienda</button>
+                </div>
               </div>
-            </div>
+            </form> 
           </div>
-
-        </form> 
+        </div>
       </div>
     </div>
   </body>
 </html>
-
