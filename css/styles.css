@@ -60,3 +60,7 @@ hr {
 #main>.container{
   height:100%;
 }
+
+.input-group{
+  width: 100%;
+}

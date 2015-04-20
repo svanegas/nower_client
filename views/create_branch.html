@@ -98,7 +98,7 @@
           <hr>            
       		<form role="form" ng-submit="createBranch(branch)" ng-controller="SendBranchCtrl" id="createBranchForm" >
             <!-- alert -->
-            <div class="form-group">
+            <div class="input-group">
               <div class="row">
                <div ng-controller="AlertDemoCtrl">
                   <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
@@ -108,7 +108,7 @@
             <label>Nombre:</label>
       		  <div class="input-group">
               <span class="input-group-addon">
-                <i class="glyphicon glyphicon-user"></i>
+                <i class="glyphicon glyphicon-pencil"></i>
               </span>
               <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
       		  </div>
@@ -141,7 +141,7 @@
               <input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
       		  </div>
             <br />
-            <div class="form-group">
+            <div class="input-group">
               <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">				
       		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
               </div>
