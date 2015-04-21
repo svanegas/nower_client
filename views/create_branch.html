@@ -105,7 +105,7 @@
               <!-- alert -->
               <div class="input-group">
                 <div class="row">
-                 <div ng-controller="AlertDemoCtrl">
+                 <div id="alert" ng-controller="AlertDemoCtrl">
                     <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
                  </div>
                 </div>

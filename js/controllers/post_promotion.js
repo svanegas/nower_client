@@ -74,7 +74,11 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
           });
           showErrorAlert(errorName, errorMsgs, cont);
         }
-         window.scrollTo(0,0);
+        $("#alert").ready(function(){
+            $("html, body").delay(0).animate({
+                scrollTop: $('#alert').offset().top - 100
+            }, 0);
+        });
     }
 
 
@@ -183,7 +187,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       return true;
     }
 
- 
+
     //Mueve el elemento seleccionado a la derecha o izquierda
     $scope.moveToRightOrLeft = function (side){
       var listLeft=document.getElementById('selectLeft');
