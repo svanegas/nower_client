@@ -86,68 +86,70 @@
     </div>
 
     <div class="container-fluid" id="main" ng-controller="BranchMapCtrl">
-      <div class="row">
-        <!--Map-->
-        <div class="col-xs-12 col-sm-12 col-md-7">
-          <div  class="ng-scope">       
-            <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
+      <div class="box">
+        <div class="row">
+          <hr>
+          <h2><strong>Crear nueva sucursal</strong></h2>
+          <hr> 
+          <!--Map-->
+          <div style="margin-top: 30px;" class="col-xs-12 col-sm-12 col-md-7">
+            <div  class="ng-scope">       
+              <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
+            </div>
           </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-5" id="left">
-          <h2>Crear nueva sucursal</h2>
-          <hr>            
-      		<form role="form" ng-submit="createBranch(branch)" ng-controller="SendBranchCtrl" id="createBranchForm" >
-            <!-- alert -->
-            <div class="input-group">
-              <div class="row">
-               <div ng-controller="AlertDemoCtrl">
-                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-               </div>
+          <div style="margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-5" id="left">         
+        		<form role="form" ng-submit="createBranch(branch)" ng-controller="SendBranchCtrl" id="createBranchForm" >
+              <!-- alert -->
+              <div class="input-group">
+                <div class="row">
+                 <div ng-controller="AlertDemoCtrl">
+                    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                 </div>
+                </div>
               </div>
-            </div>
-            <label>Nombre:</label>
-      		  <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-pencil"></i>
-              </span>
-              <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
-      		  </div>
-            <label>Dirección:</label>
-      		  <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-home"></i>
-              </span>
-              <input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
-      		  </div>
-            <label>Teléfono:</label>
-      		  <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-earphone"></i>
-              </span>
-      			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
-      		  </div>
-            <label>Latitud:</label>
-      		  <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-globe"></i>
-              </span>
-              <input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
-      		  </div>
-            <label>Longitud:</label>
-      		  <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-globe"></i>
-              </span>
-              <input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
-      		  </div>
-            <br />
-            <div class="input-group">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">				
-      		      <button type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
+              <label>Nombre:</label>
+        		  <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-pencil"></i>
+                </span>
+                <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
+        		  </div>
+              <label style="margin-top:20px;">Dirección:</label>
+        		  <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-home"></i>
+                </span>
+                <input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
+        		  </div>
+              <label style="margin-top:20px;">Teléfono:</label>
+        		  <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-earphone"></i>
+                </span>
+        			 <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
+        		  </div>
+              <label style="margin-top:20px;">Latitud:</label>
+        		  <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-globe"></i>
+                </span>
+                <input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
+        		  </div>
+              <label style="margin-top:20px;">Longitud:</label>
+        		  <div class="input-group">
+                <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-globe"></i>
+                </span>
+                <input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
+        		  </div>
+              <div class="input-group">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">				
+        		      <button style="margin-top:40px;" type="submit" class="btn btn-primary btn-lg">Crear Sucursal</button>
+                </div>
               </div>
-            </div>
-            <br></br>
-      		</form>
+              <br></br>
+        		</form>
+          </div>
         </div>
       </div>
     </div>
