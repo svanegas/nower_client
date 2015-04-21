@@ -51,8 +51,11 @@ angular.module("redeem_promotion",['ui.bootstrap','LocalStorageModule'])
         }else{     
           $scope.alerts = [{ type: 'danger', msg: "Error: " + response.errors}];  
         }
-        
-         window.scrollTo(0,0);            
+        $("#alert").ready(function(){
+          $("html, body").delay(0).animate({
+              scrollTop: $('#alert').offset().top - 100
+          }, 0);
+        });            
     }
     
     

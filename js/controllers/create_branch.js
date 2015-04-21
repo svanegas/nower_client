@@ -84,7 +84,11 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
         });
         showErrorAlert(errorName, errorMsgs, cont);
       }
-       window.scrollTo(0,0);           
+      $("#alert").ready(function(){
+        $("html, body").delay(0).animate({
+            scrollTop: $('#alert').offset().top - 100
+        }, 0);
+      });         
   }
 
 
