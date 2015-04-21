@@ -8,13 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
 
     <!-- Bootstrap Core CSS -->
-    <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
 
     <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
-    <link href="../css/create_store.css" rel="stylesheet">
 
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -51,13 +49,14 @@
   </head>
 
   <body>
+
     <!-- Navigation bar -->
     <div class="navbar navbar-custom navbar-fixed-top">
       <div class="navbar-header">
         <a class="navbar-brand" href="../index.html">Nower</a>
-        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <!--a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="icon-bar"></span>
-        </a>
+        </a-->
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
@@ -71,13 +70,16 @@
           <div ng-controller="SendStoreCtrl">
             <form role="form" ng-submit="createStore(store)" name="store_form">
               <div class="col-xs-11 col-sm-6 col-md-4 col-sm-push-3 col-md-push-4">
+
                 <hr>
                 <h2><strong>Crear Nueva Tienda</strong></h2>
                 <hr>
+
                 <!-- alert -->
                 <div class="input-group">
                   <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
                 </div>
+
                 <label style="margin-top:40px;" for="text">Nombre:</label>
                 <div class="input-group">
                   <span class="input-group-addon">
@@ -131,16 +133,24 @@
                     </select>
                   </div> 
                 </div>
-              </div>             
+
+              </div> 
+
               <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-4 col-sm-offset-5 col-md-offset-5">
                 <div class="input-group">
                   <button style="margin-top:50px;" type="submit" class="btn btn-primary btn-lg">Crear Tienda</button>
                 </div>
               </div>
-            </form> 
+
+            </form>
+            <!-- end form column --> 
           </div>
+          <!-- end send store controller --> 
         </div>
+        <!-- end row -->
       </div>
+      <!-- end box -->
     </div>
+    <!-- end container-fluid -->
   </body>
 </html>

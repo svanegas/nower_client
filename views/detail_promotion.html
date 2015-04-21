@@ -10,11 +10,9 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
-    <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
 
     <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
-    <link href="../css/detail_promo.css" rel="stylesheet">
 
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
@@ -94,18 +92,20 @@
         
         <div class="box">
           <div class="row">
-            <div class="text-center">
-              <hr>
-              <h2><strong>Detalles del bono redimido</strong></h2>
-              <hr>
-            </div>
+
+            <hr>
+            <h2><strong>Detalles del bono redimido</strong></h2>
+            <hr>
+
             <!-- alert -->
             <div class="form-group" id="alert">                  
-                <alert class="text-center" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              <alert style="margin-left: auto; margin-right: auto; width: 97%;" class="text-center" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-6">
-              <img class="img-responsive img-border-left" src="../rs/whopper.jpg" alt="">
+              <img class="img-responsive img-border-left" src="../rs/img/whopper.jpg" alt="">
             </div>
+
             <div class="col-xs-12 col-sm-12 col-md-6">
               <div style="margin-top: 20px;">
                 <div class="form-group">
@@ -151,16 +151,22 @@
                 </div>
               </div>
             </div>
+
             <div class="form-group">
               <div class="col-xs-12 col-sm-12 col-md-12 col-xs-push-3 col-sm-push-4 col-md-push-5">
-                <br></br>
-                <br></br>
+                <br />
+                <br />
                 <button type="submit" class="btn btn-primary btn-lg">Redimir otro código</button>
               </div>
             </div>
+
           </div>
+          <!-- end row -->
         </div>
+        <!-- end box -->
       </form>
+      <!-- end form column -->
     </div>
+    <!-- end container-fluid -->
   </body>
 </html>
