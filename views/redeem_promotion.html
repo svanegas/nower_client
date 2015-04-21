@@ -1,4 +1,4 @@
-<!-- D9A90F -->
+<!-- test code: D9A90F -->
 <!DOCTYPE html>
 <html lang="en" ng-app="App">
 	<head>
@@ -11,10 +11,8 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
-    <!--link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"-->
 
     <!-- Custom CSS -->
-    <link href="../css/redeem_style.css" rel="stylesheet">
     <link href="../css/styles.css" rel="stylesheet">
       
     <!-- alerts CSS-->
@@ -26,7 +24,6 @@
     <!-- bootstrap scripts -->
     <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <!--script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script-->
 
     <!-- map scripts -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
@@ -87,43 +84,47 @@
     </div>
 
     <div class="container-fluid" id="main">
-      <form role="form" ng-submit="redeem_promotion(promotion)" ng-controller="SendRedeemPromotionCtrl">
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-            <div class="form-group">
-              <h1>Redimir Cupón de Descuento</h1>
-            </div>
-      
-           <!-- alert -->         
-           <div class="form-group">           
-            <div ng-controller="AlertDemoCtrl">
-              <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-            </div>      
-           </div> 
+      <div class="box" id="redeemBox">
+        <div class="row">
+
+          <hr>
+          <h1><strong>Redimir Cupón de Descuento</strong></h1>
+          <hr>
+
+          <form role="form" ng-submit="redeem_promotion(promotion)" ng-controller="SendRedeemPromotionCtrl">
             
-            <div class="row">
-              <div class="form-group">
-                <label>Ingrese el Código del Cupón:</label>
-              </div>
-      
+            <div style="margin-top: 100px;" class="col-xs-12 col-sm-12 col-md-12 text-center">
+
+              <!-- alert -->         
+              <div class="form-group">           
+              <div ng-controller="AlertDemoCtrl">
+                <alert style="width: 70%; margin-left: auto; margin-right: auto;" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              </div>      
+              </div> 
+             
+              <label>Ingrese el Código del Cupón:</label>
               <div class="form-group">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                  
                   <input type="text" class="form-control input-lg text-uppercase" maxlength="6" id="code" placeholder="Código" ng-model="promotion.code">
                 </div>
               </div>
-            </div>
-      
-            <div class="form-group">
-              <div class="row">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
-                  <input type="submit" class="btn btn-primary btn-lg" value="Redimir Código" </Button>
+        
+              <div class="form-group">
+                <div style="margin-top: 100px;" class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                  <input type="submit" class="btn btn-primary btn-lg" value="Redimir Código" </input>
                 </div>
               </div>
+
             </div>
-          </div>
+          </form>
+          <!-- end form column -->
         </div>
-      </form>
+        <!-- end row -->
+      </div>
+      <!-- end box -->
     </div>
+    <!-- end container-fluid -->
 	</body>
 </html>

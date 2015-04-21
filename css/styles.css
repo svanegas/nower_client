@@ -1,7 +1,7 @@
-/*html,body{
-  	height:100%;
-}*/
-
+html,body{
+  height:100%;
+  overflow-x: hidden;
+}
 body{
   padding-top:50px; /*padding for navbar*/
 }
@@ -38,10 +38,6 @@ body{
   overflow-y:scroll;
 }
 
-#left {
-	height:100%;
-}
-
 .date-form { margin: 10px; }
 label.control-label span { cursor: pointer; }
 
@@ -58,16 +54,44 @@ label.control-label span { cursor: pointer; }
   width: 100%;
 }
 
-@media screen {
-  hr {
-  max-width: 40%;
-  border-color: #999999;
-  }
+hr {
+  max-width: 70%;
 }
 
-@media handheld {
-  .hr {
-  max-width: 90%;
-  border-color: #999999;
-  }
+.box {
+  padding: 30px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+#map-canvas {
+  width:100%;
+  height:500px;
+  top:50px;
+}
+
+#code{
+  text-align: center;
+}
+
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-border {
+  float: none;
+  margin: 0 auto 0;
+  border: #999999 solid 1px;
 }
