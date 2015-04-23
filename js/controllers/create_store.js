@@ -39,8 +39,9 @@ angular.module("create_store",['ui.bootstrap'])
     $http(req).success(function(response) {
       console.log("ya");
       evaluteResponse(response);
-    }).error(function() {
+    }).error(function(response) {
       console.log("otra cosa");
+      evaluteResponse(response);
     });
   }
   
