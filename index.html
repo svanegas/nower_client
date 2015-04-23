@@ -188,7 +188,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h1 class="text-center">Iniciar sesión</h1>
             <!-- alert -->
-            <div class="form-group">
+            <div class="form-group" ng-controller="AlertDemoCtrl">
               <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
             </div>
           </div>
