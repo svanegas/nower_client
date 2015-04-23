@@ -29,7 +29,7 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
       data: data
     }
     $http(req).success(function(response) {
-      console.log("ya");
+      console.log("ya");      
       evaluteResponse(response);
     }).error(function(response) {
       console.log("otra cosa");
@@ -52,6 +52,7 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
       $window.location='./views/post_promotion.html';
     }else{
       $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];
+      document.forms["loginForm"].reset();
     }
   }
 
@@ -59,4 +60,14 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
     if(sessionStorage.getItem("token") != null)$window.location='./views/post_promotion.html';
   }
 
-}]);
+}])
+
+  .controller('AlertDemoCtrl', function ($scope) {
+    $scope.addAlert = function() {
+      $scope.alerts.push({msg: 'Another alert!'});
+    };
+
+    $scope.closeAlert = function(index) {
+      $scope.alerts.splice(index, 1);
+    };
+  });
