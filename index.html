@@ -26,24 +26,24 @@
     <!-- bootstrap scripts -->
     <script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-      
+
     <!-- angular scripts -->
     <script src="http://code.angularjs.org/1.2.25/angular.js"></script>
     <script src="js/lib/angular-local-storage.js"></script>
     <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
     <script src="js/lib/angular.dcb-clear-input.js"></script>
-  
-    <!-- scripts alerts -->        
+
+    <!-- scripts alerts -->
     <script src="js/lib/angular-ui-bootstrap0.12.1.js"></script>
-  
+
     <!-- Controllers -->
-    <script src="js/controllers/app.js"></script>      
-    <script src="js/controllers/login.js"></script>           
-    <script src="js/controllers/post_promotion.js"></script>           
-    <script src="js/controllers/create_branch.js"></script>     
-    <script src="js/controllers/create_store.js"></script>       
-    <script src="js/controllers/redeem_promotion.js"></script>   
-    <script src="js/controllers/detail_promotion.js"></script> 
+    <script src="js/controllers/app.js"></script>
+    <script src="js/controllers/login.js"></script>
+    <script src="js/controllers/post_promotion.js"></script>
+    <script src="js/controllers/create_branch.js"></script>
+    <script src="js/controllers/create_store.js"></script>
+    <script src="js/controllers/redeem_promotion.js"></script>
+    <script src="js/controllers/detail_promotion.js"></script>
     <!-- <script src="js/controllers/test.js"></script>        -->
     <!-- <script src="js/controllers/script_data.js"></script>   -->
 <!--    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/ui-bootstrap.css"> -->
@@ -82,7 +82,7 @@
       };
     </script>
   </head>
-    
+
   <body>
     <!-- Navigation bar -->
     <div class="navbar navbar-custom navbar-fixed-top">
@@ -110,7 +110,7 @@
             <a href="views/redeem_promotion.html">
               <span>Redimir código</span>
             </a>
-          </li>              
+          </li>
         </ul>
         <ul style="margin-right:20px;" id="list2"class="nav navbar-nav navbar-right">
           <li id="logoutItem" onclick="logout()">
@@ -128,15 +128,15 @@
           </li>
         </ul>
       </div>
-    </div> 
+    </div>
 
     <!-- imágenes -->
-    
-    <!--div class="container-fluid" id="main">                    
-                
+
+    <!--div class="container-fluid" id="main">
+
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel"-->
                   <!-- Indicators -->
-        
+
                   <!--ol class="carousel-indicators">
                     <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -144,7 +144,7 @@
                   </ol-->
 
                   <!-- Wrapper for slides -->
-        
+
                   <!--div class="carousel-inner" role="listbox">
                     <div class="item active">
                       <img src="rs/Burger-King-Paypal.jpg" alt="...">
@@ -163,12 +163,12 @@
                       <div class="carousel-caption">
                         Subway y Nower la mejor combinación
                       </div>
-                    </div>                      
+                    </div>
                     ...
                   </div-->
 
                   <!-- Controls -->
-        
+
                   <!--a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
@@ -177,25 +177,25 @@
                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                   </a>
-                </div>                             
-    </div-->    
-  
+                </div>
+    </div-->
+
     <!--login Modal-->
-    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="SendLoginCtrl"> 
+    <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true" ng-controller="SendLoginCtrl">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             <h1 class="text-center">Iniciar sesión</h1>
             <!-- alert -->
-            <div class="form-group">          
+            <div class="form-group">
               <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-            </div>    
+            </div>
           </div>
           <div class="row">
             <div class="col-xs-8 col-sm-8 col-md-8 col-xs-push-2 col-sm-push-2 col-md-push-2">
               <div class="modal-body">
-                <form class="form center-block" class="form-horizontal" ng-submit="loginStore(store)">
+                <form id="loginForm" class="form center-block" class="form-horizontal" ng-submit="loginStore(store)">
                   <div class="input-group">
                     <span class="input-group-addon">
                       <i class="glyphicon glyphicon-envelope"></i>
