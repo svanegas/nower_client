@@ -5,10 +5,10 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
 	$scope.createBranch = function(branch) {
     console.log(JSON.stringify(branch));
 		var store_id = localStorageService.get("Id"); ;
-        var name = branch.name;
+    var name = branch.name;
 		var address = branch.address;
 		var phone = branch.phone;
-        var lat = document.getElementById('latitude').value;
+    var lat = document.getElementById('latitude').value;
 		var lng = document.getElementById('longitude').value;
 		var jsonBranch = {
   		"store_id": store_id,
