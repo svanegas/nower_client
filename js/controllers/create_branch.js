@@ -21,10 +21,10 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
     var branch = {
       "branch": jsonBranch
     }
-      console.log(JSON.stringify(branch));	        
+      console.log(JSON.stringify(branch));
       sendData(branch, $http);
-	} 
-    
+	}
+
   function sendData(data, $http) {
     var req = {
       method: 'POST',
@@ -35,13 +35,14 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
       data: data
     }
     $http(req).success(function(response) {
-      console.log("ya");      
+      console.log("ya");
       evaluteResponse(response);
-    }).error(function() {
+    }).error(function(response) {
       console.log("otra cosa");
+			evaluteResponse(response);
     });
   }
-    
+
   /**
   function getData($http) {
     console.log("holi");
@@ -55,23 +56,23 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
     $http(req).success(function(response) {
       console.log("ya");
-      console.log(JSON.stringify(response));        
+      console.log(JSON.stringify(response));
       rawJSON = JSON.parse(JSON.stringify(response));
       console.log(rawJSON);
     }).error(function() {
       console.log("otra cosa");
     });
-  }  
+  }
   **/
-  
-  
+
+
     function evaluteResponse(response){
-      console.log(JSON.stringify(response));      
+      console.log(JSON.stringify(response));
       state = response.success;
       if(state){
         $scope.alerts = [{ type: 'success', msg: '¡Sucursal creada! :)' }];
-        document.forms["createBranchForm"].reset();   
-      }else{        
+        document.forms["createBranchForm"].reset();
+      }else{
         var errorName = [];
         var errorMsgs = [];
         var cont = 0;
@@ -88,14 +89,14 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
         $("html, body").delay(0).animate({
             scrollTop: $('#alert').offset().top - 100
         }, 0);
-      });         
+      });
   }
 
 
   function showErrorAlert(errorName, errorMsgs, cont){
-    if(cont > 1){      
-      $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}];  
-      console.log("mostró alerta"); 
+    if(cont > 1){
+      $scope.alerts = [{ type: 'danger', msg: "Error: " + errorName[0] + " " + errorMsgs[0]}];
+      console.log("mostró alerta");
       for(i = 1; i < errorMsgs.length; i++){
           $scope.alerts.push({type: 'danger', msg: "Error: " + errorName[i] + " " + errorMsgs[i]});
       }
@@ -104,31 +105,31 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
 
   }
-  
-  
-  
-  
+
+
+
+
 }])
 
 
 
 .controller('BranchMapCtrl', ['$scope', function($scope) {
-	var map;	
+	var map;
 	$scope.justOne = true;
-	$scope.$on('mapInitialized', function(evt, evtMap) {			  
+	$scope.$on('mapInitialized', function(evt, evtMap) {
 		map = evtMap;
 		$scope.placeMarker = function(e) {
       if($scope.justOne) {
 				console.log(JSON.stringify(e));
         console.log(e.latLng);
-				var marker = new google.maps.Marker({position: e.latLng, map: map, draggable:true});		 				
+				var marker = new google.maps.Marker({position: e.latLng, map: map, draggable:true});
 				updateCoordinates(e.latLng.k, e.latLng.D);
-				map.panTo(e.latLng);			  				
+				map.panTo(e.latLng);
 				$scope.justOne = false;
 				google.maps.event.addListener(marker, 'dragend', function(evt) {
-				  updateCoordinates(evt.latLng.lat(), evt.latLng.lng());															
+				  updateCoordinates(evt.latLng.lat(), evt.latLng.lng());
 				});
-			}				
+			}
 		}
 	});
 
@@ -155,6 +156,3 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
       $scope.alerts.splice(index, 1);
     };
   });
-
-
-

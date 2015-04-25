@@ -10,8 +10,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       setJson();
       console.log("***************************");
       console.log(JSON.stringify(promo));
-  		var title = promo.title;
-  		var description = promo.description;
+      var title = promo.title;
+      var description = promo.description;
       var terms = promo.terms;
       promo.date = document.getElementById('dateTime').value;
       var expiration_date = promo.date;
@@ -21,20 +21,20 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   		//var lng = promo.lng;
       //var lat = document.getElementById('latitude').value;
   		//var lng = document.getElementById('longitude').value;
-  		var jsonPromo = {
-    		"title": title,
-    		"description": description,
-    		"terms": terms,
-    		"expiration_date": expiration_date,
-    		"people_limit": people_limit,
-    		"branches": branches
+      var jsonPromo = {
+        "title": title,
+        "description": description,
+        "terms": terms,
+        "expiration_date": expiration_date,
+        "people_limit": people_limit,
+        "branches": branches
       }
-    	var promo = {
-      	"promo": jsonPromo
-    	}
-  		console.log(JSON.stringify(jsonPromo));
-  		//console.log($scope.listRight.options[0].value);
-  		//$http.post(url, branch);
+      var promo = {
+      "promo": jsonPromo
+      }
+      console.log(JSON.stringify(jsonPromo));
+      //console.log($scope.listRight.options[0].value);
+      //$http.post(url, branch);
       sendData(promo, $http);
   	}
 
@@ -49,8 +49,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       }
       $http(req).success(function(response) {
         evaluteResponse(response);
-      }).error(function() {
-        console.log("otra cosa");
+      }).error(function(response) {
+        evaluteResponse(response);
       });
     }
 
@@ -249,12 +249,6 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   }])
 
   .controller('AlertDemoCtrl', function ($scope) {
-    /**
-    $scope.alerts = [
-      { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
-      { type: 'success', msg: 'Well done! You successfully read this important alert message.' }
-    ];
-  **/
     $scope.addAlert = function() {
       $scope.alerts.push({msg: 'Another alert!'});
     };
