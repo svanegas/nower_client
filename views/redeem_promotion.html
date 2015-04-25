@@ -14,7 +14,7 @@
 
     <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
-      
+
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -33,18 +33,19 @@
     <script src="../js/lib/angular-local-storage.js"></script>
     <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
 
-    <!-- alert scripts -->      
+    <!-- alert scripts -->
     <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
-    
+
     <!-- Controllers -->
-    <script src="../js/controllers/app.js"></script>      
-    <script src="../js/controllers/login.js"></script>
-    <script src="../js/controllers/post_promotion.js"></script>            
-    <script src="../js/controllers/create_branch.js"></script>
-    <script src="../js/controllers/create_store.js"></script>    
-    <script src="../js/controllers/redeem_promotion.js"></script>   
-    <script src="../js/controllers/detail_promotion.js"></script> 
-    <script src="../js/controllers/script_data.js"></script>
+		<script src="../js/controllers/app.js"></script>
+		<script src="../js/controllers/login.js"></script>
+		<script src="../js/controllers/post_promotion.js"></script>
+		<script src="../js/controllers/create_branch.js"></script>
+		<script src="../js/controllers/create_store.js"></script>
+		<script src="../js/controllers/redeem_promotion.js"></script>
+		<script src="../js/controllers/script_data.js"></script>
+		<script src="../js/controllers/detail_promotion.js"></script>
+		<script src="../js/controllers/modify_branches.js"></script>
     <script>
       function logout(){
         sessionStorage.removeItem("token");
@@ -93,24 +94,24 @@
           <hr>
 
           <form role="form" ng-submit="redeem_promotion(promotion)" ng-controller="SendRedeemPromotionCtrl">
-            
+
             <div style="margin-top: 100px;" class="col-xs-12 col-sm-12 col-md-12 text-center">
 
-              <!-- alert -->         
-              <div class="form-group">           
+              <!-- alert -->
+              <div class="form-group">
               <div id="alert" ng-controller="AlertDemoCtrl">
                 <alert style="width: 70%; margin-left: auto; margin-right: auto;" ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-              </div>      
-              </div> 
-             
+              </div>
+              </div>
+
               <label>Ingrese el Código del Cupón:</label>
               <div class="form-group">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
-                  
+
                   <input type="text" class="form-control input-lg text-uppercase" maxlength="6" id="code" placeholder="Código" ng-model="promotion.code">
                 </div>
               </div>
-        
+
               <div class="form-group">
                 <div style="margin-top: 100px;" class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
                   <input type="submit" class="btn btn-primary btn-lg" value="Redimir Código" </input>

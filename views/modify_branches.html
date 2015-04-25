@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>Nower</title>
+  <meta name="generator" content="Bootply"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
+
+  <!-- Bootstrap Core CSS -->
+  <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
+
+    <!-- Custom CSS -->
+    <link href="../css/styles.css" rel="stylesheet">
+    <!-- alerts CSS-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- script references -->
+    <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- script bootstrap -->
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/lib/bootstrap3.2.0.js"></script>
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- script google -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
+
+    <!-- script angular -->
+    <script src="../js/lib/angularjs1.2.25.js"></script>
+    <script src="../js/lib/ngMap.js"></script>
+    <script src="../js/lib/angular-local-storage.js"></script>
+
+    <!-- scripts para alertas -->
+    <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
+
+    <!-- Controllers -->
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/login.js"></script>
+    <script src="../js/controllers/post_promotion.js"></script>
+    <script src="../js/controllers/create_branch.js"></script>
+    <script src="../js/controllers/create_store.js"></script>
+    <script src="../js/controllers/redeem_promotion.js"></script>
+    <script src="../js/controllers/script_data.js"></script>
+    <script src="../js/controllers/detail_promotion.js"></script>
+    <script src="../js/controllers/modify_branches.js"></script>
+    <script>
+    function logout(){
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("storeId");
+      window.location.assign("../index.html");
+    }
+    window.onload = function what(){
+      if(sessionStorage.getItem("token") == null){
+        window.location.assign("../index.html");
+      }
+    };
+  </script>
+</head>
+<body>
+
+  <!-- Barra de navegación -->
+  <div class="navbar navbar-custom navbar-fixed-top">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="../index.html">Nower</a>
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
+        <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li style="margin-right:20px;" onclick="logout()">
+          <a><span class="glyphicon glyphicon-off"></span>&nbsp;Cerrar Sesion</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="main" ng-controller="BranchMapCtrl">
+    <div class="box">
+      <div class="row">
+        <hr>
+        <h2><strong>Modificar Sucursales</strong></h2>
+        <hr>
+        <div style="margin-top: 30px;" class="col-xs-2 col-sm-2 col-md-3">
+          <div class="ng-scope">
+            <td width="40%" rowspan="4" align="center">
+              <select name="selectBranch" style="width: 100%;" size="30" id="selectBranch">
+              </select>
+            </td>
+          </div>
+        </div>
+        <!--Map-->
+        <div style="margin-top: 30px;" class="col-xs-12 col-sm-12 col-md-4">
+          <div  class="ng-scope">
+            <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
+          </div>
+        </div>
+        <div style="margin-top: 10px;" class="col-xs-12 col-sm-12 col-md-5">
+          <form role="form" ng-submit="modifyBranch(branch)" ng-controller="EditPromotionCtrl" id="createBranchForm" >
+
+            <!-- alert -->
+            <div class="input-group">
+              <div class="row">
+                <div id="alert" ng-controller="AlertDemoCtrl">
+                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+                </div>
+              </div>
+            </div>
+            <label>Nombre:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-pencil"></i>
+              </span>
+              <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
+            </div>
+
+            <label style="margin-top:20px;">Dirección:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-home"></i>
+              </span>
+              <input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
+            </div>
+
+            <label style="margin-top:20px;">Teléfono:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-earphone"></i>
+              </span>
+              <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
+            </div>
+
+            <label style="margin-top:20px;">Latitud:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-globe"></i>
+              </span>
+              <input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
+            </div>
+
+            <label style="margin-top:20px;">Longitud:</label>
+            <div class="input-group">
+              <span class="input-group-addon">
+                <i class="glyphicon glyphicon-globe"></i>
+              </span>
+              <input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
+            </div>
+
+            <div class="input-group">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                <button style="margin-top:40px;" type="submit" class="btn btn-primary btn-lg">Modificar Sucursal</button>
+              </div>
+            </div>
+            <br/>
+          </form>
+        </div>
+        <!-- end form column -->
+      </div>
+      <!-- end row -->
+    </div>
+    <!-- end box -->
+  </div>
+  <!-- end container-fluid -->
+</body>
+</html>
