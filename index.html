@@ -44,6 +44,7 @@
     <script src="js/controllers/create_store.js"></script>
     <script src="js/controllers/redeem_promotion.js"></script>
     <script src="js/controllers/detail_promotion.js"></script>
+    <script src="js/controllers/modify_branches.js"></script>
     <!-- <script src="js/controllers/test.js"></script>        -->
     <!-- <script src="js/controllers/script_data.js"></script>   -->
 <!--    <link rel="stylesheet" href="bower_components/html5-boilerplate/css/ui-bootstrap.css"> -->
@@ -68,6 +69,7 @@
           $('#list1 #' + 'branchItem').show();
           $('#list1 #' + 'promoItem').show();
           $('#list1 #' + 'codeItem').show();
+          $('#list1 #' + 'modifyBranchItem').show();
           $('#list2 #' + 'logginItem').hide();
           $('#list2 #' + 'registerItem').hide();
           $('#list2 #' + 'logoutItem').show();
@@ -75,6 +77,7 @@
           $('#list1 #' + 'branchItem').hide();
           $('#list1 #' + 'promoItem').hide();
           $('#list1 #' + 'codeItem').hide();
+          $('#list1 #' + 'modifyBranchItem').hide();
           $('#list2 #' + 'logginItem').show();
           $('#list2 #' + 'registerItem').show();
           $('#list2 #' + 'logoutItem').hide();
@@ -109,6 +112,11 @@
           <li id="codeItem">
             <a href="views/redeem_promotion.html">
               <span>Redimir código</span>
+            </a>
+          </li>
+          <li id="modifyBranchItem">
+            <a href="views/modify_branches.html">
+              <span>Modificar Sucursales</span>
             </a>
           </li>
         </ul>
