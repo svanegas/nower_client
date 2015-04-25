@@ -18,19 +18,19 @@
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- references scripts -->
-    <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>    
+    <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- bootstrap scripts -->
     <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script> 
-    <script src="../js/lib/bootstrap3.3.4.js"></script>    
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/lib/bootstrap3.3.4.js"></script>
     <!--script src="../js/lib/bootstrap3.2.0.js"></script-->
 
     <!-- map scripts -->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
 
     <!-- angular scripts -->
-    <script src="../js/lib/angularjs1.2.25.js"></script>    
+    <script src="../js/lib/angularjs1.2.25.js"></script>
     <script src="../js/lib/ngMap.js"></script>
     <script src="../js/lib/angular-local-storage.js"></script>
 
@@ -40,9 +40,9 @@
     <!-- Controllers -->
     <script src="../js/controllers/app.js"></script>
     <script src="../js/controllers/login.js"></script>
-    <script src="../js/controllers/post_promotion.js"></script>     
+    <script src="../js/controllers/post_promotion.js"></script>
     <script src="../js/controllers/create_branch.js"></script>
-    <script src="../js/controllers/create_store.js"></script>   
+    <script src="../js/controllers/create_store.js"></script>
     <script src="../js/controllers/redeem_promotion.js"></script>
     <script src="../js/controllers/detail_promotion.js"></script>
     <script src="../js/controllers/script_data.js"></script>
@@ -119,9 +119,17 @@
                   </span>
                   <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="store.phone">
                 </div>
-                  
+
+                <label style="margin-top:20px;" for="file">Logo:</label>
+                <div class="input-group">
+                  <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-picture"></i>
+                  </span>
+                  <input type="file" class="form-control" name="logo" id="logo">
+                </div>
+
                 <!-- Dropbown -->
-                <div class="input-group">  
+                <div class="input-group">
                   <label  for="text" style="text-align: right; clear: both; float:left; margin-right:15px; margin-top:35px;">Categoría</label>
                   <div class="col-xs-7 col-sm-7 col-md-7 col selectContainer">
                     <select style="margin-top:30px;"name="categories" class="form-control" ng-model="store.category">
@@ -131,10 +139,10 @@
                       <option value="entertainment">Entretenimiento</option>
                       <option value="other">Otra</option>
                     </select>
-                  </div> 
+                  </div>
                 </div>
 
-              </div> 
+              </div>
 
               <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-4 col-sm-offset-5 col-md-offset-5">
                 <div class="input-group">
@@ -143,9 +151,9 @@
               </div>
 
             </form>
-            <!-- end form column --> 
+            <!-- end form column -->
           </div>
-          <!-- end send store controller --> 
+          <!-- end send store controller -->
         </div>
         <!-- end row -->
       </div>

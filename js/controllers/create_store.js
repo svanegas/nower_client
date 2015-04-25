@@ -3,55 +3,44 @@
 angular.module("create_store",['ui.bootstrap'])
 
 .controller('SendStoreCtrl', ['$scope','$http', function($scope, $http) {
-	$scope.createStore = function(store) {
-    console.log(JSON.stringify(store));
-		var name = store.name;
-		var email = store.email;
-		var password = store.password;                
-		var password_confirmation = store.password_confirmation;                
-		var phone = store.phone;
-    var category = store.category;        
-        
-		var jsonStore = {
-  		"name": name,
-  		"email": email,
-  		"password": password,
-  		"password_confirmation": password_confirmation,
-  		"main_phone": phone,
-      "category": category
-    }
-    var store = {
-      "store": jsonStore
-    }
-		console.log(jsonStore);                
-    sendData(store, $http);
-	} 
-    
+  $scope.createStore = function(store) {
+    var formData = new FormData(), $input = $('#logo');
+    formData.append('store[logo]', $input[0].files[0]);
+    formData.append('store[name]', store.name);
+    formData.append('store[email]', store.email);
+    formData.append('store[password]', store.password);
+    formData.append('store[password_confirmation]', store.password_confirmation);
+    formData.append('store[main_phone]', store.phone);
+    formData.append('store[category_id]', 1);
+
+    sendData(formData);
+  }
+
   function sendData(data, $http) {
-    var req = {
-      method: 'POST',
-      url: 'http://nowerserver.herokuapp.com/stores',
-      headers: {
-        'Content-Type': 'application/json'
+    $.ajax({
+      url: "http://nowerserver.tk/stores",
+      data: data,
+      cache: false,
+      contentType: false,
+      processData: false,
+      type: 'POST',
+      success: function (response) {
+        console.log(JSON.stringify(response));
+        evaluateResponse(response);
       },
-      data: data
-    }
-    $http(req).success(function(response) {
-      console.log("ya");
-      evaluteResponse(response);
-    }).error(function(response) {
-      console.log("otra cosa");
-      evaluteResponse(response);
+      error: function(response) {
+        evaluateResponse(response.responseJSON);
+      }
     });
   }
-  
-    function evaluteResponse(response){
+
+    function evaluateResponse(response){
       console.log(JSON.stringify(response));
       state = response.success;
       if(state){
         $scope.alerts = [{ type: 'success', msg: '¡Tienda creada! :)' }];
         document.forms["store_form"].reset();
-        $scope.move(2);
+        //$scope.move(2);
       }else{
         var errorName = [];
         var errorMsgs = [];
@@ -69,7 +58,7 @@ angular.module("create_store",['ui.bootstrap'])
         $("html, body").delay(0).animate({
             scrollTop: $('#alert').offset().top - 100
         }, 0);
-      });  
+      });
   }
 
 
@@ -84,16 +73,12 @@ angular.module("create_store",['ui.bootstrap'])
       }
 
     }
-    
+
 
   $(function(){
     $(".dropdown-menu").on('click', 'li a', function(){
       $(".btn:first-child").text($(this).text());
        $(".btn:first-child").val($(this).text());
     });
-  });   
+  });
 }]);
-
-
-
-

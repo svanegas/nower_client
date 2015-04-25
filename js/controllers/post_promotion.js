@@ -41,7 +41,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     function sendData(data, $http) {
       var req = {
         method: 'POST',
-        url: 'http://nowerserver.herokuapp.com/promos',
+        url: 'http://nowerserver.tk/promos',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -149,8 +149,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       $scope.value = localStorageService.get("Id");
       var req = {
         method: 'GET',
-        //url: 'http://nowerserver.herokuapp.com/stores/branches/'+SharedVars.getStoreId(),
-        url: 'http://nowerserver.herokuapp.com/stores/branches/'+$scope.value,
+        //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+        url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
         headers: {
           'Content-Type': 'application/json'
         }

@@ -22,14 +22,14 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
   function sendData(data, $http, $window) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.herokuapp.com/stores/login',
+      url: 'http://nowerserver.tk/stores/login',
       headers: {
         'Content-Type': 'application/json'
       },
       data: data
     }
     $http(req).success(function(response) {
-      console.log("ya");      
+      console.log("ya");
       evaluteResponse(response);
     }).error(function(response) {
       console.log("otra cosa");

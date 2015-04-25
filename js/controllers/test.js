@@ -3,31 +3,31 @@
 angular.module("test",['LocalStorageModule'])
 
 //.controller('SendLoginCtrl', ['$scope','$http','$window','SharedVars', function($scope, $http, $window, SharedVars) {
-.controller('SendLoginCtrl', ['$scope','$http','$window','localStorageService', function($scope, $http, $window, localStorageService) {//  
-  
-  //$cookieStore.put("ID", "hola");  
+.controller('SendLoginCtrl', ['$scope','$http','$window','localStorageService', function($scope, $http, $window, localStorageService) {//
+
+  //$cookieStore.put("ID", "hola");
   localStorageService.set("ID", 42);
   alert(localStorageService.get("ID"));
-  
+
 	$scope.loginStore = function(store) {
-    console.log(JSON.stringify(store));		
+    console.log(JSON.stringify(store));
 		var email = store.email;
-		var password = store.password;                          
-		var jsonStore = {      		
+		var password = store.password;
+		var jsonStore = {
       "email": email,
       "password": password,
     }
     var store = {
       "store": jsonStore
     }
-		console.log(jsonStore);                
+		console.log(jsonStore);
     sendData(store, $http, $window);
-	} 
-    
+	}
+
   function sendData(data, $http, $window) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.herokuapp.com/stores/login',
+      url: 'http://nowerserver.tk/stores/login',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -38,21 +38,21 @@ angular.module("test",['LocalStorageModule'])
       console.log(JSON.stringify(response));
       rawJSON = JSON.parse(JSON.stringify(response));
       $scope.store_id = rawJSON.store.store_id;
-      console.log(rawJSON.store.token);        
-      console.log(rawJSON.store.store_id);        
+      console.log(rawJSON.store.token);
+      console.log(rawJSON.store.store_id);
       //SharedVars.setStoreId(rawJSON.store.store_id);
-      $window.location='./views/post_promotion.html'; 
+      $window.location='./views/post_promotion.html';
     }).error(function() {
       console.log("otra cosa");
     });
-  }   
+  }
 }])
 
 
 
  //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
-  	$scope.createPromo = function(promo) { 
+  	$scope.createPromo = function(promo) {
       console.log("***************************");
       setJson();
       console.log("***************************");
@@ -73,21 +73,21 @@ angular.module("test",['LocalStorageModule'])
     		"terms": terms,
     		"expiration_date": expiration_date,
     		"people_limit": people_limit,
-    		"branches": branches          
+    		"branches": branches
       }
     	var promo = {
       	"promo": jsonPromo
     	}
   		console.log(JSON.stringify(jsonPromo));
-  		//console.log($scope.listRight.options[0].value);        
+  		//console.log($scope.listRight.options[0].value);
   		//$http.post(url, branch);
       sendData(promo, $http);
-  	} 
-      
+  	}
+
     function sendData(data, $http) {
       var req = {
         method: 'POST',
-        url: 'http://nowerserver.herokuapp.com/promos',
+        url: 'http://nowerserver.tk/promos',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -98,59 +98,59 @@ angular.module("test",['LocalStorageModule'])
         console.log(JSON.stringify(response));
         state = response.success;
         if(state){
-          $scope.alerts = [{ type: 'success', msg: '¡Anuncio publicado! :)' }];          
+          $scope.alerts = [{ type: 'success', msg: '¡Anuncio publicado! :)' }];
         }else{
-        $scope.alerts = [{ type: 'danger', msg: 'No se pudo publicar la promoción :( ' + state.errors}];            
+        $scope.alerts = [{ type: 'danger', msg: 'No se pudo publicar la promoción :( ' + state.errors}];
         }
       }).error(function() {
         console.log("otra cosa");
       });
-    } 
-    
-    function setJson(){    
+    }
+
+    function setJson(){
       $scope.arrayIds = [];
       for(i = 0; i < $scope.listRight.options.length; i++){
         id = {}
         id ["id"] = $scope.listRight.options[i].value;
         //id ["email"] = email;
-        $scope.arrayIds.push(id); 
+        $scope.arrayIds.push(id);
       }
       console.log(JSON.stringify($scope.arrayIds));
-    } 
+    }
   }])
 
   //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('EventArgumentsCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
-    
-    
+
+
     $scope.value = localStorageService.get("ID");
     alert($scope.value);
-    
-    
-    //$scope.storeId = getStoreId();        
+
+
+    //$scope.storeId = getStoreId();
     //console.log("-----------------------------------");
     //console.log(SharedVars.getStoreId());
-    //console.log("-----------------------------------");  
-    
-    
-    
-    
-    //getData($http, SharedVars);       
-    getData($http);       
-    
-    
-    
-    
-    
-    $scope.$on('mapInitialized', function(evt, evtMap) {			  
+    //console.log("-----------------------------------");
+
+
+
+
+    //getData($http, SharedVars);
+    getData($http);
+
+
+
+
+
+    $scope.$on('mapInitialized', function(evt, evtMap) {
       console.log("Entró al inicializador del mapa");
-      $scope.map = evtMap;      
+      $scope.map = evtMap;
     });
-    
+
     //Esta función pone los marcadores en el mapa
     function createMarkers(){
       //console.log("Entró a crear marker");
-      //console.log($scope.rawJSON.branches[0].name);      
+      //console.log($scope.rawJSON.branches[0].name);
       /**
       var jsonLatLng = {
           "k": k,
@@ -164,47 +164,47 @@ angular.module("test",['LocalStorageModule'])
         var myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
         var marker = new google.maps.Marker({position: myLatlng, map: $scope.map});
         //console.log("creó marker: " + i );
-      }                    
+      }
     }
     //no hace nada pero la tengo ahí por si la necesito
   	function updateCoordinates(lat, lng) {
   		document.getElementById('latitude').value = lat;
   		document.getElementById('longitude').value = lng;
-  	}            
+  	}
     //Esta función trae el JSON del servicio
-    
+
     //function getData($http, SharedVars) {
     function getData($http) {
       //console.log("holi");
       var req = {
         method: 'GET',
-        //url: 'http://nowerserver.herokuapp.com/stores/branches/'+SharedVars.getStoreId(),
-        url: 'http://nowerserver.herokuapp.com/stores/branches/42',
+        //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+        url: 'http://nowerserver.tk/stores/branches/42',
         headers: {
           'Content-Type': 'application/json'
         }
       }
       $http(req).success(function(response) {
         console.log("ya");
-        console.log(JSON.stringify(response));        
+        console.log(JSON.stringify(response));
         $scope.rawJSON = JSON.parse(JSON.stringify(response));
-        createArray();        
+        createArray();
       }).error(function() {
         console.log("otra cosa");
         $scope.alerts = [{ type: 'danger', msg: 'No cargó las sucursales' }];
       });
-    } 
-    
+    }
+
     //Crea un array con los branches
     function createArray(){
       var listLeft = document.getElementById('selectLeft');
-      //var listRight = document.getElementById('selectRight'); 
-      $scope.listRight = document.getElementById('selectRight'); 
-      $scope.branches = [];               
-      for(i = 0; i < $scope.rawJSON.branches.length; i++){  
+      //var listRight = document.getElementById('selectRight');
+      $scope.listRight = document.getElementById('selectRight');
+      $scope.branches = [];
+      for(i = 0; i < $scope.rawJSON.branches.length; i++){
         $scope.branches.push($scope.rawJSON.branches[i]);
         create(listLeft, $scope.rawJSON.branches[i].id, $scope.rawJSON.branches[i].name);
-      }    
+      }
       createMarkers();
     }
     //Mete las branches a la lista tipo interactiva
@@ -252,12 +252,12 @@ angular.module("test",['LocalStorageModule'])
       //var listRight=document.getElementById('selectRight');
       $scope.listRight = document.getElementById('selectRight');
       if(side == 1) {
-        console.log("intento mover para un lado");        
-        while(listLeft.options.length > 0) {          
+        console.log("intento mover para un lado");
+        while(listLeft.options.length > 0) {
           move($scope.listRight, listLeft.options[0].value, listLeft.options[0].text);
           listLeft.remove(listLeft.options[0]);
         }
-      } else {        
+      } else {
         while($scope.listRight.options.length > 0){
           move(listLeft, $scope.listRight.options[0].value, $scope.listRight.options[0].text);
           $scope.listRight.remove($scope.listRight.options[0]);
@@ -272,7 +272,7 @@ angular.module("test",['LocalStorageModule'])
       newOption.text = optionDisplayText;
       listBoxTo.add(newOption, null);
       return true;
-    }  
+    }
   }])
 
   .controller('AlertDemoCtrl', function ($scope) {
@@ -290,11 +290,3 @@ angular.module("test",['LocalStorageModule'])
       $scope.alerts.splice(index, 1);
     };
   });
-
-
-
-
-
-
-
-

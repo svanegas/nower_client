@@ -28,7 +28,7 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
   function sendData(data, $http) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.herokuapp.com/branches',
+      url: 'http://nowerserver.tk/branches',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -48,7 +48,7 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
     console.log("holi");
     var req = {
       method: 'GET',
-      url: 'http://nowerserver.herokuapp.com/stores/branches/42',
+      url: 'http://nowerserver.tk/stores/branches/42',
       headers: {
         'Content-Type': 'application/json'
       },
