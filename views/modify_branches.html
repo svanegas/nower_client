@@ -84,18 +84,23 @@
     </div>
   </div>
 
-  <div class="container-fluid" id="main" ng-controller="BranchMapCtrl">
+  <div class="container-fluid" id="main" ng-controller="BranchesArgumenstCtrl">
     <div class="box">
       <div class="row">
         <hr>
         <h2><strong>Modificar Sucursales</strong></h2>
         <hr>
-        <div style="margin-top: 30px;" class="col-xs-2 col-sm-2 col-md-3">
+        <div style="margin-top: 30px;" class="col-xs-2 col-sm-2 col-md-2">
           <div class="ng-scope">
             <td width="40%" rowspan="4" align="center">
-              <select name="selectBranch" style="width: 100%;" size="30" id="selectBranch">
+              <select name="selectBranch" style="width: 100%;" size="20" id="selectBranch">
               </select>
             </td>
+            <tr>
+              <td align="center"><label style="width: 100%;">
+                <input name="btnLeft" class="btn" style="width: 100%;" type="button" id="btnLeft" value="&gt;" ng-click="test()">
+              </label></td>
+            </tr>
           </div>
         </div>
         <!--Map-->
