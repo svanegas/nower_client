@@ -69,12 +69,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
         <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
+        <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li style="margin-right:20px;" onclick="logout()">
@@ -90,26 +92,22 @@
         <hr>
         <h2><strong>Modificar Sucursales</strong></h2>
         <hr>
-        <div style="margin-top: 30px;" class="col-xs-2 col-sm-2 col-md-2">
+        <div style="margin-top: 70px;" class="col-xs-9 col-sm-9 col-md-2">
           <div class="ng-scope">
-            <td width="40%" rowspan="4" align="center">
-              <select name="selectBranch" style="width: 100%;" size="20" id="selectBranch">
-              </select>
-            </td>
-            <tr>
-              <td align="center"><label style="width: 100%;">
-                <input name="btnLeft" class="btn" style="width: 100%;" type="button" id="btnLeft" value="&gt;" ng-click="fillBranchFields()">
-              </label></td>
-            </tr>
+            <label for="text">Seleccione la sucursal que desea modificar</label>
+            <select name="selectBranch" style="width: 100%;" size="20" id="selectBranch"></select>
+            <label style="width: 100%;">
+              <input name="btnLeft" class="btn" style="width: 100%;" type="button" id="btnLeft" value="&gt;" ng-click="fillBranchFields()">
+            </label>
           </div>
         </div>
         <!--Map-->
-        <div style="margin-top: 30px;" class="col-xs-12 col-sm-12 col-md-4">
+        <div style="margin-top: 30px;" class="col-xs-12 col-sm-12 col-md-5">
           <div  class="ng-scope">
             <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
           </div>
         </div>
-        <div style="margin-top: 10px;" class="col-xs-12 col-sm-12 col-md-5">
+        <div style="margin-top: 25px;" class="col-xs-12 col-sm-12 col-md-5">
           <form role="form" ng-submit="modifyBranch(branch)" ng-controller="EditPromotionCtrl" id="createBranchForm" >
             <!-- alert -->
             <div class="input-group">
@@ -160,7 +158,7 @@
             </div>
 
             <div class="input-group">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-4 col-md-offset-3">
                 <button style="margin-top:40px;" type="submit" class="btn btn-primary btn-lg">Modificar Sucursal</button>
               </div>
             </div>
