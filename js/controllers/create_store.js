@@ -1,8 +1,8 @@
 //var app = angular.module('create_store', ['ngMap']);
 
-angular.module("create_store",['ui.bootstrap'])                        
+angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])                        
 
-.controller('SendStoreCtrl', ['$scope','$http', function($scope, $http) {
+.controller('SendStoreCtrl', ['$scope','$http', 'localStorageService', '$window', function($scope, $http, localStorageService, $window) {
   loadCategories();
   
   
@@ -11,7 +11,9 @@ angular.module("create_store",['ui.bootstrap'])
     formData.append('store[logo]', $input[0].files[0]);
     formData.append('store[name]', store.name);
     formData.append('store[email]', store.email);
+    $scope.email = store.email;
     formData.append('store[password]', store.password);
+    $scope.password = store.password;
     formData.append('store[password_confirmation]', store.password_confirmation);
     formData.append('store[main_phone]', store.phone);
     formData.append('store[category_id]', $scope.map[store.category]);    
@@ -41,6 +43,7 @@ angular.module("create_store",['ui.bootstrap'])
       state = response.success;
       if(state){
         $scope.alerts = [{ type: 'success', msg: '¡Tienda creada! :)' }];
+        login();
         document.forms["store_form"].reset();
         //$scope.move(2);
       }else{
@@ -61,6 +64,57 @@ angular.module("create_store",['ui.bootstrap'])
             scrollTop: $('#alert').offset().top - 100
         }, 0);
       });
+  }
+  
+  function login(){   
+    var email = $scope.email;
+    var password = $scope.password;
+    var jsonStore = {
+      "email": email,
+      "password": password,
+    }
+    var store = {
+      "store": jsonStore
+    }
+    console.log(jsonStore);
+    sendDataLogin(store, $http, $window); 
+  }
+  
+  function sendDataLogin(data, $http, $window) {
+    var req = {
+      method: 'POST',
+      url: 'http://nowerserver.tk/stores/login',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    }
+    $http(req).success(function(response) {
+      console.log("ya");
+      evaluteResponseLogin(response);
+    }).error(function(response) {
+      console.log("otra cosa");
+      evaluteResponseLogin(response);
+    });
+  }
+  
+    function evaluteResponseLogin(response){
+    console.log(JSON.stringify(response));
+    state = response.success;
+    if(state){
+      $scope.store_id = response.store.store_id;
+      console.log(response.store.token);
+      console.log(response.store.store_id);
+      //Almacenamos el ID del cliente
+      localStorageService.set("Id", response.store.store_id);
+      console.log(response.store.store_id);
+      //Saving User Data
+      sessionStorage.setItem("token", response.store.token);
+      sessionStorage.setItem("storeId", response.store.store_id);
+      $window.location='./create_branch.html';
+    }else{
+      $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];      
+    }
   }
   
   function loadCategories(){     
