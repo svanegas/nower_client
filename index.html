@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Bootstrap Core CSS -->
+    <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
 
     <!-- Custom CSS -->
@@ -24,6 +25,8 @@
     <script type="text/javascript" src="lib/bower_components/jquery/dist/jquery.min.js"></script>
 
     <!-- bootstrap scripts -->
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="../js/lib/bootstrap3.2.0.js"></script>
     <script type="text/javascript" src="lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 
@@ -72,7 +75,7 @@
           $('#list1 #' + 'modifyBranchItem').show();
           $('#list2 #' + 'logginItem').hide();
           $('#list2 #' + 'registerItem').hide();
-          $('#list2 #' + 'logoutItem').show();
+          $('#list2 #' + 'userItem').show();
         }else {
           $('#list1 #' + 'branchItem').hide();
           $('#list1 #' + 'promoItem').hide();
@@ -80,7 +83,7 @@
           $('#list1 #' + 'modifyBranchItem').hide();
           $('#list2 #' + 'logginItem').show();
           $('#list2 #' + 'registerItem').show();
-          $('#list2 #' + 'logoutItem').hide();
+          $('#list2 #' + 'userItem').hide();
         }
       };
     </script>
@@ -114,25 +117,28 @@
               <span>Redimir código</span>
             </a>
           </li>
-          <li id="modifyBranchItem">
+          <!--<li id="modifyBranchItem">
             <a href="views/modify_branches.html">
               <span>Modificar Sucursales</span>
             </a>
-          </li>
+          </li>-->
         </ul>
-        <ul style="margin-right:20px;" id="list2"class="nav navbar-nav navbar-right">
-          <li id="logoutItem" onclick="logout()">
-            <a><span class="glyphicon glyphicon-off"></span>&nbsp;Cerrar Sesion</a>
-          </li>
+        <ul id="list2"class="nav navbar-nav navbar-right">
           <li id="logginItem">
-            <a data-toggle="modal" data-target="#myModal">
-              <span>Iniciar Sesion</span>
-            </a>
+            <a data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span>&nbsp;&nbsp;Iniciar Sesion</a>
           </li>
-          <li id="registerItem">
-            <a href="views/create_store.html">
-              <span>Registrarse</span>
-            </a>
+          <li style="margin-right:10px;" id="registerItem">
+            <a href="views/create_store.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Registrarse</a>
+          </li>
+          <li id="userItem" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li onclick="logout()">
+                <a><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesion</a>
+              </li>
+              <li>
+                <a href="../views/modify_branches.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Modificar sucursales</a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
