@@ -89,22 +89,22 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
     console.log("Entró al inicializador del mapa");
     $scope.map = evtMap;
   });
-  $scope.fillBranchFields = function(){
-    var listOfBranches = document.getElementById('selectBranch');
-    var selectedBranch = listOfBranches.options.selectedIndex;
-    var indexSelectedBranch = listOfBranches.options[selectedBranch].index;
-    var name = $scope.rawJSON.branches[indexSelectedBranch].name;
-    var address = $scope.rawJSON.branches[indexSelectedBranch].address;
-    var latitude = $scope.rawJSON.branches[indexSelectedBranch].latitude;
-    var longitude = $scope.rawJSON.branches[indexSelectedBranch].longitude;
-    var phone = $scope.rawJSON.branches[indexSelectedBranch].phone;
+  function fillBranchFields(){
+    var selectedBranch = sessionStorage.getItem("selectedBranch");
+    //var indexSelectedBranch = $scope.rawJSON.branches[indexSelectedBranch].index;
+    console.log(selectedBranch);
+    var name = $scope.rawJSON.branches[selectedBranch].name;
+    var address = $scope.rawJSON.branches[selectedBranch].address;
+    var latitude = $scope.rawJSON.branches[selectedBranch].latitude;
+    var longitude = $scope.rawJSON.branches[selectedBranch].longitude;
+    var phone = $scope.rawJSON.branches[selectedBranch].phone;
     document.getElementById('name').value = name;
     document.getElementById('address').value = address;
     document.getElementById('latitude').value = latitude;
     document.getElementById('longitude').value = longitude;
     document.getElementById('phone').value = phone;
     createMarker(latitude, longitude);
-    $scope.branch_id = $scope.rawJSON.branches[indexSelectedBranch].id;
+    $scope.branch_id = $scope.rawJSON.branches[selectedBranch].id;
     console.log($scope.rawJSON.branches[0]);
   }
   //Esta función pone los marcadores en el mapa
@@ -142,28 +142,11 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
       console.log("ya");
       console.log(JSON.stringify(response));
       $scope.rawJSON = JSON.parse(JSON.stringify(response));
-      createArray();
+      fillBranchFields();
     }).error(function() {
       console.log("otra cosa");
       $scope.alerts = [{ type: 'danger', msg: 'No cargó las sucursales' }];
     });
-  }
-  //Crea un array con los branches
-  function createArray(){
-    var listBranches = document.getElementById('selectBranch');
-    $scope.branches = [];
-    for(i = 0; i < $scope.rawJSON.branches.length; i++){
-      $scope.branches.push($scope.rawJSON.branches[i]);
-      create(listBranches, $scope.rawJSON.branches[i].id, $scope.rawJSON.branches[i].name);
-    }
-  }
-  //Mete las branches a la lista tipo interactiva
-  function create(listBoxTo,optionValue,optionDisplayText){
-    var newOption = document.createElement("option");
-    newOption.value = optionValue;
-    newOption.text = optionDisplayText;
-    listBoxTo.add(newOption, null);
-    return true;
   }
 }])
 
