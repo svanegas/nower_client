@@ -102,3 +102,13 @@ h6 {
   margin: 0 auto 0;
   border: #999999 solid 1px;
 }
+.img-full {
+    min-width: 100%;
+}
+
+.tagline-divider {
+    margin: 15px auto 3px;
+    max-width: 250px;
+    border-color: #999999;
+}
+
