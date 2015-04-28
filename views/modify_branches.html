@@ -8,12 +8,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
 
   <!-- Bootstrap Core CSS -->
-  <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
 
     <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
+
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -78,10 +79,15 @@
         <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
         <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
         <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li style="margin-right:20px;" onclick="logout()">
-          <a><span class="glyphicon glyphicon-off"></span>&nbsp;Cerrar Sesion</a>
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li onclick="logout()">
+              <a><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesion</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -93,7 +99,7 @@
         <hr>
         <h2><strong>Modificar Sucursales</strong></h2>
         <hr>
-        <div style="margin-top: 70px;" class="col-xs-9 col-sm-9 col-md-2">
+        <div style="margin-top: 70px;" class="col-xs-7 col-sm-7 col-md-2">
           <div class="ng-scope">
             <label for="text">Seleccione la sucursal que desea modificar</label>
             <select name="selectBranch" style="width: 100%;" size="20" id="selectBranch"></select>
