@@ -5,6 +5,9 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
 
 //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
 .controller('AdminBranchesCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
+  $scope.value = localStorageService.get("Id");
+  //$http.get('http://nowerserver.tk/stores/branches/'+ $scope.value)
+  //.success(function (response) {$scope.names = response.branches;});
   getData($http);
   //function getData($http, SharedVars) {
   function getData($http) {
@@ -21,6 +24,19 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
     $http(req).success(function(response) {
       console.log("ya");
       console.log(JSON.stringify(response));
+      $scope.names = response.branches;
+      $("#branchesTable").delegate("td", "click", function(e) {
+        var col = $(this).parent().children().index($(this));
+        var row = $(this).parent().parent().children().index($(this).parent());
+        console.log("col: " + col + " row: " + row);
+        console.log("voy");
+        if(col == 3){
+          modifyItem(row);
+        }
+        if(col == 4){
+          deleteItem(row);
+        }
+      });
       $scope.rawJSON = JSON.parse(JSON.stringify(response));
       createBranchesTable();
     }).error(function() {
@@ -30,7 +46,7 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
   }
   //Crea un array con los branches
   function createBranchesTable(){
-    var listBranches = document.getElementById('selectBranch');
+    /*var listBranches = document.getElementById('selectBranch');
     $scope.branches = [];
     tableElem = document.getElementById("branches");
     for(i = 0; i < $scope.rawJSON.branches.length; i++){
@@ -68,24 +84,16 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
           }
         }
         tableElem.appendChild(rowElem);
-      }
+      }*/
   }
   function deleteItem(row){
-    return function() {
-      var cell = row.getElementsByTagName("td")[0];// if you put 0 here then it will return first column of this row
-      var idRow = cell.innerHTML;
-      var idBranch = $scope.rawJSON.branches[idRow - 1].id;
-      deleteBranch($http, idBranch);
-    };
+    var idBranch = $scope.rawJSON.branches[row - 1].id;
+    deleteBranch($http, idBranch);
   }
   function modifyItem(row){
-    return function() {
-      var cell = row.getElementsByTagName("td")[0];// if you put 0 here then it will return first column of this row
-      var idRow = cell.innerHTML;
-      var idBranch = $scope.rawJSON.branches[idRow - 1].id;
-      sessionStorage.setItem("selectedBranch", idRow - 1);
-      window.location.href = "modify_branches.html";
-    };
+    var idBranch = $scope.rawJSON.branches[row - 1].id;
+    sessionStorage.setItem("selectedBranch", row - 1);
+    window.location.href = "modify_branches.html";
   }
   function deleteBranch($http, id) {
     var req = {
@@ -108,7 +116,8 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
     console.log(JSON.stringify(response));
     state = response.success;
     if(state){
-      window.location.href = window.location.href;
+      console.log("El estado es bueno");
+      location.reload();
     }else{
       var errorName = [];
       var errorMsgs = [];
