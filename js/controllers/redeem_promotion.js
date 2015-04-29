@@ -38,6 +38,7 @@ angular.module("redeem_promotion",['ui.bootstrap','LocalStorageModule'])
         console.log(JSON.stringify(response));
         state = response.success;
         if(state){
+          localStorageService.set("picture", response.promo.picture.extra_large.url);
           localStorageService.set("user", response.user.name);
           localStorageService.set("title", response.promo.title);
           localStorageService.set("description", response.promo.description);
