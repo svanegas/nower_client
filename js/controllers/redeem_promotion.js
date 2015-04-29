@@ -44,6 +44,7 @@ angular.module("redeem_promotion",['ui.bootstrap','LocalStorageModule'])
           localStorageService.set("description", response.promo.description);
           localStorageService.set("expiration_date", response.promo.expiration_date);
           localStorageService.set("people_limit", response.promo.people_limit);
+          localStorageService.set("available_redemptions", response.promo.available_redemptions);
           $window.location='./detail_promotion.html';
           //console.log(localStorageService.get("user"));
           //console.log(localStorageService.get("title"));
