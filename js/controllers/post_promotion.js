@@ -5,8 +5,19 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
   //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
-  	$scope.createPromo = function(promo) {
-      console.log("***************************");
+    $scope.createPromo = function(promo) {
+      setJson();
+      var formData = new FormData(), $input = $('#picture');
+      formData.append('promo[picture]', $input[0].files[0]);
+      formData.append('promo[title]', promo.title);
+      formData.append('promo[description]', promo.description);
+      formData.append('promo[terms]', promo.terms);
+      promo.date = document.getElementById('dateTime').value;
+      formData.append('promo[expiration_date]', promo.date);
+      formData.append('promo[people_limit]', promo.people_limit);
+      formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
+      sendData(formData);
+      /*console.log("***************************");
       setJson();
       console.log("***************************");
       console.log(JSON.stringify(promo));
@@ -17,10 +28,10 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       var expiration_date = promo.date;
       var people_limit = promo.people_limit;
       var branches = $scope.arrayIds;
-  		//var lat = promo.lat;
-  		//var lng = promo.lng;
+      //var lat = promo.lat;
+      //var lng = promo.lng;
       //var lat = document.getElementById('latitude').value;
-  		//var lng = document.getElementById('longitude').value;
+      //var lng = document.getElementById('longitude').value;
       var jsonPromo = {
         "title": title,
         "description": description,
@@ -35,11 +46,26 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       console.log(JSON.stringify(jsonPromo));
       //console.log($scope.listRight.options[0].value);
       //$http.post(url, branch);
-      sendData(promo, $http);
-  	}
+      sendData(promo, $http);*/
+    }
 
-    function sendData(data, $http) {
-      var req = {
+    function sendData(data) {
+      $.ajax({
+        url: "http://nowerserver.tk/promos",
+        data: data,
+        cache: false,
+        contentType: false,
+        processData: false,
+        type: 'POST',
+        success: function (response) {
+          console.log(JSON.stringify(response));
+          evaluateResponse(response);
+        },
+        error: function(response) {
+          evaluateResponse(response.responseJSON);
+        }
+      });
+      /*var req = {
         method: 'POST',
         url: 'http://nowerserver.tk/promos',
         headers: {
@@ -51,10 +77,10 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         evaluteResponse(response);
       }).error(function(response) {
         evaluteResponse(response);
-      });
+      });*/
     }
 
-    function evaluteResponse(response){
+    function evaluateResponse(response){
         console.log(JSON.stringify(response));
         state = response.success;
         if(state){
@@ -137,10 +163,10 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       }
     }
     //no hace nada pero la tengo ahí por si la necesito
-  	function updateCoordinates(lat, lng) {
-  		document.getElementById('latitude').value = lat;
-  		document.getElementById('longitude').value = lng;
-  	}
+    function updateCoordinates(lat, lng) {
+      document.getElementById('latitude').value = lat;
+      document.getElementById('longitude').value = lng;
+    }
     //Esta función trae el JSON del servicio
 
     //function getData($http, SharedVars) {
