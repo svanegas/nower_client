@@ -40,15 +40,15 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
     console.log(JSON.stringify(response));
     state = response.success;
     if(state){
-      $scope.store_id = response.store.store_id;
+      $scope.store_id = response.store.id;
       console.log(response.store.token);
-      console.log(response.store.store_id);
+      console.log($scope.store_id);
       //Almacenamos el ID del cliente
-      localStorageService.set("Id", response.store.store_id);
-      console.log(response.store.store_id);
+      localStorageService.set("Id", $scope.store_id);
+      console.log($scope.store_id);
       //Saving User Data
       sessionStorage.setItem("token", response.store.token);
-      sessionStorage.setItem("storeId", response.store.store_id);
+      sessionStorage.setItem("storeId", $scope.store_id);
       $window.location='./views/post_promotion.html';
     }else{
       $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];
