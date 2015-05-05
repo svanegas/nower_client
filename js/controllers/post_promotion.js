@@ -1,52 +1,29 @@
-//var app = angular.module('myapp', ['ngMap','App.services','ui.bootstrap']);
-
 angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
-//angular.module("post_promotion",['ngMap','LocalStorageModule'])
-
   //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
     $scope.createPromo = function(promo) {
-      setJson();
-      var formData = new FormData(), $input = $('#picture');
-      formData.append('promo[picture]', $input[0].files[0]);
-      formData.append('promo[title]', promo.title);
-      formData.append('promo[description]', promo.description);
-      formData.append('promo[terms]', promo.terms);
-      promo.date = document.getElementById('dateTime').value;
-      formData.append('promo[expiration_date]', promo.date);
-      formData.append('promo[people_limit]', promo.people_limit);
-      formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
-      sendData(formData);
-      /*console.log("***************************");
-      setJson();
-      console.log("***************************");
-      console.log(JSON.stringify(promo));
-      var title = promo.title;
-      var description = promo.description;
-      var terms = promo.terms;
-      promo.date = document.getElementById('dateTime').value;
-      var expiration_date = promo.date;
-      var people_limit = promo.people_limit;
-      var branches = $scope.arrayIds;
-      //var lat = promo.lat;
-      //var lng = promo.lng;
-      //var lat = document.getElementById('latitude').value;
-      //var lng = document.getElementById('longitude').value;
-      var jsonPromo = {
-        "title": title,
-        "description": description,
-        "terms": terms,
-        "expiration_date": expiration_date,
-        "people_limit": people_limit,
-        "branches": branches
+      $scope.alerts =[];
+      if( document.getElementById('people_limit').value == '' &&
+          document.getElementById('dateTime').value == ''){        
+        $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
+        $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});        
+      } else if (document.getElementById('dateTime').value == ''){          
+          $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
+      } else if (document.getElementById('people_limit').value == ''){
+          $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
+      } else {
+          setJson();
+          var formData = new FormData(), $input = $('#picture');
+          formData.append('promo[picture]', $input[0].files[0]);
+          formData.append('promo[title]', promo.title);
+          formData.append('promo[description]', promo.description);
+          formData.append('promo[terms]', promo.terms);
+          promo.date = document.getElementById('dateTime').value;
+          formData.append('promo[expiration_date]', promo.date);
+          formData.append('promo[people_limit]', promo.people_limit);
+          formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
+          sendData(formData); 
       }
-      var promo = {
-      "promo": jsonPromo
-      }
-      console.log(JSON.stringify(jsonPromo));
-      //console.log($scope.listRight.options[0].value);
-      //$http.post(url, branch);
-      sendData(promo, $http);*/
     }
 
     function sendData(data) {
@@ -65,19 +42,6 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
           evaluateResponse(response.responseJSON);
         }
       });
-      /*var req = {
-        method: 'POST',
-        url: 'http://nowerserver.tk/promos',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        data: data
-      }
-      $http(req).success(function(response) {
-        evaluteResponse(response);
-      }).error(function(response) {
-        evaluteResponse(response);
-      });*/
     }
 
     function evaluateResponse(response){
