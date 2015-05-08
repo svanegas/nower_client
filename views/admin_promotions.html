@@ -47,8 +47,7 @@
     <script src="../js/controllers/detail_promotion.js"></script>
     <script src="../js/controllers/modify_branches.js"></script>
     <script src="../js/controllers/admin_branches.js"></script>
-    <script src="../js/controllers/admin_promotions.js"></script>
-    <!--
+    <script src="../js/controllers/admin_promotions.js"></script>    
     <script>
     function logout(){
       sessionStorage.removeItem("token");
@@ -60,8 +59,7 @@
         window.location.assign("../index.html");
       }
     };
-  </script>
-  -->
+  </script>  
 </head>
 <body>
 
@@ -107,7 +105,7 @@
             </div>
           </div>
         </div>
-        <table name="branchesTable" class="table table-striped" data-toggle="table" style="width: 100%;" size="20" id="branchesTable" align="right">
+        <table name="promotionsTable" class="table table-striped" data-toggle="table" style="width: 100%;" size="20" id="promotionsTable" align="right">
           <thead>
             <tr>
               <th>Título</th>
@@ -117,11 +115,11 @@
               <th>Editar</th>
               <th>Borrar</th>
             </tr>
-            <tr ng-repeat="x in names">
-              <td>{{ x.name }}</td>
-              <td>{{ x.address }}</td>
-              <td>{{ x.phone }}</td>
-              <td>Sucursal</td>              
+            <tr ng-repeat="x in promos">
+              <td>{{ x.title }}</td>
+              <td>{{ x.description }}</td>
+              <td>{{ x.people_limit }}</td>  
+              <td>{{ x.expiration_date }}</td>                          
               <td><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span></a></td>
               <td><a href="#" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"></span></a></td>
             </tr>
