@@ -8,13 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
 
   <!-- Bootstrap Core CSS -->
-    <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
 
     <!-- Custom CSS -->
     <link href="../css/styles.css" rel="stylesheet">
-
     <!-- alerts CSS-->
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,6 +48,7 @@
     <script src="../js/controllers/modify_branches.js"></script>
     <script src="../js/controllers/admin_branches.js"></script>
     <script src="../js/controllers/admin_promotions.js"></script>
+    <!--
     <script>
     function logout(){
       sessionStorage.removeItem("token");
@@ -61,6 +61,7 @@
       }
     };
   </script>
+  -->
 </head>
 <body>
 
@@ -80,7 +81,6 @@
         <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
         <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
         <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
-
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
@@ -88,85 +88,45 @@
             <li onclick="logout()">
               <a><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesion</a>
             </li>
-            <li>
-              <a href="../views/admin_branches.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar sucursales</a>
-            </li>
           </ul>
         </li>
       </ul>
     </div>
   </div>
 
-  <div class="container-fluid" id="main" ng-controller="BranchesArgumenstCtrl">
+  <div class="container-fluid" id="main" ng-controller="AdminPromotionCtrl">
     <div class="box">
       <div class="row">
         <hr>
-        <h2><strong>Modificar Sucursales</strong></h2>
+        <h2><strong>Administrar Promociones</strong></h2>
         <hr>
-        <!--Map-->
-        <div style="margin-top: 30px;" class="col-xs-12 col-sm-12 col-md-5">
-          <div  class="ng-scope">
-            <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
+        <div class="input-group">
+          <div class="row">
+            <div id="alert" ng-controller="AlertDemoCtrl">
+              <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            </div>
           </div>
         </div>
-        <div style="margin-top: 25px;" class="col-xs-12 col-sm-12 col-md-5">
-          <form role="form" ng-submit="modifyBranch(branch)" ng-controller="EditPromotionCtrl" id="createBranchForm" >
-            <!-- alert -->
-            <div class="input-group">
-              <div class="row">
-                <div id="alert" ng-controller="AlertDemoCtrl">
-                  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
-                </div>
-              </div>
-            </div>
-            <label>Nombre:</label>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-pencil"></i>
-              </span>
-              <input type="text" class="form-control" id="name" placeholder="Ingresa el nombre" ng-model="branch.name">
-            </div>
-
-            <label style="margin-top:20px;">Dirección:</label>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-home"></i>
-              </span>
-              <input type="text" class="form-control" id="address" placeholder="Ingresa la dirección" ng-model="branch.address">
-            </div>
-
-            <label style="margin-top:20px;">Teléfono:</label>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-earphone"></i>
-              </span>
-              <input type="text" class="form-control" id="phone" placeholder="Ingresa el número telefónico" ng-model="branch.phone">
-            </div>
-
-            <label style="margin-top:20px;">Latitud:</label>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-globe"></i>
-              </span>
-              <input type="text" class="form-control" id="latitude" ng-model="branch.lat" disabled>
-            </div>
-
-            <label style="margin-top:20px;">Longitud:</label>
-            <div class="input-group">
-              <span class="input-group-addon">
-                <i class="glyphicon glyphicon-globe"></i>
-              </span>
-              <input type="text" class="form-control" id="longitude" ng-model="branch.lng" disabled>
-            </div>
-
-            <div class="input-group">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-xs-offset-3 col-sm-offset-4 col-md-offset-3">
-                <button style="margin-top:40px;" type="submit" class="btn btn-primary btn-lg">Modificar Sucursal</button>
-              </div>
-            </div>
-            <br/>
-          </form>
-        </div>
+        <table name="branchesTable" class="table table-striped" data-toggle="table" style="width: 100%;" size="20" id="branchesTable" align="right">
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Descripción</th>
+              <th>Límite de personas</th>
+              <th>Fecha de caducidad</th>
+              <th>Editar</th>
+              <th>Borrar</th>
+            </tr>
+            <tr ng-repeat="x in names">
+              <td>{{ x.name }}</td>
+              <td>{{ x.address }}</td>
+              <td>{{ x.phone }}</td>
+              <td>Sucursal</td>              
+              <td><a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-pencil"></span></a></td>
+              <td><a href="#" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-trash"></span></a></td>
+            </tr>
+          </thead>
+        </table>
         <!-- end form column -->
       </div>
       <!-- end row -->
