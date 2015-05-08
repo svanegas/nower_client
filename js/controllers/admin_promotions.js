@@ -8,7 +8,7 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',      
-      url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
+      url: 'http://nowerserver.tk/promos/store/'+$scope.value,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -16,8 +16,8 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
     $http(req).success(function(response) {
       console.log("ya");
       console.log(JSON.stringify(response));
-      $scope.names = response.branches;
-      $("#branchesTable").delegate("td", "click", function(e) {
+      $scope.promos = response.promos;
+      $("#promotionsTable").delegate("td", "click", function(e) {
         var col = $(this).parent().children().index($(this));
         var row = $(this).parent().parent().children().index($(this).parent());
         console.log("col: " + col + " row: " + row);
