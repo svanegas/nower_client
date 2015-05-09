@@ -96,7 +96,7 @@
           <span class="icon-bar"></span>
         </a>
       </div>
-      <div class="navbar-collapse collapse">
+      <div class="navbar-collapse collapse" ng-controller="LoadStoreName">
         <ul id="list1" class="nav navbar-nav">
           <li id="branchItem">
             <a href="views/create_branch.html">
@@ -121,7 +121,7 @@
           <li style="margin-right:10px;" id="registerItem">
             <a href="views/create_store.html"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;Registrarse</a>
           </li>
-          <li id="userItem" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
+          <li id="userItem" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{storeName}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="views/admin_promotions.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar promociones</a>

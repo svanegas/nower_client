@@ -1,9 +1,5 @@
-//var app = angular.module('myapp', ['ngMap','App.services','ui.bootstrap']);
-
 angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
-//angular.module("post_promotion",['ngMap','LocalStorageModule'])
 
-//.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
 .controller('AdminBranchesCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
   $scope.value = localStorageService.get("Id");
   //$http.get('http://nowerserver.tk/stores/branches/'+ $scope.value)

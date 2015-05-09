@@ -1,5 +1,4 @@
-angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
-  //.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
+angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap']) 
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
     $scope.createPromo = function(promo) {
       $scope.alerts =[];
