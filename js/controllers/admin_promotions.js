@@ -22,10 +22,10 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
         var row = $(this).parent().parent().children().index($(this).parent());
         console.log("col: " + col + " row: " + row);
         console.log("voy");
-        if(col == 3){
+        if(col == 4){
           modifyItem(row);
         }
-        if(col == 4){
+        if(col == 5){
           deleteItem(row);
         }
       });
@@ -37,18 +37,19 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
   }
   //Crea un array con los branches
   function deleteItem(row){
-    var idBranch = $scope.rawJSON.branches[row - 1].id;
-    deleteBranch($http, idBranch);
+    var idPromo = $scope.rawJSON.promos[row - 1].id;
+    console.log("idPromo. " + idPromo);
+    deletePromo($http, idPromo);
   }
   function modifyItem(row){
-    var idBranch = $scope.rawJSON.branches[row - 1].id;
-    sessionStorage.setItem("selectedBranch", row - 1);
+    var idPromo = $scope.rawJSON.promos[row - 1].id;
+    sessionStorage.setItem("selectedPromo", row - 1);
     window.location.href = "modify_promotions.html";
   }
-  function deleteBranch($http, id) {
+  function deletePromo($http, id) {
     var req = {
       method: 'DELETE',      
-      url: 'http://nowerserver.tk/branches/'+ id,
+      url: 'http://nowerserver.tk/promos/'+ id,
     }
     $http(req).success(function(response) {
       console.log("ya");
