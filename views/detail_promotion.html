@@ -77,14 +77,14 @@
           <span class="icon-bar"></span>
         </a>
       </div>
-      <div class="navbar-collapse collapse">
+      <div class="navbar-collapse collapse" ng-controller="LoadStoreName">
         <ul class="nav navbar-nav">
           <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
           <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
           <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario <span class="caret"></span></a>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{storeName}} <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="../views/admin_promotions.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar promociones</a>

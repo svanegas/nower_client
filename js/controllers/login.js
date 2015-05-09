@@ -2,7 +2,10 @@
 
 angular.module("login",['LocalStorageModule','ui.bootstrap'])
 
-//.controller('SendLoginCtrl', ['$scope','$http','$window','SharedVars', function($scope, $http, $window, SharedVars) {
+  .controller('LoadStoreName', ['$scope', 'localStorageService', function ($scope, localStorageService){
+    $scope.storeName = localStorageService.get("storeName");
+    console.log("Nombre de la tienda: "+$scope.storeName);
+  }]) 
 .controller('SendLoginCtrl', ['$scope','$http','$window','localStorageService', function($scope, $http, $window, localStorageService) {//
 
   $scope.loginStore = function(store) {
@@ -43,12 +46,16 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
       $scope.store_id = response.store.id;
       console.log(response.store.token);
       console.log($scope.store_id);
+      $scope.storeName = response.store.name;
+      console.log("Nombre de la tienda: "+$scope.storeName);
+      localStorageService.set("storeName", $scope.storeName);  
       //Almacenamos el ID del cliente
-      localStorageService.set("Id", $scope.store_id);
+      localStorageService.set("Id", $scope.store_id);      
       console.log($scope.store_id);
       //Saving User Data
       sessionStorage.setItem("token", response.store.token);
       sessionStorage.setItem("storeId", $scope.store_id);
+      sessionStorage.setItem("storeName", $scope.store_name);
       $window.location='./views/post_promotion.html';
     }else{
       $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];
