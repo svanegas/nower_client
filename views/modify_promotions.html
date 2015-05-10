@@ -56,6 +56,7 @@
   <script src="../js/controllers/script_calendar.js"></script>
   <script src="../js/controllers/script_data.js"></script>
   <script src="../js/controllers/modify_branches.js"></script>
+  <script src="../js/controllers/modify_promotion.js"></script>
   <script src="../js/controllers/admin_branches.js"></script>
   <script src="../js/controllers/admin_promotions.js"></script>
   <script>
@@ -82,16 +83,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
       </a>
     </div>
     <div class="navbar-collapse collapse" ng-controller="LoadStoreName">
       <ul class="nav navbar-nav">
+        <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
         <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
         <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{storeName}} <span class="caret"></span></a>
           <ul class="dropdown-menu">
+            <li>
+              <a href="../views/admin_promotions.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar promociones</a>
+            </li>      
             <li>
               <a href="../views/admin_branches.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar sucursales</a>
             </li>            
@@ -104,7 +110,7 @@
     </div>
   </div>
 
-  <div class="container-fluid" id="main" ng-controller="EventArgumentsCtrl">
+  <div class="container-fluid" id="main" ng-controller="PromoArgumenstCtrl">
     <div class="box">
       <div class="row">
 
@@ -122,7 +128,7 @@
         <div style="margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-5" ng-controller="SendPromotionCtrl">
 
           <!-- form -->
-          <form name="promotion_form" role="form" ng-submit="createPromo(promo)">
+          <form role="form" ng-submit="modifyPromo(promo)" ng-controller="EditPromoCtrl" id="modifyPromoForm" >
 
             <div class="form-group">
               <!-- alert -->
@@ -136,13 +142,13 @@
             </div>
 
             <div class="form-group">
-              <label for="comment">Description:</label>
+              <label for="comment">Descripción:</label>
               <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.description"></textarea>
             </div>
 
             <div class="form-group">
               <label for="comment">Términos y condiciones:</label>
-              <textarea class="form-control" rows="5" id="description" placeholder="Ingresa la descripción" ng-model="promo.terms"></textarea>
+              <textarea class="form-control" rows="5" id="terms" placeholder="Ingresa la descripción" ng-model="promo.terms"></textarea>
             </div>
 
             <div class="form-group">
@@ -150,9 +156,13 @@
               <input type="text" pattern="\d+" class="form-control" id="people_limit" ng-model="promo.people_limit">
             </div>
 
+            <label for="file">Imagen:</label>
             <div class="form-group">
-              <label for="file">Imagen:</label>
-              <input type="file" class="form-control" name="picture" id="picture">
+              <img id="picture" class="img-responsive img-border-left" src="../rs/img/promo_placeholder.jpg" alt="">
+            </div>
+
+            <div class="form-group">
+              <input type="file" class="form-control" name="pictureInput" id="pictureInput">
             </div>
 
             <br />
@@ -212,7 +222,7 @@
                 <label style="text-align: right; clear: both; float:left; margin-left:15px;">Fecha de expiración</label>
                 <div class="col-xs-6 col-sm-6 col-md-6 date">
                   <div class="input-group input-append date" id="datePicker">
-                    <input type="text" class="form-control" id="dateTime" ng-model="promo.date"/>
+                    <input type="text" class="form-control" id="expiration_date" ng-model="promo.date"/>
                     <span class="input-group-addon add-on">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span>

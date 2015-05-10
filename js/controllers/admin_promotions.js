@@ -43,7 +43,8 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
   }
   function modifyItem(row){
     var idPromo = $scope.rawJSON.promos[row - 1].id;
-    sessionStorage.setItem("selectedPromo", row - 1);
+    console.log(idPromo);
+    sessionStorage.setItem("selectedPromo", idPromo);
     window.location.href = "modify_promotions.html";
   }
   function deletePromo($http, id) {
