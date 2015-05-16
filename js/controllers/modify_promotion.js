@@ -10,10 +10,10 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   $scope.modifyPromo = function(promo) {
     $scope.alerts =[];
     if( document.getElementById('people_limit').value == '' &&
-        document.getElementById('expiration_date').value == ''){        
+        document.getElementById('dateInput').value == ''){        
       $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
       $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});        
-    } else if (document.getElementById('expiration_date').value == ''){          
+    } else if (document.getElementById('dateInput').value == ''){          
         $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
     } else if (document.getElementById('people_limit').value == ''){
         $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
@@ -26,8 +26,11 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         formData.append('promo[title]', promo.title);
         formData.append('promo[description]', promo.description);
         formData.append('promo[terms]', promo.terms);
-        promo.date = document.getElementById('expiration_date').value;
-        formData.append('promo[expiration_date]', promo.date);
+        promo.date = document.getElementById('dateInput').value;
+        promo.time = document.getElementById('timeInput').value;
+        var dateTime = promo.date + ' ' + promo.time;
+        console.log(dateTime);
+        formData.append('promo[expiration_date]', dateTime);
         formData.append('promo[people_limit]', promo.people_limit);
         formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
         sendData(formData); 
@@ -162,12 +165,18 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     var description = $scope.rawJSON.promo.description;
     var terms = $scope.rawJSON.promo.terms;
     var expiration_date = $scope.rawJSON.promo.expiration_date;
+
+    var expiration_date_split = expiration_date.split(" ");
+    var date = expiration_date_split[0];
+    var time = expiration_date_split[1];
     var people_limit = $scope.rawJSON.promo.people_limit;
     $scope.promo.title =title;
     $scope.promo.description =description;
     $scope.promo.terms =terms;
-    document.getElementById('expiration_date').value = expiration_date;
-    $scope.promo.expiration_date =expiration_date;
+    document.getElementById('dateInput').value = date;
+    document.getElementById('timeInput').value = time;
+    $scope.promo.date =date;
+    $scope.promo.time =time;
     $scope.promo.people_limit =people_limit;
     //document.getElementById('title').value = title;
     //document.getElementById('description').value = description;
