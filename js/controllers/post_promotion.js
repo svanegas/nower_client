@@ -103,7 +103,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
     $scope.$on('mapInitialized', function(evt, evtMap) {
       console.log("Entró al inicializador del mapa");
-      $scope.map = evtMap;
+      $scope.map = evtMap;   
     });
 
     //Esta función pone los marcadores en el mapa
@@ -123,7 +123,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         var myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
         var marker = new google.maps.Marker({position: myLatlng, map: $scope.map});
         //console.log("creó marker: " + i );
-      }
+      }          
+      
     }
     //no hace nada pero la tengo ahí por si la necesito
     function updateCoordinates(lat, lng) {
