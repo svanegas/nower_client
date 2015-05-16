@@ -3,10 +3,10 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.createPromo = function(promo) {
       $scope.alerts =[];
       if( document.getElementById('people_limit').value == '' &&
-          document.getElementById('dateTime').value == ''){        
+          document.getElementById('dateInput').value == ''){        
         $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
         $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});        
-      } else if (document.getElementById('dateTime').value == ''){          
+      } else if (document.getElementById('dateInput').value == ''){          
           $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
       } else if (document.getElementById('people_limit').value == ''){
           $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
@@ -17,8 +17,11 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
           formData.append('promo[title]', promo.title);
           formData.append('promo[description]', promo.description);
           formData.append('promo[terms]', promo.terms);
-          promo.date = document.getElementById('dateTime').value;
-          formData.append('promo[expiration_date]', promo.date);
+          promo.date = document.getElementById('dateInput').value;
+          promo.time = document.getElementById('timeInput').value;
+          var dateTime = promo.date + ' ' + promo.time;
+          console.log(dateTime);
+          formData.append('promo[expiration_date]', dateTime);
           formData.append('promo[people_limit]', promo.people_limit);
           formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
           sendData(formData); 

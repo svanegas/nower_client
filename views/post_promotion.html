@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
 
   <!-- Bootstrap Core CSS -->
-  <ink rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css" />
 
@@ -121,6 +121,10 @@
           <div  class="ng-scope">
             <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15"></map>
           </div>
+
+          <div id="directions">
+            <p> </p>
+          </div>
         </div>
 
         <div style="margin-top: 5px;" class="col-xs-12 col-sm-12 col-md-5" ng-controller="SendPromotionCtrl">
@@ -211,27 +215,34 @@
             </div>
 
             <!-- Calendar -->
+            <label style="text-align: center; clear: both; padding-top:3%; padding-bottom: 3%;">Fecha de expiración</label>
             <div class="row">
-              <div class="form-group">
-                <label style="text-align: right; clear: both; float:left; margin-left:15px;">Fecha de expiración</label>
-                <div class="col-xs-6 col-sm-6 col-md-6 date">
-                  <div class="input-group input-append date" id="datePicker">
-                    <input type="text" class="form-control" id="dateTime" ng-model="promo.date"/>
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <div class="input-group input-append" id="datePicker">
+                    <input type="text" class="form-control" id="dateInput" placeholder="Fecha" ng-model="promo.date"/>
                     <span class="input-group-addon add-on">
                       <span class="glyphicon glyphicon-calendar"></span>
                     </span>
                   </div>
                 </div>
               </div>
-              <br />
-              <br />
+              <div class="col-xs-6 col-sm-6 col-md-6">
+                <div class="form-group">
+                  <div class="input-group input-append" id="timePicker">
+                    <input type="text" class="form-control" id="timeInput" placeholder="Hora" ng-model="promo.time"/>
+                    <span class="input-group-addon add-on">
+                      <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
               <div class="form-group">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3 col-sm-offset-3 col-md-offset-3" style="padding-top:10%; padding-bottom:15%;">
                   <button type="submit" class="btn btn-primary btn-lg" >Publicar promoción</button>
                 </div>
               </div>
-              <br />
-              <br />
             </div>
           </form>
         </div>
