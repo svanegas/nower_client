@@ -11,14 +11,3 @@ $(function () {
     format: 'HH:mm'
   });
 });
-
-/*$(function () {
-  $('#datePicker').datetimepicker();
-  $('#timePicker').datetimepicker();
-  $("#datePicker").on("dp.change", function (e) {
-    $('#timePicker').data("DateTimePicker").minDate(e.date);
-  });
-  $("#timePicker").on("dp.change", function (e) {
-    $('#datePicker').data("DateTimePicker").minDate(e.time);
-  });
-});*/
