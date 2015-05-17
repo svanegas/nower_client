@@ -1,33 +1,47 @@
 body{
-  padding-top:50px; /*padding for navbar*/
+  padding-top:100px; /*padding for navbar*/
 }
 
 .navbar-custom .icon-bar {
 	background-color:#fff;
+
+}
+
+.navbar-custom .navbar-brand{
+  line-height: 40px;
+}
+.navbar-custom .navbar-brand:hover,.navbar-custom .navbar-brand:focus{
+  color: #000;
 }
 
 .navbar-custom {
-	background-color: #168ccc;
+	background-color: #DB1300;
   color:#fff;
 }
 
+.navbar-custom .navbar-nav>li>a {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 50px;
+}
 .navbar-custom li>a:hover,.navbar-custom li>a:focus {
-	background-color:#49bfff;
+  color: #E80B00;
+	background-color:#E80B00;
 }
 
 .navbar-custom a{
-    color:#fefefe;
+  color:#fefefe;
 }
 
 .navbar-custom .form-control:focus {
-	border-color: #49bfff;
+	border-color: #E80B00;
 	outline: 0;
 	-webkit-box-shadow: inset 0 0 0;
 	box-shadow: inset 0 0 0;
 }
 
 .navbar-custom .dropdown-menu{
-  background-color: #168ccc;
+  background-color: #DB1300;
 }
 
 .navbar-custom .dropdown{
@@ -37,6 +51,10 @@ body{
   color: #fff;
 }
 
+.navbar-custom .dropdown-menu li>a:hover,.navbar-custom .dropdown-menu li>a:focus {
+  color: #E80B00;
+  background-color:#fff;
+}
 #main, #main>.row {
 	height:100%;
 }
@@ -115,12 +133,22 @@ h6 {
   border: #999999 solid 1px;
 }
 .img-full {
-    min-width: 100%;
+  min-width: 100%;
 }
 
 .tagline-divider {
-    margin: 15px auto 3px;
-    max-width: 250px;
-    border-color: #999999;
+  margin: 15px auto 3px;
+  max-width: 250px;
+  border-color: #999999;
 }
+footer {
+  background-color:#DB1300;
+  min-height:100px;
+  padding-top:40px;
+  padding-bottom:20px;
+  margin-top: 100px;
+}
+
+
+
 
