@@ -114,7 +114,7 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
 
 
 .controller('BranchMapCtrl', ['$scope', function($scope) {
-	setInterval(function () {$('#directions').hide();}, 3000);
+	setInterval(function () {$('#directions').hide();}, 5000);
 	var map;
 	$scope.justOne = true;
 	$scope.$on('mapInitialized', function(evt, evtMap) {

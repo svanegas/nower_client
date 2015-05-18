@@ -100,32 +100,32 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
   //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('EventArgumentsCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
-    setInterval(function () {$('#directions').hide();}, 3000);
+    //Adding timer to feedback messages
+    setInterval(function () {$('#directions').hide();}, 5000);
     getData($http);
     $scope.$on('mapInitialized', function(evt, evtMap) {
       console.log("Entró al inicializador del mapa");
       $scope.map = evtMap;
     });
 
-    //Esta función pone los marcadores en el mapa
-    function createMarkers(){
-      //console.log("Entró a crear marker");
-      //console.log($scope.rawJSON.branches[0].name);
-      /**
-      var jsonLatLng = {
-          "k": k,
-          "D": D
-      }
-      **/
-      //console.log(jsonLatLng);
+    function createMarker(idBranch){
+      id = $scope.mapIdBranchesToIndex[idBranch];
+      $scope.markers[id].setMap($scope.map);
+    }
+
+    function deleteMarker(idBranch){
+      id = $scope.mapIdBranchesToIndex[idBranch];
+      $scope.markers[id].setMap(null);
+    }
+
+    function initMarkers(){
       for(i = 0; i < $scope.rawJSON.branches.length; i++){
         var lat = $scope.rawJSON.branches[i].latitude;
         var long = $scope.rawJSON.branches[i].longitude;
         var myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
-        var marker = new google.maps.Marker({position: myLatlng, map: $scope.map});
-        //console.log("creó marker: " + i );
+        var marker = new google.maps.Marker({position: myLatlng, map: null});
+        $scope.markers[i] = marker;
       }
-
     }
     //no hace nada pero la tengo ahí por si la necesito
     function updateCoordinates(lat, lng) {
@@ -163,11 +163,16 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       //var listRight = document.getElementById('selectRight');
       $scope.listRight = document.getElementById('selectRight');
       $scope.branches = [];
+      $scope.markers = [];
+      $scope.mapIdBranchesToIndex = [];
+      initMarkers();
       for(i = 0; i < $scope.rawJSON.branches.length; i++){
         $scope.branches.push($scope.rawJSON.branches[i]);
+        id = $scope.rawJSON.branches[i].id;
+        $scope.mapIdBranchesToIndex[id] = i;
         create(listLeft, $scope.rawJSON.branches[i].id, $scope.rawJSON.branches[i].name);
       }
-      createMarkers();
+      //createMarkers();
     }
     //Mete las branches a la lista tipo interactiva
     function create(listBoxTo,optionValue,optionDisplayText){
@@ -189,22 +194,26 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
           alert('Ya se movió todo para la derecha');
           return false;
         }else{
-          var selectedCountry=listLeft.options.selectedIndex;
+          var selectedCountry = listLeft.options.selectedIndex;
+          idBranch = listLeft.options[selectedCountry].value;
           move($scope.listRight,listLeft.options[selectedCountry].value,listLeft.options[selectedCountry].text);
+          createMarker(idBranch);
           listLeft.remove(selectedCountry);
-          if(listLeft.options.length>0){
+          if(listLeft.options.length > 0){
             listLeft.options[0].selected=true;
           }
         }
-      }else if(side==2){
+      } else if(side==2){
         if($scope.listRight.options.length==0){
           alert('Ya se movió todo para la izquierda');
           return false;
         }else{
-          var selectedCountry=$scope.listRight.options.selectedIndex;
+          var selectedCountry = $scope.listRight.options.selectedIndex;
+          idBranch = $scope.listRight.options[selectedCountry].value;
+          deleteMarker(idBranch);
           move(listLeft,$scope.listRight.options[selectedCountry].value,$scope.listRight.options[selectedCountry].text);
           $scope.listRight.remove(selectedCountry);
-          if($scope.listRight.options.length>0){
+          if($scope.listRight.options.length > 0){
             $scope.listRight.options[0].selected=true;
           }
         }
@@ -212,17 +221,21 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
     //Mueve todo para un lado sea izq o der
     $scope.move = function(side){
-      var listLeft=document.getElementById('selectLeft');
+      var listLeft = document.getElementById('selectLeft');
       //var listRight=document.getElementById('selectRight');
       $scope.listRight = document.getElementById('selectRight');
       if(side == 1) {
         console.log("intento mover para la izquierda");
         while(listLeft.options.length > 0) {
+          idBranch = listLeft.options[0].value;
+          createMarker(idBranch);
           move($scope.listRight, listLeft.options[0].value, listLeft.options[0].text);
           listLeft.remove(listLeft.options[0]);
         }
       } else {
         while($scope.listRight.options.length > 0){
+          idBranch = $scope.listRight.options[0].value;
+          deleteMarker(idBranch);
           move(listLeft, $scope.listRight.options[0].value, $scope.listRight.options[0].text);
           $scope.listRight.remove($scope.listRight.options[0]);
         }

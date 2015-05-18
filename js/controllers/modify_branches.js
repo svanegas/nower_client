@@ -84,6 +84,8 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
 
 //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
 .controller('BranchesArgumenstCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
+  //Adding timer to feedback messages
+  setInterval(function () {$('#directions').hide();}, 5000);
   getData($http);
   $scope.$on('mapInitialized', function(evt, evtMap) {
     console.log("Entró al inicializador del mapa");
