@@ -48,7 +48,7 @@
 		<script src="../js/controllers/modify_branches.js"></script>
     <script src="../js/controllers/modify_promotion.js"></script>
     <script src="../js/controllers/admin_branches.js"></script>
-    <script src="../js/controllers/admin_promotions.js"></script> 
+    <script src="../js/controllers/admin_promotions.js"></script>
     <script>
       function logout(){
         sessionStorage.removeItem("token");
@@ -85,10 +85,10 @@
             <ul class="dropdown-menu">
               <li>
                 <a href="../views/admin_promotions.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar promociones</a>
-              </li>              
+              </li>
               <li>
                 <a href="../views/admin_branches.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar sucursales</a>
-              </li>              
+              </li>
               <li onclick="logout()">
                 <a><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesion</a>
               </li>
@@ -111,15 +111,12 @@
             <div  class="ng-scope">
               <map frameborder="0" scrolling="no" marginheight="0" marginwidth="0" center="current-location" id="map-canvas" zoom="15" on-click="placeMarker()"></map>
             </div>
-
             <div id="directions">
-
-
-              <p> 
+              <p>
               <span>
                 <i class="glyphicon glyphicon-asterisk"></i>
               </span>
-              &nbsp;Haz clic sobre el mapa para señalar la ubicación de tu sucursal. 
+              &nbsp;Haz clic sobre el mapa para señalar la ubicación de tu sucursal.
               <br />
               <br />
               <span>
