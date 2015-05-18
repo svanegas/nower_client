@@ -10,10 +10,10 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   $scope.modifyPromo = function(promo) {
     $scope.alerts =[];
     if( document.getElementById('people_limit').value == '' &&
-        document.getElementById('dateInput').value == ''){        
+        document.getElementById('dateInput').value == ''){
       $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
-      $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});        
-    } else if (document.getElementById('dateInput').value == ''){          
+      $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
+    } else if (document.getElementById('dateInput').value == ''){
         $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
     } else if (document.getElementById('people_limit').value == ''){
         $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
@@ -33,7 +33,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         formData.append('promo[expiration_date]', dateTime);
         formData.append('promo[people_limit]', promo.people_limit);
         formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
-        sendData(formData); 
+        sendData(formData);
     }
     /*var promo_id = $scope.promo_id;
     console.log(promo_id);
@@ -181,7 +181,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     //document.getElementById('title').value = title;
     //document.getElementById('description').value = description;
     //document.getElementById('terms').value = terms;
-    
+
     //document.getElementById('people_limit').value = people_limit;
     var pictureURL = $scope.rawJSON.promo.picture.extra_large.url;
     if(pictureURL != null) {
@@ -191,7 +191,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     getBranches($http);
     $scope.promo_id = $scope.rawJSON.promo.id;
   }
-  
+
   //Crea un array con las sucursales donde la promoción se encuentra registrada.
   function setBranchesListRight(){
     var listLeft = document.getElementById('selectLeft');
@@ -258,7 +258,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         $scope.allBranches.push($scope.rawJSON.branches[i]);
         addBranchToSelect(listLeft, $scope.rawJSON.branches[i].id, $scope.rawJSON.branches[i].name);
       }
-      
+
     }
     //createMarkers();
   }
@@ -295,11 +295,13 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
 .controller('PromoArgumenstCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
   //getData($http, $scope);
+  //Adding timer to feedback messages
+  setInterval(function () {$('#directions').hide();}, 5000);
   $scope.$on('mapInitialized', function(evt, evtMap) {
     console.log("Entró al inicializador del mapa");
     $scope.map = evtMap;
   });
-  
+
   //function getData($http, SharedVars) {
   /*function getData($http, $scope) {
     //Llamamos al ID almacenado
@@ -345,7 +347,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     getBranches($http);
     $scope.promo_id = $scope.rawJSON.promo.id;
   }
-  
+
   //Crea un array con las sucursales donde la promoción se encuentra registrada.
   function setBranchesListRight(){
     var listLeft = document.getElementById('selectLeft');
@@ -360,7 +362,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
     createMarkers();
   }
-  
+
 
   function createMarkers(){
     for(i = 0; i < $scope.rawJSON.promo.branches.length; i++){
@@ -404,7 +406,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         $scope.allBranches.push($scope.rawJSON.branches[i]);
         addBranchToSelect(listLeft, $scope.rawJSON.branches[i].id, $scope.rawJSON.branches[i].name);
       }
-      
+
     }
     //createMarkers();
   }
@@ -498,7 +500,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       }
     }
   }
-  
+
 }])
 
 .controller('AlertDemoCtrl', function ($scope) {
