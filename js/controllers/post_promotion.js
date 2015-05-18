@@ -1,12 +1,12 @@
-angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap']) 
+angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
     $scope.createPromo = function(promo) {
       $scope.alerts =[];
       if( document.getElementById('people_limit').value == '' &&
-          document.getElementById('dateInput').value == ''){        
+          document.getElementById('dateInput').value == ''){
         $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
-        $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});        
-      } else if (document.getElementById('dateInput').value == ''){          
+        $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
+      } else if (document.getElementById('dateInput').value == ''){
           $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
       } else if (document.getElementById('people_limit').value == ''){
           $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
@@ -24,7 +24,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
           formData.append('promo[expiration_date]', dateTime);
           formData.append('promo[people_limit]', promo.people_limit);
           formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
-          sendData(formData); 
+          sendData(formData);
       }
     }
 
@@ -100,13 +100,11 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
   //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('EventArgumentsCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
-
-
+    setInterval(function () {$('#directions').hide();}, 3000);
     getData($http);
-
     $scope.$on('mapInitialized', function(evt, evtMap) {
       console.log("Entró al inicializador del mapa");
-      $scope.map = evtMap;   
+      $scope.map = evtMap;
     });
 
     //Esta función pone los marcadores en el mapa
@@ -126,8 +124,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
         var myLatlng = new google.maps.LatLng(parseFloat(lat),parseFloat(long));
         var marker = new google.maps.Marker({position: myLatlng, map: $scope.map});
         //console.log("creó marker: " + i );
-      }          
-      
+      }
+
     }
     //no hace nada pero la tengo ahí por si la necesito
     function updateCoordinates(lat, lng) {
