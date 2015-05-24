@@ -1,11 +1,11 @@
 //var app = angular.module('create_store', ['ngMap']);
 
-angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])                        
+angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
 
 .controller('SendStoreCtrl', ['$scope','$http', 'localStorageService', '$window', function($scope, $http, localStorageService, $window) {
   loadCategories();
-  
-  
+
+
   $scope.createStore = function(store) {
     var formData = new FormData(), $input = $('#logo');
     formData.append('store[logo]', $input[0].files[0]);
@@ -16,8 +16,8 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
     $scope.password = store.password;
     formData.append('store[password_confirmation]', store.password_confirmation);
     formData.append('store[main_phone]', store.phone);
-    formData.append('store[category_id]', $scope.map[store.category]);        
-    formData.append('store[nit]', scope.nit);        
+    formData.append('store[category_id]', $scope.map[store.category]);
+    formData.append('store[nit]', store.nit);        
     sendData(formData);
   }
 
@@ -66,8 +66,8 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
         }, 0);
       });
   }
-  
-  function login(){   
+
+  function login(){
     var email = $scope.email;
     var password = $scope.password;
     var jsonStore = {
@@ -78,9 +78,9 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
       "store": jsonStore
     }
     console.log(jsonStore);
-    sendDataLogin(store, $http, $window); 
+    sendDataLogin(store, $http, $window);
   }
-  
+
   function sendDataLogin(data, $http, $window) {
     var req = {
       method: 'POST',
@@ -98,7 +98,7 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
       evaluteResponseLogin(response);
     });
   }
-  
+
     function evaluteResponseLogin(response){
     console.log(JSON.stringify(response));
     state = response.success;
@@ -114,19 +114,19 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
       sessionStorage.setItem("storeId", response.store.store_id);
       $window.location='./create_branch.html';
     }else{
-      $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];      
+      $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];
     }
   }
-  
-  function loadCategories(){     
+
+  function loadCategories(){
     var req = {
-      method: 'GET',      
+      method: 'GET',
       url: 'http://nowerserver.tk/categories',
       headers: {
         'Content-Type': 'application/json'
       }
     }
-    $http(req).success(function(response) {      
+    $http(req).success(function(response) {
       console.log(JSON.stringify(response));
       $scope.rawJSON = JSON.parse(JSON.stringify(response));
       createArray();
@@ -134,28 +134,28 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
       console.log("otra cosa");
       $scope.alerts = [{ type: 'danger', msg: 'No cargó las sucursales' }];
     });
-    
+
   }
 
     //Crea un array con los branches
-    function createArray(){                  
+    function createArray(){
       //$scope.categories = [];
-      $scope.map = new Object();       
+      $scope.map = new Object();
       $scope.categories = $scope.rawJSON.categories;
       $scope.arrayCategoriesNames = [];
       for(i = 0; i < $scope.categories.length; i++){
-        //$scope.categories.push($scope.rawJSON.categories[i]);   
+        //$scope.categories.push($scope.rawJSON.categories[i]);
         var jsonObject = $scope.rawJSON.categories[i];
-        $scope.map[jsonObject.name] = jsonObject.id;        
+        $scope.map[jsonObject.name] = jsonObject.id;
         $scope.arrayCategoriesNames.push(jsonObject.name);
-      }  
+      }
       fillDropDown();
     }
-  
+
   function get(k) {
     return $scope.map[k];
   }
-  
+
   function fillDropDown(){
     var sel = document.getElementById('categories');
     for(var i = 0; i < $scope.arrayCategoriesNames.length; i++) {
