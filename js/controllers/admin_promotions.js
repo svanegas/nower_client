@@ -26,7 +26,10 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
           modifyItem(row);
         }
         if(col == 5){
-          deleteItem(row);
+          var confirmation = confirm("¿Estas seguro que deseas eliminar esta promoción?");
+          if(confirmation == true){
+            deleteItem(row);
+          }          
         }
       });
       $scope.rawJSON = JSON.parse(JSON.stringify(response));      

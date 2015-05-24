@@ -1,33 +1,36 @@
 angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
-  .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
+  .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {     
     $scope.createPromo = function(promo) {
-      $scope.alerts =[];
-      if( document.getElementById('people_limit').value == '' &&
-          document.getElementById('dateInput').value == ''){
-        $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
-        $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
-      } else if (document.getElementById('dateInput').value == ''){
-          $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
-      } else if (document.getElementById('people_limit').value == ''){
+      var confirmation = confirm("¿Estas seguro de publicar esta promoción?");
+      if(confirmation == true){
+        $scope.alerts =[];
+        if( document.getElementById('people_limit').value == '' &&
+            document.getElementById('dateInput').value == ''){
           $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
-      } else {
-          setJson();
-          var formData = new FormData(), $input = $('#picture');
-          formData.append('promo[picture]', $input[0].files[0]);
-          formData.append('promo[title]', promo.title);
-          formData.append('promo[description]', promo.description);
-          formData.append('promo[terms]', promo.terms);
-          promo.date = document.getElementById('dateInput').value;
-          promo.time = document.getElementById('timeInput').value;
-          var dateTime = promo.date + ' ' + promo.time;
-          console.log(dateTime);
-          formData.append('promo[expiration_date]', dateTime);
-          formData.append('promo[people_limit]', promo.people_limit);
-          formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
-          sendData(formData);
+          $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
+        } else if (document.getElementById('dateInput').value == ''){
+            $scope.alerts.push({type: 'danger', msg: "Debes establecer una fecha límite"});
+        } else if (document.getElementById('people_limit').value == ''){
+            $scope.alerts.push({type: 'danger', msg: "Debes establecer un límite de personas"});
+        } else {
+            setJson();
+            var formData = new FormData(), $input = $('#picture');
+            formData.append('promo[picture]', $input[0].files[0]);
+            formData.append('promo[title]', promo.title);
+            formData.append('promo[description]', promo.description);
+            formData.append('promo[terms]', promo.terms);
+            promo.date = document.getElementById('dateInput').value;
+            promo.time = document.getElementById('timeInput').value;
+            var dateTime = promo.date + ' ' + promo.time;
+            console.log(dateTime);
+            formData.append('promo[expiration_date]', dateTime);
+            formData.append('promo[people_limit]', promo.people_limit);
+            formData.append('promo[branches]', JSON.stringify($scope.arrayIds));
+            sendData(formData);
+        }
       }
-    }
-
+    }      
+    
     function sendData(data) {
       $.ajax({
         url: "http://nowerserver.tk/promos",

@@ -30,7 +30,10 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
           modifyItem(row);
         }
         if(col == 4){
-          deleteItem(row);
+          var confirmation = confirm("¿Estas seguro que deseas eliminar esta sucursal?");
+          if(confirmation == true){
+            deleteItem(row);
+          }          
         }
       });
       $scope.rawJSON = JSON.parse(JSON.stringify(response));
