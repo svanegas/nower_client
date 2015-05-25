@@ -124,7 +124,7 @@ angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
 				console.log(JSON.stringify(e));
         console.log(e.latLng);
 				var marker = new google.maps.Marker({position: e.latLng, map: map, draggable:true});
-				updateCoordinates(e.latLng.k, e.latLng.D);
+				updateCoordinates(e.latLng.A, e.latLng.F);
 				map.panTo(e.latLng);
 				$scope.justOne = false;
 				google.maps.event.addListener(marker, 'dragend', function(evt) {

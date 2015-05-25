@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="App">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <title>Nower</title>
+    <meta name="generator" content="Bootply"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../lib/bower_components/bootstrap/dist/css/bootstrap-theme.min.css"/>
+
+    <!-- Custom CSS -->
+    <link href="../css/styles.css" rel="stylesheet">
+
+    <!-- alerts CSS-->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- references scripts -->
+    <script type="text/javascript" src="../lib/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- bootstrap scripts -->
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../js/lib/bootstrap3.3.4.js"></script>
+    <!--script src="../js/lib/bootstrap3.2.0.js"></script-->
+
+    <!-- map scripts -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=weather,visualization,panoramio"></script>
+
+    <!-- angular scripts -->
+    <script src="../js/lib/angularjs1.2.25.js"></script>
+    <script src="../js/lib/ngMap.js"></script>
+    <script src="../js/lib/angular-local-storage.js"></script>
+
+    <!-- alert scripts -->
+    <script src="../js/lib/angular-ui-bootstrap0.12.1.js"></script>
+
+    <!-- Controllers -->
+    <script src="../js/controllers/app.js"></script>
+    <script src="../js/controllers/login.js"></script>
+    <script src="../js/controllers/post_promotion.js"></script>
+    <script src="../js/controllers/create_branch.js"></script>
+    <script src="../js/controllers/create_store.js"></script>
+    <script src="../js/controllers/redeem_promotion.js"></script>
+    <script src="../js/controllers/script_data.js"></script>
+    <script src="../js/controllers/detail_promotion.js"></script>
+    <script src="../js/controllers/modify_branches.js"></script>
+    <script src="../js/controllers/admin_branches.js"></script>
+    <script src="../js/controllers/admin_promotions.js"></script>
+    <script src="../js/controllers/modify_promotion.js"></script>
+    <script src="../js/controllers/admin_store.js"></script>
+    <script>
+      function logout(){
+        sessionStorage.removeItem("token");
+        sessionStorage.removeItem("storeId");
+        window.location.assign("../index.html");
+      }
+      window.onload = function what(){
+        if(sessionStorage.getItem("token") == null){
+          window.location.assign("../index.html")
+        }
+      };
+    </script>
+  </head>
+
+  <body>
+
+    <!-- Navigation bar -->
+    <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="../index.html">Nower</a>
+        <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+      </div>
+      <div class="navbar-collapse collapse" ng-controller="LoadStoreName">
+        <ul class="nav navbar-nav">
+          <li><a href="../views/post_promotion.html">Nueva promoción</a></li>
+          <li><a href="../views/redeem_promotion.html">Redimir código</a></li>
+          <li><a href="../views/create_branch.html">Nueva sucursal</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">{{storeName}} <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../views/admin_promotions.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar promociones</a>
+              </li>
+              <li>
+                <a href="../views/admin_branches.html"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Administrar sucursales</a>
+              </li>
+              <li onclick="logout()">
+                <a><span class="glyphicon glyphicon-off"></span>&nbsp;&nbsp;Cerrar Sesion</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="container" id="main">
+      <hr>
+      <h2><strong>Administrar Tienda</strong></h2>
+      <hr>
+      <div ng-controller="EditStoreCtrl">
+        <div class="box">
+          <div class="row">
+            <!-- left column -->
+            <br />
+            <br />
+            <div class="col-md-3">
+              <div class="text-center">
+                <img src="../rs/img/100.gif" class="avatar img-circle" alt="avatar" id="logo">
+                <p>Carga un logo diferente</p>
+                <input type="file" class="form-control" name="logoInput" id="logoInput">
+              </div>
+            </div>
+            
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+              <!-- alert -->
+              <div id="alert" class="input-group">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              </div>
+              
+              <h4>Cambia la información básica de la tienda</h4>
+              <br />
+              <br />
+              
+              <form ng-submit="modifyStore(store)" class="form-horizontal" role="form" id="modifyStoreForm">
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Nombre:</label>
+                  <div class="col-lg-6">
+                    <input class="form-control" type="text" id="name" placeholder="Ingresa el nombre" ng-model="store.name">
+                  </div> 
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Email:</label>
+                  <div class="col-lg-6">
+                    <input class="form-control" type="email" d="email" placeholder="Ingresa el correo eléctronico" ng-model="store.email">
+                  </div>
+                </div>          
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Teléfono:</label>
+                  <div class="col-lg-6">
+                    <input class="form-control" type="text" id="phone" placeholder="Ingresa el número telefónico" ng-model="store.phone">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3 control-label">Nit:</label>
+                  <div class="col-md-6">
+                    <input class="form-control" type="text" d="nit" placeholder="Ingresa el NIT" ng-model="store.nit">
+                  </div>
+                </div>
+                <!-- Dropbown -->
+                <div class="form-group">
+                  <label  for="text" class="col-lg-3 control-label">Categoría</label>
+                  <div class="col-lg-6 selectContainer">
+                    <select name="categories" class="form-control" ng-model="store.category" id="categories">
+                      <option value="" disabled selected>Selecciona una opción</option>
+                    </select>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-md-3 control-label"></label>
+                  <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary" >Guardar cambios</button>
+                    <span></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <hr>
+        
+        <div class="box">
+          <div class="row">
+            <!-- left column -->
+            <div class="col-md-3">
+            </div>
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+              <!-- alert -->
+              <div id="alert" class="input-group">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              </div>
+              <h4>Cambia la contraseña</h4>
+              <br />
+              <br />
+              
+              <form ng-submit="changePassword(store)" class="form-horizontal" role="form" id="changePasswordForm">
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Contraseña:</label>
+                  <div class="col-lg-6">
+                    <input class="form-control" type="pwd" id="password" placeholder="Ingresa la contraseña" ng-model="store.password">
+                  </div> 
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-3 control-label">Confirmar contraseña:</label>
+                  <div class="col-lg-6">
+                    <input class="form-control" type="pwd" id="pwd" placeholder="Confirme la contraseña" ng-model="store.password_confirmation">
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <label class="col-md-3 control-label"></label>
+                  <div class="col-md-8">
+                    <button type="submit" class="btn btn-primary">Cambiar contraseña</button>
+                    <span></span>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+
+      <div ng-controller="deleteStoreCtrl">
+        <div class="box">
+          <div class="row">
+            <!-- edit form column -->
+            <div class="col-md-9 personal-info">
+              <!-- alert -->
+              <div id="alert" class="input-group">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+              </div>
+              
+              <form ng-submit="deleteStore(store)" class="form-horizontal" role="form" id="changePasswordForm">
+                <div class="form-group">
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-md-offset-4">
+                    <p> ¿Usted está seguro que desea eliminar la tienda?. Recuerde que esta acción no es irreversible</p>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-md-offset-7">
+                    <button type="submit" class="btn btn-danger">Eliminar tienda</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <p class="copyright text-muted text-center">Copyright &copy; Nower 2015</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
