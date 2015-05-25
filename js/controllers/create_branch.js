@@ -1,8 +1,8 @@
 angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
-.controller('SendBranchCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {  
+.controller('SendBranchCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
   $scope.createBranch = function(branch) {
     var confirmation = confirm("¿Estas seguro que deseas crear esta sucursal?");
-    if(confirmation == true){    
+    if(confirmation == true){
       console.log(JSON.stringify(branch));
       var store_id = localStorageService.get("Id"); ;
       var name = branch.name;

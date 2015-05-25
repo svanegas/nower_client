@@ -16,8 +16,8 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
     $scope.password = store.password;
     formData.append('store[password_confirmation]', store.password_confirmation);
     formData.append('store[main_phone]', store.phone);
-    formData.append('store[category_id]', $scope.map[store.category]);        
-    formData.append('store[nit]', store.nit);        
+    formData.append('store[category_id]', $scope.map[store.category]);
+    formData.append('store[nit]', store.nit);
     sendData(formData);
   }
 
@@ -103,16 +103,16 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
     console.log(JSON.stringify(response));
     state = response.success;
     if(state){
-      $scope.store_id = response.store.store_id;
+      //$scope.store_id = response.store.store_id;
       console.log(response.store.token);
       console.log(response.store.store_id);
       //Almacenamos el ID del cliente
-      localStorageService.set("Id", response.store.store_id);
+      //localStorageService.set("Id", response.store.store_id);
       console.log(response.store.store_id);
       //Saving User Data
-      sessionStorage.setItem("token", response.store.token);
-      sessionStorage.setItem("storeId", response.store.store_id);
-      $window.location='./create_branch.html';
+      //sessionStorage.setItem("token", response.store.token);
+      //sessionStorage.setItem("storeId", response.store.store_id);
+      $window.location = '../index.html';
     }else{
       $scope.alerts = [{ type: 'danger', msg: "Error: email o contraseña incorrectos"}];
     }

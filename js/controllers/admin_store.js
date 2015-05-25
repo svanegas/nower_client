@@ -106,7 +106,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.store.nit = nit;
     var sel = document.getElementById("categories");
     console.log($scope.categoriesIndexesDropdown["132"]);
-    sel.selectedIndex = $scope.categoriesIndexesDropdown[category_id]; 
+    sel.selectedIndex = $scope.categoriesIndexesDropdown[category_id];
     var logoURL = $scope.storeDetailsJSON.store.logo.medium.url;
     if(logoURL != null) {
       $("#logo").attr("src","http://nowerserver.tk" + logoURL);
@@ -114,15 +114,15 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.store_id = $scope.storeDetailsJSON.store.id;
   }
 
-  function loadCategories(){     
+  function loadCategories(){
     var req = {
-      method: 'GET',      
+      method: 'GET',
       url: 'http://nowerserver.tk/categories',
       headers: {
         'Content-Type': 'application/json'
       }
     }
-    $http(req).success(function(response) {      
+    $http(req).success(function(response) {
       console.log(JSON.stringify(response));
       $scope.categoriesJSON = JSON.parse(JSON.stringify(response));
       createCatogriesArray();
@@ -134,15 +134,15 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
   }
 
   //Crea un array con las categorias
-  function createCatogriesArray(){                  
+  function createCatogriesArray(){
     $scope.categoriesIdsDropdown = new Object();
     $scope.categories = $scope.categoriesJSON.categories;
     $scope.arrayCategoriesNames = [];
     for(i = 0; i < $scope.categories.length; i++){
       var jsonObject = $scope.categoriesJSON.categories[i];
-      $scope.categoriesIdsDropdown[jsonObject.name] = jsonObject.id;         
+      $scope.categoriesIdsDropdown[jsonObject.name] = jsonObject.id;
       $scope.arrayCategoriesNames.push(jsonObject.name);
-    }  
+    }
     fillDropDown();
   }
   //Agrega las categorias al dropdown.
@@ -217,22 +217,22 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
   $scope.deleteStore = function(store) {
     $scope.storeToDelete = localStorageService.get("Id");
     console.log("storeId: " + $scope.storeToDelete);
-    sendDeleteStoreRequest($http, $scope.storeToDelete); 
+    sendDeleteStoreRequest($http, $scope.storeToDelete);
   }
 
   function sendDeleteStoreRequest($http, id) {
     var req = {
-      method: 'DELETE',      
+      method: 'DELETE',
       url: 'http://nowerserver.tk/stores/' + id,
     }
     $http(req).success(function(response) {
       console.log("ya");
       console.log(JSON.stringify(response));
       //$scope.rawJSON = JSON.parse(JSON.stringify(response));
-      evaluateResponse(response);
+      evaluateResponseDelete(response);
     }).error(function(response) {
       console.log("otra cosa");
-      evaluateResponseDelete(response);      
+      evaluateResponseDelete(response);
     });
   }
 
