@@ -11,7 +11,6 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
     formData.append('store[id]', $scope.value);
     formData.append('store[name]', store.name);
     formData.append('store[email]', store.email);
-    //pendiente revisar cambio de la contraseña.
     formData.append('store[main_phone]', store.phone);
     formData.append('store[category_id]', $scope.categoriesIdsDropdown[store.category]);
     formData.append('store[nit]', store.nit);
