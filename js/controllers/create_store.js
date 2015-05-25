@@ -16,7 +16,7 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
     $scope.password = store.password;
     formData.append('store[password_confirmation]', store.password_confirmation);
     formData.append('store[main_phone]', store.phone);
-    formData.append('store[category_id]', $scope.map[store.category]);
+    formData.append('store[category_id]', $scope.map[store.category]);        
     formData.append('store[nit]', store.nit);        
     sendData(formData);
   }
