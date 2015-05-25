@@ -1,33 +1,30 @@
-//var app = angular.module('myapp', ['ngMap','App.services','ui.bootstrap']);
-
 angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
-//angular.module("post_promotion",['ngMap','LocalStorageModule'])
 
-//.controller('SendPromotionCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
 .controller('EditPromotionCtrl', ['$scope','$http', function($scope, $http) {
   $scope.modifyBranch = function(branch) {
-    var branch_id = $scope.branch_id;
-    console.log(branch_id);
-    var name = document.getElementById('name').value;
-    var address = document.getElementById('address').value;
-    var phone = document.getElementById('phone').value;
-    var lat = document.getElementById('latitude').value;
-    var lng = document.getElementById('longitude').value;
-    var jsonBranch = {
-      "id": branch_id,
-      "name": name,
-      "address": address,
-      "phone": phone,
-      "latitude": lat,
-      "longitude": lng
+    var confirmation = confirm("¿Estas seguro que deseas modificar esta sucursal?");
+    if(confirmation == true){
+      var branch_id = $scope.branch_id;
+      console.log(branch_id);
+      var name = document.getElementById('name').value;
+      var address = document.getElementById('address').value;
+      var phone = document.getElementById('phone').value;
+      var lat = document.getElementById('latitude').value;
+      var lng = document.getElementById('longitude').value;
+      var jsonBranch = {
+        "id": branch_id,
+        "name": name,
+        "address": address,
+        "phone": phone,
+        "latitude": lat,
+        "longitude": lng
+      }
+      var branch = {
+        "branch": jsonBranch
+      }
+      console.log(JSON.stringify(branch));
+      sendData(branch, $http);
     }
-    var branch = {
-      "branch": jsonBranch
-    }
-    console.log(JSON.stringify(branch));
-    //console.log($scope.listRight.options[0].value);
-    //$http.post(url, branch);
-    sendData(branch, $http);
   }
 
   function sendData(data, $http) {

@@ -1,29 +1,30 @@
 angular.module("create_branch",['ngMap','LocalStorageModule','ui.bootstrap'])
-
-
-.controller('SendBranchCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
-	$scope.createBranch = function(branch) {
-    console.log(JSON.stringify(branch));
-		var store_id = localStorageService.get("Id"); ;
-    var name = branch.name;
-		var address = branch.address;
-		var phone = branch.phone;
-    var lat = document.getElementById('latitude').value;
-		var lng = document.getElementById('longitude').value;
-		var jsonBranch = {
-  		"store_id": store_id,
-  		"name": name,
-  		"address": address,
-  		"phone": phone,
-  		"latitude": lat,
-  		"longitude": lng
-    }
-    var branch = {
-      "branch": jsonBranch
-    }
+.controller('SendBranchCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {  
+  $scope.createBranch = function(branch) {
+    var confirmation = confirm("¿Estas seguro que deseas crear esta sucursal?");
+    if(confirmation == true){    
       console.log(JSON.stringify(branch));
-      sendData(branch, $http);
-	}
+      var store_id = localStorageService.get("Id"); ;
+      var name = branch.name;
+      var address = branch.address;
+      var phone = branch.phone;
+      var lat = document.getElementById('latitude').value;
+      var lng = document.getElementById('longitude').value;
+      var jsonBranch = {
+       "store_id": store_id,
+       "name": name,
+       "address": address,
+       "phone": phone,
+       "latitude": lat,
+       "longitude": lng
+      }
+      var branch = {
+        "branch": jsonBranch
+      }
+        console.log(JSON.stringify(branch));
+        sendData(branch, $http);
+    }
+  }
 
   function sendData(data, $http) {
     var req = {
