@@ -50,6 +50,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
 
     function evaluateResponse(response){
+      $scope.$apply(function(){
         console.log(JSON.stringify(response));
         state = response.success;
         if(state){
@@ -74,6 +75,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
                 scrollTop: $('#alert').offset().top - 100
             }, 0);
         });
+      });
     }
 
 
