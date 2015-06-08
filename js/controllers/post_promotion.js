@@ -50,6 +50,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     }
 
     function evaluateResponse(response){
+      //Apply keep the screen updated
       $scope.$apply(function(){
         console.log(JSON.stringify(response));
         state = response.success;
