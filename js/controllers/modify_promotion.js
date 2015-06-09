@@ -5,7 +5,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   getData($http, $scope);
   $scope.modifyPromo = function(promo) {
     var confirmation = confirm("¿Estas seguro que deseas modificar esta promoción?");
-    if(confirmation == true){    
+    if(confirmation == true){
       $scope.alerts =[];
       if( document.getElementById('people_limit').value == '' &&
           document.getElementById('dateInput').value == ''){
@@ -295,7 +295,8 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 .controller('PromoArgumenstCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
   //getData($http, $scope);
   //Adding timer to feedback messages
-  setInterval(function () {$('#directions').hide();}, 5000);
+  //setInterval(function () {$('#directions').hide();}, 5000);
+  document.getElementById("closeDirections").addEventListener("click", closeWindows);
   $scope.$on('mapInitialized', function(evt, evtMap) {
     console.log("Entró al inicializador del mapa");
     $scope.map = evtMap;
@@ -470,6 +471,10 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     newOption.text = optionDisplayText;
     listBoxTo.add(newOption, null);
     return true;
+  }
+
+  function closeWindows(){
+    $('#directions').hide();
   }
   /*
   function contains(array, object) {

@@ -1,5 +1,5 @@
 angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
-  .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {     
+  .controller('SendPromotionCtrl', ['$scope','$http', function($scope, $http) {
     $scope.createPromo = function(promo) {
       var confirmation = confirm("¿Estas seguro de publicar esta promoción?");
       if(confirmation == true){
@@ -29,8 +29,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
             sendData(formData);
         }
       }
-    }      
-    
+    }
+
     function sendData(data) {
       $.ajax({
         url: "http://nowerserver.tk/promos",
@@ -107,7 +107,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
   .controller('EventArgumentsCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
     //Adding timer to feedback messages
-    setInterval(function () {$('#directions').hide();}, 5000);
+    //setInterval(function () {$('#directions').hide();}, 5000);
+    document.getElementById("closeDirections").addEventListener("click", closeWindows);
     getData($http);
     $scope.$on('mapInitialized', function(evt, evtMap) {
       console.log("Entró al inicializador del mapa");
@@ -117,6 +118,10 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     function createMarker(idBranch){
       id = $scope.mapIdBranchesToIndex[idBranch];
       $scope.markers[id].setMap($scope.map);
+    }
+
+    function closeWindows(){
+      $('#directions').hide();
     }
 
     function deleteMarker(idBranch){
