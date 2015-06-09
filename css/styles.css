@@ -4,7 +4,6 @@ body{
 
 .navbar-custom .icon-bar {
 	background-color:#fff;
-
 }
 
 .navbar-custom .navbar-brand{
@@ -107,14 +106,14 @@ h6 {
 
 #directions {
   position: absolute;
-  top: 50px;
-  left: 13%;
+  top: 30px;
+  left: 15%;
   text-align: center;
-  width: 270px;
+  width: 520px;
   background: rgba(255, 255, 255, 0.96);
   border-radius: 5px;
   box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.36);
-  padding: 25px 25px 20px 25px; 
+  padding: 25px 25px 20px 25px;
 }
 
 #code{
@@ -148,7 +147,3 @@ footer {
   padding-bottom:20px;
   margin-top: 100px;
 }
-
-
-
-

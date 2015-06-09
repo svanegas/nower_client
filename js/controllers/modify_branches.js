@@ -62,7 +62,7 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
       });
       showErrorAlert(errorName, errorMsgs, cont);
     }
-    window.location.href=window.location.href;
+    window.location.href = window.location.href;
   }
 
 
@@ -82,7 +82,8 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
 //.controller('EventArgumentsCtrl', ['$scope','$http','SharedVars', function($scope, $http, SharedVars) {
 .controller('BranchesArgumenstCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
   //Adding timer to feedback messages
-  setInterval(function () {$('#directions').hide();}, 5000);
+  //setInterval(function () {$('#directions').hide();}, 5000);
+  document.getElementById("closeDirections").addEventListener("click", closeWindows);
   getData($http);
   $scope.$on('mapInitialized', function(evt, evtMap) {
     console.log("Entró al inicializador del mapa");
@@ -114,6 +115,10 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
     google.maps.event.addListener(marker, 'dragend', function(evt) {
       updateCoordinates(evt.latLng.lat(), evt.latLng.lng());
     });
+  }
+
+  function closeWindows(){
+    $('#directions').hide();
   }
 
   function updateCoordinates(lat, lng) {
