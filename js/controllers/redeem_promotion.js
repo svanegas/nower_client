@@ -19,7 +19,7 @@ angular.module("redeem_promotion",['ui.bootstrap','LocalStorageModule'])
   function sendData(data, $http, $window) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.tk/redemptions/redeem',
+      url: '//nowerserver.tk/redemptions/redeem',
       headers: {
         'Content-Type': 'application/json'
       },

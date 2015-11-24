@@ -25,7 +25,7 @@ angular.module("login",['LocalStorageModule','ui.bootstrap'])
   function sendData(data, $http, $window) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.tk/stores/login',
+      url: '//nowerserver.tk/stores/login',
       headers: {
         'Content-Type': 'application/json'
       },

@@ -5,7 +5,7 @@ app.controller('ListCtrl', ['$scope','$http', function($scope, $http) {
   function getData($http) {
     var req = {
       method: 'GET',
-      url: 'http://nowerserver.tk/stores/branches/42',
+      url: '//nowerserver.tk/stores/branches/42',
       headers: {
         'Content-Type': 'application/json'
       },

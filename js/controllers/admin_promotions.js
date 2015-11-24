@@ -8,7 +8,7 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',      
-      url: 'http://nowerserver.tk/promos/store/'+$scope.value,
+      url: '//nowerserver.tk/promos/store/'+$scope.value,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -53,7 +53,7 @@ angular.module("admin_promotions",['ngMap','LocalStorageModule','ui.bootstrap'])
   function deletePromo($http, id) {
     var req = {
       method: 'DELETE',      
-      url: 'http://nowerserver.tk/promos/'+ id,
+      url: '//nowerserver.tk/promos/'+ id,
     }
     $http(req).success(function(response) {
       console.log("ya");

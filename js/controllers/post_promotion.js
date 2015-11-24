@@ -33,7 +33,7 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
     function sendData(data) {
       $.ajax({
-        url: "http://nowerserver.tk/promos",
+        url: "//nowerserver.tk/promos",
         data: data,
         cache: false,
         contentType: false,
@@ -151,8 +151,8 @@ angular.module("post_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
       $scope.value = localStorageService.get("Id");
       var req = {
         method: 'GET',
-        //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-        url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
+        //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+        url: '//nowerserver.tk/stores/branches/'+$scope.value,
         headers: {
           'Content-Type': 'application/json'
         }

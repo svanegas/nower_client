@@ -23,7 +23,7 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
 
   function sendData(data, $http) {
     $.ajax({
-      url: "http://nowerserver.tk/stores",
+      url: "//nowerserver.tk/stores",
       data: data,
       cache: false,
       contentType: false,
@@ -84,7 +84,7 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
   function sendDataLogin(data, $http, $window) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.tk/stores/login',
+      url: '//nowerserver.tk/stores/login',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -121,7 +121,7 @@ angular.module("create_store",['ui.bootstrap', 'LocalStorageModule'])
   function loadCategories(){
     var req = {
       method: 'GET',
-      url: 'http://nowerserver.tk/categories',
+      url: '//nowerserver.tk/categories',
       headers: {
         'Content-Type': 'application/json'
       }

@@ -59,7 +59,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
   function sendData(data, $http) {
     var req = {
       method: 'PATCH',
-      url: 'http://nowerserver.tk/promos',
+      url: '//nowerserver.tk/promos',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -74,7 +74,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
 
   function sendData(data) {
     $.ajax({
-      url: "http://nowerserver.tk/promos",
+      url: "//nowerserver.tk/promos",
       data: data,
       cache: false,
       contentType: false,
@@ -140,8 +140,8 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     var selectedPromo = sessionStorage.getItem("selectedPromo");
     var req = {
       method: 'GET',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/promos/'+selectedPromo,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/promos/'+selectedPromo,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -184,7 +184,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     //document.getElementById('people_limit').value = people_limit;
     var pictureURL = $scope.rawJSON.promo.picture.extra_large.url;
     if(pictureURL != null) {
-      $("#picture").attr("src","http://nowerserver.tk" + pictureURL);
+      $("#picture").attr("src","//nowerserver.tk" + pictureURL);
     }
     setBranchesListRight();
     getBranches($http);
@@ -230,8 +230,8 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/stores/branches/'+$scope.value,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -308,8 +308,8 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     var selectedPromo = sessionStorage.getItem("selectedPromo");
     var req = {
       method: 'GET',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/promos/'+selectedPromo,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/promos/'+selectedPromo,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -341,7 +341,7 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     document.getElementById('people_limit').value = people_limit;
     var pictureURL = $scope.rawJSON.promo.picture.extra_large.url;
     if(pictureURL != null) {
-      $("#picture").attr("src","http://nowerserver.tk" + pictureURL);
+      $("#picture").attr("src","//nowerserver.tk" + pictureURL);
     }
     setBranchesListRight();
     getBranches($http);
@@ -379,8 +379,8 @@ angular.module("modify_promotion",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/stores/branches/'+$scope.value,
       headers: {
         'Content-Type': 'application/json'
       }

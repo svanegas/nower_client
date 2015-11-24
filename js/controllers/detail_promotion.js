@@ -19,7 +19,7 @@ angular.module("detail_promotion",['LocalStorageModule'])
     console.log(localStorageService.get("picture"));*/
     var pictureURL = localStorageService.get("picture");
     if(pictureURL != null) {
-      $("#picture").attr("src","http://nowerserver.tk" + pictureURL);
+      $("#picture").attr("src","//nowerserver.tk" + pictureURL);
     }
 
     $scope.alerts = [{ type: 'success', msg: '¡Promoción redimida correctamente! ✓' }];

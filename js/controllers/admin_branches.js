@@ -2,7 +2,7 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
 
 .controller('AdminBranchesCtrl', ['$scope','$http','localStorageService', function($scope, $http, localStorageService) {
   $scope.value = localStorageService.get("Id");
-  //$http.get('http://nowerserver.tk/stores/branches/'+ $scope.value)
+  //$http.get('//nowerserver.tk/stores/branches/'+ $scope.value)
   //.success(function (response) {$scope.names = response.branches;});
   getData($http);
   //function getData($http, SharedVars) {
@@ -11,8 +11,8 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/stores/branches/'+$scope.value,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -97,8 +97,8 @@ angular.module("admin_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
   function deleteBranch($http, id) {
     var req = {
       method: 'DELETE',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/branches/'+ id,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/branches/'+ id,
     }
     $http(req).success(function(response) {
       console.log("ya");

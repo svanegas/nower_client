@@ -30,7 +30,7 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
   function sendData(data, $http) {
     var req = {
       method: 'PATCH',
-      url: 'http://nowerserver.tk/branches',
+      url: '//nowerserver.tk/branches',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -136,8 +136,8 @@ angular.module("modify_branches",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',
-      //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-      url: 'http://nowerserver.tk/stores/branches/'+$scope.value,
+      //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+      url: '//nowerserver.tk/stores/branches/'+$scope.value,
       headers: {
         'Content-Type': 'application/json'
       }

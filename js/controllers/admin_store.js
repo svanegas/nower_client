@@ -20,7 +20,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
   function sendModifyStoreData(data) {
     $scope.value = localStorageService.get("Id");
     $.ajax({
-      url: "http://nowerserver.tk/stores",
+      url: "//nowerserver.tk/stores",
       data: data,
       cache: false,
       contentType: false,
@@ -74,7 +74,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
     $scope.value = localStorageService.get("Id");
     var req = {
       method: 'GET',
-      url: 'http://nowerserver.tk/stores/' + $scope.value,
+      url: '//nowerserver.tk/stores/' + $scope.value,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -109,7 +109,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
     sel.selectedIndex = $scope.categoriesIndexesDropdown[category_id];
     var logoURL = $scope.storeDetailsJSON.store.logo.medium.url;
     if(logoURL != null) {
-      $("#logo").attr("src","http://nowerserver.tk" + logoURL);
+      $("#logo").attr("src","//nowerserver.tk" + logoURL);
     }
     $scope.store_id = $scope.storeDetailsJSON.store.id;
   }
@@ -117,7 +117,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
   function loadCategories(){
     var req = {
       method: 'GET',
-      url: 'http://nowerserver.tk/categories',
+      url: '//nowerserver.tk/categories',
       headers: {
         'Content-Type': 'application/json'
       }
@@ -169,7 +169,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
   function sendChangePasswordData(data) {
     $scope.value = localStorageService.get("Id");
     $.ajax({
-      url: "http://nowerserver.tk/stores",
+      url: "//nowerserver.tk/stores",
       data: data,
       cache: false,
       contentType: false,
@@ -223,7 +223,7 @@ angular.module("admin_store",['ngMap','LocalStorageModule','ui.bootstrap'])
   function sendDeleteStoreRequest($http, id) {
     var req = {
       method: 'DELETE',
-      url: 'http://nowerserver.tk/stores/' + id,
+      url: '//nowerserver.tk/stores/' + id,
     }
     $http(req).success(function(response) {
       console.log("ya");

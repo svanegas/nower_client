@@ -27,7 +27,7 @@ angular.module("test",['LocalStorageModule'])
   function sendData(data, $http, $window) {
     var req = {
       method: 'POST',
-      url: 'http://nowerserver.tk/stores/login',
+      url: '//nowerserver.tk/stores/login',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -87,7 +87,7 @@ angular.module("test",['LocalStorageModule'])
     function sendData(data, $http) {
       var req = {
         method: 'POST',
-        url: 'http://nowerserver.tk/promos',
+        url: '//nowerserver.tk/promos',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -178,8 +178,8 @@ angular.module("test",['LocalStorageModule'])
       //console.log("holi");
       var req = {
         method: 'GET',
-        //url: 'http://nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
-        url: 'http://nowerserver.tk/stores/branches/42',
+        //url: '//nowerserver.tk/stores/branches/'+SharedVars.getStoreId(),
+        url: '//nowerserver.tk/stores/branches/42',
         headers: {
           'Content-Type': 'application/json'
         }
