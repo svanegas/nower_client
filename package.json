@@ -1,0 +1,22 @@
+{
+  "name": "nower_client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/castofo/nower_client.git"
+  },
+  "author": "Castofo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/castofo/nower_client/issues"
+  },
+  "homepage": "https://github.com/castofo/nower_client",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
